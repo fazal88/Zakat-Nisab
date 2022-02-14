@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Zakat</string>
+    <string name="app_name">Zakat &amp; Nisab</string>
+    <string name="str_zakat_nisab"><![CDATA[Zakat\n\n&\n\nNisab]]></string>
 </resources>

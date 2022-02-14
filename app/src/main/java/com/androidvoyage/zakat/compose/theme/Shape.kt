@@ -1,4 +1,4 @@
-package com.androidvoyage.zakat.ui.theme
+package com.androidvoyage.zakat.compose.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

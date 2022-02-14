@@ -1,12 +1,22 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
 
 android {
     compileSdk 31
+
+    buildFeatures {
+
+        dataBinding true
+
+        // for view binding:
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "com.androidvoyage.zakat"
@@ -99,5 +109,6 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.13.0'
 
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
 }
