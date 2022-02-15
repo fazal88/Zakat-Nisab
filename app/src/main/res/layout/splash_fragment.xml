@@ -5,11 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".screens.splash.SplashFragment">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/str_zakat_nisab"
-        android:gravity="center"
-        android:textSize="36sp"/>
+        android:src="@mipmap/ic_launcher_foreground"/>
 
 </FrameLayout>

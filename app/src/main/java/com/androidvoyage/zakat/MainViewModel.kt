@@ -7,5 +7,6 @@ import com.androidvoyage.zakat.model.Features
 class MainViewModel : ViewModel() {
 
     val isSplash = MutableLiveData(true)
+    val isList = MutableLiveData(false)
 
 }

@@ -13,7 +13,7 @@
         <action
             android:id="@+id/action_splashFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
-            app:popUpTo="@id/dashboardFragment"
+            app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_editFragment"
             app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"
@@ -36,10 +39,23 @@
         <action
             android:id="@+id/action_listFragment_to_editFragment"
             app:destination="@id/editFragment" />
+        <argument android:name="type"
+            app:argType="string"
+            android:defaultValue=" " />
     </fragment>
     <fragment
         android:id="@+id/editFragment"
         android:name="com.androidvoyage.zakat.screens.edit.EditFragment"
         android:label="edit_fragment"
-        tools:layout="@layout/edit_fragment" />
+        tools:layout="@layout/edit_fragment" >
+        <argument
+            android:name="type"
+            app:argType="string"
+            android:defaultValue=" " />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.androidvoyage.zakat.screens.about.AboutFragment"
+        android:label="about_fragment"
+        tools:layout="@layout/about_fragment" />
 </navigation>

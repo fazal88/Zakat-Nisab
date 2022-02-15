@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
+import androidx.transition.Explode
 import androidx.transition.Fade
 import androidx.transition.Transition
 import androidx.transition.TransitionManager
@@ -62,7 +63,7 @@ fun View.setInVisible(isVisible: Boolean?) {
 fun visibleWithAnimation(view: View, isVisible: Boolean) {
 
     if (view.parent is ViewGroup) {
-        val transition: Transition = Fade()
+        val transition: Transition = Explode()
         transition.duration = 600
         transition.addTarget(view)
         TransitionManager.beginDelayedTransition(view.parent as ViewGroup, transition)
@@ -75,7 +76,7 @@ fun visibleWithAnimation(view: View, isVisible: Boolean) {
 fun inVisibleWithAnimation(view: View, isVisible: Boolean) {
 
     if (view.parent is ViewGroup) {
-        val transition: Transition = Fade()
+        val transition: Transition = Explode()
         transition.duration = 600
         transition.addTarget(view)
         TransitionManager.beginDelayedTransition(view.parent as ViewGroup, transition)
@@ -223,7 +224,7 @@ fun ImageView.setImageUrl(item: String?) {
         item?.let {
             Glide.with(this.context)
                 .load(item)
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.ic_launcher_foreground)
                 .into(this)
         }
     } catch (e: Exception) {
@@ -237,7 +238,7 @@ fun ImageView.setImageUrl(item: Int?) {
         item?.let {
             Glide.with(this.context)
                 .load(item)
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.ic_launcher_foreground)
                 .into(this)
         }
     } catch (e: Exception) {

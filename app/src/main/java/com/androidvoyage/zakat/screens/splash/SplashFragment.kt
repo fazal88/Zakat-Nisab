@@ -28,12 +28,11 @@ class SplashFragment : Fragment() {
         return inflater.inflate(R.layout.splash_fragment, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         Handler(Looper.myLooper()!!).postDelayed({
             gotoHome()
         }, SPLASH_DISPLAY_LENGTH)
-
     }
 
     private fun gotoHome() {

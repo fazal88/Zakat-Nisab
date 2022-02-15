@@ -21,15 +21,17 @@
             android:layout_height="56dp"
             android:gravity="center_vertical"
             android:paddingHorizontal="16dp"
-            android:textStyle="bold"
             android:text="Zakat &amp; Nisab"
             android:textColor="@color/primaryDarkColor"
             android:textSize="22sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/iv_option"
+            onClickWithAnimation="@{()->vm.onClickOption()}"
             android:layout_width="64dp"
             android:layout_height="0dp"
             android:scaleType="centerInside"
@@ -45,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:background="@drawable/back_rect_round_8dp"
+            android:elevation="8dp"
             android:orientation="vertical"
             android:paddingHorizontal="16dp"
             android:paddingVertical="16dp"
@@ -56,11 +59,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="Monday, 14th Feb"
                 android:textColor="@color/TextWhite"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -74,6 +77,7 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:elevation="8dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_zakat"
             app:layout_constraintBottom_toBottomOf="@+id/ll_date"
@@ -85,12 +89,12 @@
             android:id="@+id/tv_nisab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
             android:layout_marginTop="16dp"
+            android:padding="16dp"
             android:text="Nisab"
-            android:textStyle="bold"
             android:textColor="@color/primaryDarkColor"
             android:textSize="22sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_date" />
 
