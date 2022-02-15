@@ -21,6 +21,7 @@
             android:layout_height="56dp"
             android:gravity="center_vertical"
             android:paddingHorizontal="16dp"
+            android:textStyle="bold"
             android:text="Zakat &amp; Nisab"
             android:textColor="@color/primaryDarkColor"
             android:textSize="22sp"
@@ -55,6 +56,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="Monday, 14th Feb"
                 android:textColor="@color/TextWhite"
@@ -83,8 +85,10 @@
             android:id="@+id/tv_nisab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:layout_marginTop="16dp"
             android:text="Nisab"
+            android:textStyle="bold"
             android:textColor="@color/primaryDarkColor"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,6 +109,16 @@
             app:spanCount="2"
             tools:itemCount="7"
             tools:listitem="@layout/item_dashboard" />
+
+        <View
+            android:id="@+id/view_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:background="@drawable/back_shadow_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_dashboard" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

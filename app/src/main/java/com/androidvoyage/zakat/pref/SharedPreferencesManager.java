@@ -4,11 +4,13 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import org.jetbrains.annotations.Nullable;
+
 import javax.inject.Singleton;
 
 /**
  * Created by Fazal on 14/02/22.
- * Copyright (c) 2022 PayNearby. All rights reserved.
+ * Copyright (c) 2022 Fazal. All rights reserved.
  */
 
 
@@ -38,4 +40,13 @@ public class SharedPreferencesManager {
         sSharedPreferenceEncrypted = new ObscuredSharedPreferences(context, SECRET_KEY, context.getSharedPreferences(KEY_PREF_NAME, Context.MODE_PRIVATE));
         sharedPreferences = context.getSharedPreferences(KEY_PREF_NAME, Context.MODE_PRIVATE);
     }
+
+    public void setValue(String key,String value) {
+        sSharedPreferenceEncrypted.edit().putString(key, value).apply();
+    }
+
+    public String getValue(String key) {
+        return sSharedPreferenceEncrypted.getString(key, "");
+    }
+
 }

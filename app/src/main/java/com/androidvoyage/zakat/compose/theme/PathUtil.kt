@@ -6,7 +6,7 @@ import java.lang.Math.abs
 
 /**
  * Created by Fazal on 14/02/22.
- * Copyright (c) 2022 PayNearby. All rights reserved.
+ * Copyright (c) 2022 Fazal. All rights reserved.
  */
 fun Path.standardQuadFromTo(from: Offset, to: Offset) {
     quadraticBezierTo(

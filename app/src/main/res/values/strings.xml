@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Zakat &amp; Nisab</string>
     <string name="str_zakat_nisab"><![CDATA[Zakat\n\n&\n\nNisab]]></string>
+    <string name="str_card_mask">XXXX</string>
+    <string name="str_add">Add</string>
 </resources>

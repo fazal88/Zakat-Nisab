@@ -2,7 +2,7 @@ package com.androidvoyage.zakat
 
 /**
  * Created by Fazal on 14/02/22.
- * Copyright (c) 2022 PayNearby. All rights reserved.
+ * Copyright (c) 2022 Fazal. All rights reserved.
  */
 
 import androidx.compose.foundation.Canvas
