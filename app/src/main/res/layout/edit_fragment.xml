@@ -1,13 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".screens.edit.EditFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+        <variable
+            name="vm"
+            type="com.androidvoyage.zakat.screens.edit.EditViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:context=".screens.edit.EditFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tv_title_edit"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp"
+            android:text="Add Nisab"
+            android:textColor="@color/primaryDarkColor"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/back_rect_round_4dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_title_edit" />
+
+        <ScrollView
+            android:id="@+id/sv_edit"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_edit">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:clipToPadding="false"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/style_label_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nisab Type"/>
+
+
+                <TextView
+                    android:id="@+id/tv_spn_type"
+                    style="@style/style_input_spinner"
+                    android:layout_width="match_parent"
+                    android:hint="Select Type"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/style_label_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    visibleWithAnimation="@{vm.isMetal}"
+                    android:text="Karat"/>
+
+                <TextView
+                    android:id="@+id/tv_spn_karat"
+                    style="@style/style_input_spinner"
+                    android:layout_width="match_parent"
+                    android:hint="Karat"
+                    visibleWithAnimation="@{vm.isMetal}"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/style_label_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    visibleWithAnimation="@{vm.isMetal}"
+                    android:text="@string/str_weight_in_grams_1_tola_10_grams_at_present"/>
+
+                <EditText
+                    style="@style/style_input_edittext"
+                    android:layout_width="match_parent"
+                    android:hint="grams"
+                    visibleWithAnimation="@{vm.isMetal}"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/style_label_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"/>
+
+                <EditText
+                    style="@style/style_input_edittext"
+                    android:layout_width="match_parent"
+                    android:hint="Name"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/style_label_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cost / Price"/>
+
+                <EditText
+                    style="@style/style_input_edittext"
+                    android:layout_width="match_parent"
+                    android:hint="Cost / Price"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/style_label_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estimated Zakat"/>
+
+                <TextView
+                    style="@style/style_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="₹ 10,000"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+
+        <View
+            android:id="@+id/view_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:background="@drawable/back_shadow_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/sv_edit" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

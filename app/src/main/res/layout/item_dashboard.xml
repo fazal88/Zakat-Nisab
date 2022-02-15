@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:textStyle="bold"
-                app:setTitleFromKey="@{key}"
+                android:text="@{key}"
                 android:textColor="@color/TextWhite"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"

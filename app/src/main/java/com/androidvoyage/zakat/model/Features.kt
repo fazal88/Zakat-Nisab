@@ -3,23 +3,22 @@ package com.androidvoyage.zakat.model
 import com.androidvoyage.zakat.R
 
 object Features {
-    private const val CASH_IN_HAND: String = "Cash in Hand"
-    private const val GOLD_SILVER: String = "Gold + Silver"
-    private const val SAVINGS_FUNDS: String = "Savings & Funds"
-    private const val BUSINESS_ASSETS: String = "Business Assets"
-    private const val DEBT_OWNED: String = "Debts Owed"
-    private const val SHARES_STOCKS: String = "Shares & Stocks"
-    private const val PROPERTIES_CARS: String = "Properties + Cars"
+    const val PREF_CASH_IN_HAND: String = "Cash in Hand"
+    const val PREF_GOLD_SILVER: String = "Gold & Silver"
+    const val PREF_SAVINGS_FUNDS: String = "Savings & Funds"
+    const val PREF_BUSINESS_ASSETS: String = "Business Assets"
+    const val PREF_DEBT_OWNED: String = "Debts Owed"
+    const val PREF_SHARES_STOCKS: String = "Shares & Stocks"
+    const val PREF_PROPERTIES_CARS: String = "Properties & Cars"
 
-    private const val PREF_CASH_IN_HAND = "PREF_CASH_IN_HAND"
-    private const val PREF_GOLD_SILVER = "PREF_GOLD_SILVER"
-    private const val PREF_SAVINGS_FUNDS = "PREF_SAVINGS_FUNDS"
-    private const val PREF_BUSINESS_ASSETS = "PREF_BUSINESS_ASSETS"
-    private const val PREF_DEBT_OWNED = "PREF_DEBT_OWNED"
-    private const val PREF_SHARES_STOCKS = "PREF_SHARES_STOCKS"
-    private const val PREF_PROPERTIES_CARS = "PREF_PROPERTIES_CARS"
+    const val PREF_24_K: String = "24 Karat or 999"
+    const val PREF_22_K: String = "22 Karat or 916"
+    const val PREF_18_K: String = "18 Karat or 750"
+    const val PREF_14_K: String = "14 Karat or 583"
+    const val PREF_23_KDM: String = "23 KDM or 18 Karat"
+    const val PREF_SILVER: String = "Silver"
 
-    val prefKeyList = listOf(
+    val prefTitleList = listOf(
         PREF_CASH_IN_HAND,
         PREF_GOLD_SILVER,
         PREF_SAVINGS_FUNDS,
@@ -29,35 +28,14 @@ object Features {
         PREF_PROPERTIES_CARS
     )
 
-    fun getTitle(key : String) : String
-    {
-        return when (key) {
-            PREF_CASH_IN_HAND -> {
-                CASH_IN_HAND
-            }
-            PREF_GOLD_SILVER -> {
-                GOLD_SILVER
-            }
-            PREF_SAVINGS_FUNDS -> {
-                SAVINGS_FUNDS
-            }
-            PREF_BUSINESS_ASSETS -> {
-                BUSINESS_ASSETS
-            }
-            PREF_DEBT_OWNED -> {
-                DEBT_OWNED
-            }
-            PREF_SHARES_STOCKS -> {
-                SHARES_STOCKS
-            }
-            PREF_PROPERTIES_CARS -> {
-                PROPERTIES_CARS
-            }
-            else -> {
-                ""
-            }
-        }
-    }
+    val prefKaratList = listOf(
+        PREF_24_K,
+        PREF_22_K,
+        PREF_18_K,
+        PREF_14_K,
+        PREF_23_KDM
+    )
+
     fun getIcon(key: String): Int {
         return when (key) {
             PREF_CASH_IN_HAND -> {

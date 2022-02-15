@@ -11,10 +11,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
-import androidx.transition.Explode
-import androidx.transition.Fade
-import androidx.transition.Transition
-import androidx.transition.TransitionManager
+import androidx.transition.*
 import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.compose.Feature
 import com.androidvoyage.zakat.model.Features
@@ -63,7 +60,21 @@ fun View.setInVisible(isVisible: Boolean?) {
 fun visibleWithAnimation(view: View, isVisible: Boolean) {
 
     if (view.parent is ViewGroup) {
-        val transition: Transition = Explode()
+        val transition: Transition = Fade()
+        transition.duration = 600
+        transition.addTarget(view)
+        TransitionManager.beginDelayedTransition(view.parent as ViewGroup, transition)
+    }
+
+    view.visibility = if (isVisible) View.VISIBLE else View.GONE
+}
+
+
+@BindingAdapter("visibleSlide")
+fun visibleSlide(view: View, isVisible: Boolean) {
+
+    if (view.parent is ViewGroup) {
+        val transition: Transition = Slide()
         transition.duration = 600
         transition.addTarget(view)
         TransitionManager.beginDelayedTransition(view.parent as ViewGroup, transition)
@@ -76,7 +87,7 @@ fun visibleWithAnimation(view: View, isVisible: Boolean) {
 fun inVisibleWithAnimation(view: View, isVisible: Boolean) {
 
     if (view.parent is ViewGroup) {
-        val transition: Transition = Explode()
+        val transition: Transition = Fade()
         transition.duration = 600
         transition.addTarget(view)
         TransitionManager.beginDelayedTransition(view.parent as ViewGroup, transition)
@@ -266,12 +277,5 @@ fun View.setColorFromKey(key: String?) {
 fun ImageView.setIconFromKey(key: String?) {
     key?.let {
         this.setImageResource(Features.getIcon(key))
-    }
-}
-
-@BindingAdapter("setTitleFromKey")
-fun TextView.setTitleFromKey(key: String?) {
-    key?.let {
-        text = (Features.getTitle(key))
     }
 }

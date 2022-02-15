@@ -54,12 +54,14 @@ class DashboardFragment : Fragment() {
 
         viewModel.clickedFeature.observe(viewLifecycleOwner, Observer {
             it?.let {
+                viewModel.clickedFeature.postValue(null)
                 (requireActivity() as MainActivity).navController.navigate(DashboardFragmentDirections.actionDashboardFragmentToListFragment())
             }
         })
 
         viewModel.clickedAddFeature.observe(viewLifecycleOwner, Observer {
             it?.let {
+                viewModel.clickedAddFeature.postValue(null)
                 (requireActivity() as MainActivity).navController.navigate(DashboardFragmentDirections.actionDashboardFragmentToEditFragment())
             }
         })

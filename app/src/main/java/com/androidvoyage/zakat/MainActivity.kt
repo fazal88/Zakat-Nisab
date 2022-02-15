@@ -11,7 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.androidvoyage.zakat.databinding.ActivityMainBinding
 import com.androidvoyage.zakat.screens.dashboard.DashboardFragmentDirections
 import com.androidvoyage.zakat.util.onClickWithAnimation
-import com.androidvoyage.zakat.util.visibleWithAnimation
+import com.androidvoyage.zakat.util.visibleSlide
 
 @ExperimentalFoundationApi
 class MainActivity : AppCompatActivity() {
@@ -53,11 +53,11 @@ class MainActivity : AppCompatActivity() {
     fun hideNavBottom(isNavVisible : Boolean, isFabVisible : Boolean = false){
         if (binding.llBottomNav.visibility != View.VISIBLE && isNavVisible
             || binding.llBottomNav.visibility == View.VISIBLE && !isNavVisible) {
-            visibleWithAnimation(binding.llBottomNav, isNavVisible)
+            visibleSlide(binding.llBottomNav, isNavVisible)
         }
         if (binding.llFab.visibility != View.VISIBLE && isFabVisible
             || binding.llFab.visibility == View.VISIBLE && !isFabVisible) {
-            visibleWithAnimation(binding.llFab, isFabVisible)
+            visibleSlide(binding.llFab, isFabVisible)
         }
     }
 

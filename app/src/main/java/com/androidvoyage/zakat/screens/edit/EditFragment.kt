@@ -8,7 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.ExperimentalFoundationApi
 import com.androidvoyage.zakat.MainActivity
-import com.androidvoyage.zakat.R
+import com.androidvoyage.zakat.databinding.EditFragmentBinding
+import com.androidvoyage.zakat.model.Features
+import com.androidvoyage.zakat.model.Features.PREF_GOLD_SILVER
+import com.androidvoyage.zakat.util.OnSelectListener
+import com.androidvoyage.zakat.util.showListSelectionDialog
 
 class EditFragment : Fragment() {
 
@@ -16,20 +20,48 @@ class EditFragment : Fragment() {
         fun newInstance() = EditFragment()
     }
 
-    private lateinit var viewModel: EditViewModel
+    private val viewModel: EditViewModel  by lazy {
+        ViewModelProvider(this)[EditViewModel::class.java]
+    }
+    private lateinit var binding: EditFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.edit_fragment, container, false)
+    ): View {
+        binding = EditFragmentBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     @OptIn(ExperimentalFoundationApi::class)
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(EditViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.vm = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         (requireActivity() as MainActivity).hideNavBottom(false)
+
+
+        binding.tvSpnType.setOnClickListener {
+            val list = arrayListOf<String>()
+            list.addAll(Features.prefTitleList)
+            showListSelectionDialog(requireContext(),list ,object : OnSelectListener{
+                override fun onSelected(item: String) {
+                    binding.tvSpnType.text = item
+                    viewModel.isMetal.postValue(item == PREF_GOLD_SILVER)
+                }
+            })
+        }
+
+
+        binding.tvSpnKarat.setOnClickListener {
+            val list = arrayListOf<String>()
+            list.addAll(Features.prefKaratList)
+            showListSelectionDialog(requireContext(),list ,object : OnSelectListener{
+                override fun onSelected(item: String) {
+                    binding.tvSpnKarat.text = item
+                }
+            })
+        }
     }
 
 }

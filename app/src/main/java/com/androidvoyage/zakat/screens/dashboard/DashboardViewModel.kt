@@ -14,16 +14,16 @@ class DashboardViewModel : ViewModel() {
     val adapter = DashboardListAdapter(
         DashboardListAdapter.DashboardClickListener(
             { item ->
-                clickedAddFeature.postValue(item)
+                clickedFeature.postValue(item)
             },
             { item ->
-                clickedFeature.postValue(item)
+                clickedAddFeature.postValue(item)
             }
         )
     )
 
     init {
-        adapter.submitList(Features.prefKeyList)
+        adapter.submitList(Features.prefTitleList)
     }
 
     fun onClickOption() {

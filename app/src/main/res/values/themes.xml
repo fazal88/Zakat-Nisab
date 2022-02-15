@@ -25,4 +25,5 @@
     <style name="Theme.MyZakat.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.MyZakat.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
