@@ -18,7 +18,7 @@
             android:id="@+id/ll_bottom_nav"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            setVisibility="@{!vm.isSplash}"
+            android:visibility="invisible"
             android:background="@color/primaryDarkColor"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -55,9 +55,10 @@
         </LinearLayout>
 
         <LinearLayout
-            visibleWithAnimation="@{vm.isList &amp;&amp; !vm.isSplash}"
+            android:id="@+id/ll_fab"
             android:layout_width="68dp"
             android:layout_height="68dp"
+            android:visibility="invisible"
             android:background="@drawable/back_round"
             android:backgroundTint="@color/primaryLightBackColor"
             app:layout_constraintBottom_toTopOf="@+id/ll_bottom_nav"

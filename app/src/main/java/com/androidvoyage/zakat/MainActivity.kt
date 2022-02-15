@@ -1,6 +1,7 @@
 package com.androidvoyage.zakat
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.databinding.DataBindingUtil
@@ -8,7 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.androidvoyage.zakat.databinding.ActivityMainBinding
+import com.androidvoyage.zakat.screens.dashboard.DashboardFragmentDirections
 import com.androidvoyage.zakat.util.onClickWithAnimation
+import com.androidvoyage.zakat.util.visibleWithAnimation
 
 @ExperimentalFoundationApi
 class MainActivity : AppCompatActivity() {
@@ -26,33 +29,16 @@ class MainActivity : AppCompatActivity() {
         binding.vm = viewModel
         binding.lifecycleOwner = this
 
-        navController.addOnDestinationChangedListener { navController, destination, bundle ->
-            when (destination.id) {
-                R.id.splashFragment -> {
-                    viewModel.isSplash.postValue(true)
-                    viewModel.isList.postValue(false)
-                }
-                R.id.listFragment -> {
-                    viewModel.isList.postValue(true)
-                    viewModel.isSplash.postValue(false)
-                }
-                else -> {
-                    viewModel.isSplash.postValue(false)
-                    viewModel.isList.postValue(false)
-                }
-            }
-        }
-
 
         binding.ivBtnDashboard.onClickWithAnimation {
             if (navController.currentDestination?.id != R.id.dashboardFragment) {
-                navController.navigate(R.id.dashboardFragment)
+                onBackPressed()
             }
         }
 
         binding.ivBtnList.onClickWithAnimation {
             if (navController.currentDestination?.id != R.id.listFragment) {
-                navController.navigate(R.id.listFragment)
+                navController.navigate(DashboardFragmentDirections.actionDashboardFragmentToListFragment())
             }
         }
 
@@ -62,6 +48,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    fun hideNavBottom(isNavVisible : Boolean, isFabVisible : Boolean = false){
+        if (binding.llBottomNav.visibility != View.VISIBLE && isNavVisible
+            || binding.llBottomNav.visibility == View.VISIBLE && !isNavVisible) {
+            visibleWithAnimation(binding.llBottomNav, isNavVisible)
+        }
+        if (binding.llFab.visibility != View.VISIBLE && isFabVisible
+            || binding.llFab.visibility == View.VISIBLE && !isFabVisible) {
+            visibleWithAnimation(binding.llFab, isFabVisible)
+        }
     }
 
     val navController: NavController by lazy {

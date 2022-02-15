@@ -38,6 +38,7 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).hideNavBottom(isNavVisible = true, isFabVisible = false)
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         binding.rvDashboard.adapter = viewModel.adapter

@@ -25,6 +25,7 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (requireActivity() as MainActivity).hideNavBottom(isNavVisible = false)
         return inflater.inflate(R.layout.splash_fragment, container, false)
     }
 

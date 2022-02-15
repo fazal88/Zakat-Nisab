@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.ExperimentalFoundationApi
+import com.androidvoyage.zakat.MainActivity
 import com.androidvoyage.zakat.R
 
+@ExperimentalFoundationApi
 class ListFragment : Fragment() {
 
     companion object {
@@ -26,7 +29,8 @@ class ListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        (requireActivity() as MainActivity).hideNavBottom(true,true)
     }
 
 }

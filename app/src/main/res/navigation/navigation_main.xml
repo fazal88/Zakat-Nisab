@@ -14,6 +14,10 @@
             android:id="@+id/action_splashFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
             app:popUpTo="@id/splashFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -23,13 +27,32 @@
         tools:layout="@layout/dashboard_fragment" >
         <action
             android:id="@+id/action_dashboardFragment_to_listFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/listFragment" />
         <action
             android:id="@+id/action_dashboardFragment_to_editFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/editFragment" />
         <action
             android:id="@+id/action_dashboardFragment_to_aboutFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_faqFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/faqFragment" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"
@@ -38,6 +61,10 @@
         tools:layout="@layout/list_fragment" >
         <action
             android:id="@+id/action_listFragment_to_editFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/editFragment" />
         <argument android:name="type"
             app:argType="string"
@@ -56,6 +83,11 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.androidvoyage.zakat.screens.about.AboutFragment"
+        android:label="about_fragment"
+        tools:layout="@layout/about_fragment" />
+    <fragment
+        android:id="@+id/faqFragment"
+        android:name="com.androidvoyage.zakat.screens.faq.FaqFragment"
         android:label="about_fragment"
         tools:layout="@layout/about_fragment" />
 </navigation>
