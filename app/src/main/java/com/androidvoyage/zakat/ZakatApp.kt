@@ -8,8 +8,20 @@ import com.androidvoyage.zakat.pref.SharedPreferencesManager
  * Copyright (c) 2022 Fazal. All rights reserved.
  */
 class ZakatApp : Application() {
+
+    companion object{
+        private lateinit var mInstance: ZakatApp
+
+        @Synchronized
+        fun getInstance(): ZakatApp {
+            return mInstance
+        }
+    }
+
+
     override fun onCreate() {
         super.onCreate()
+        mInstance = this
         SharedPreferencesManager.getInstance().init(this)
     }
 }
