@@ -1,6 +1,7 @@
 package com.androidvoyage.zakat
 
 import android.app.Application
+import com.androidvoyage.zakat.fire_base_remote_config.RemoteConfigUtil
 import com.androidvoyage.zakat.pref.SharedPreferencesManager
 
 /**
@@ -22,6 +23,7 @@ class ZakatApp : Application() {
     override fun onCreate() {
         super.onCreate()
         mInstance = this
+        RemoteConfigUtil.INSTANCE.initFirebaseRemoteConfig()
         SharedPreferencesManager.getInstance().init(this)
     }
 }

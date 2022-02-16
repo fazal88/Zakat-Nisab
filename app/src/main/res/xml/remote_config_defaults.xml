@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>remote_config_msg</key>
+        <value>This is test message</value>
+    </entry>
+    <entry>
+        <key>in_app_update_version</key>
+        <value>1.0.0</value>
+    </entry>
+</defaultsMap>

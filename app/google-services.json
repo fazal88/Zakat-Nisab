@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "471321979351",
+    "project_id": "zakat-7a98f",
+    "storage_bucket": "zakat-7a98f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471321979351:android:52f90a0543225ce8a28392",
+        "android_client_info": {
+          "package_name": "com.androidvoyage.zakat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471321979351-mu186l53spree4r4t3omvq1upqild0re.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvC_jJfQqeHf6kDSseSJvxYQT3BovE9u8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471321979351-mu186l53spree4r4t3omvq1upqild0re.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

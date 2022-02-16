@@ -1,25 +1,30 @@
 package com.androidvoyage.zakat
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.androidvoyage.zakat.databinding.ActivityMainBinding
-import com.androidvoyage.zakat.model.NisabDao
 import com.androidvoyage.zakat.model.NisabDatabase
 import com.androidvoyage.zakat.screens.dashboard.DashboardFragmentDirections
 import com.androidvoyage.zakat.util.onClickWithAnimation
 import com.androidvoyage.zakat.util.visibleSlide
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+
 
 @ExperimentalFoundationApi
 class MainActivity : AppCompatActivity() {
 
+    private val TAG: String = "MainActivity"
     val viewModel by lazy {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
