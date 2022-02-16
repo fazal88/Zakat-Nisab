@@ -11,8 +11,14 @@ import com.androidvoyage.zakat.MainActivity
 import com.androidvoyage.zakat.databinding.EditFragmentBinding
 import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.Features.PREF_GOLD_SILVER
+import com.androidvoyage.zakat.model.NisabItem
 import com.androidvoyage.zakat.util.OnSelectListener
+import com.androidvoyage.zakat.util.Utils
+import com.androidvoyage.zakat.util.onClickWithAnimation
 import com.androidvoyage.zakat.util.showListSelectionDialog
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class EditFragment : Fragment() {
 
@@ -48,6 +54,7 @@ class EditFragment : Fragment() {
                 override fun onSelected(item: String) {
                     binding.tvSpnType.text = item
                     viewModel.isMetal.postValue(item == PREF_GOLD_SILVER)
+                    viewModel.setType(item)
                 }
             })
         }
@@ -59,8 +66,22 @@ class EditFragment : Fragment() {
             showListSelectionDialog(requireContext(),list ,object : OnSelectListener{
                 override fun onSelected(item: String) {
                     binding.tvSpnKarat.text = item
+                    viewModel.setKarat(item)
                 }
             })
+        }
+
+        binding.tvBtnSave.onClickWithAnimation {
+            save()
+            Utils.showToast(requireActivity(),"Saved!",true)
+            requireActivity().onBackPressed()
+        }
+    }
+
+    @OptIn(ExperimentalFoundationApi::class)
+    private fun save() {
+        CoroutineScope(Dispatchers.Default).launch {
+            (requireActivity() as MainActivity).database.nisabDao().insertNisab(viewModel.nisanItem.value!!)
         }
     }
 

@@ -8,7 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.androidvoyage.zakat.databinding.ActivityMainBinding
+import com.androidvoyage.zakat.model.NisabDao
+import com.androidvoyage.zakat.model.NisabDatabase
 import com.androidvoyage.zakat.screens.dashboard.DashboardFragmentDirections
 import com.androidvoyage.zakat.util.onClickWithAnimation
 import com.androidvoyage.zakat.util.visibleSlide
@@ -21,6 +25,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityMainBinding
+    val database : NisabDatabase by lazy {
+        NisabDatabase.getDatabase(this)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.vm = viewModel
         binding.lifecycleOwner = this
-
 
         binding.ivBtnDashboard.onClickWithAnimation {
             if (navController.currentDestination?.id != R.id.dashboardFragment) {

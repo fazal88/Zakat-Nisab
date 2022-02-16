@@ -260,7 +260,7 @@ fun ImageView.setImageUrl(item: Int?) {
 @BindingAdapter("setAmountFromPref")
 fun TextView.setAmountFromPref(key: String?) {
     key?.let {
-        val amount = SharedPreferencesManager.getInstance().getValue(key)
+        val amount = ""//todo add data base call
         val amountString = Utils.getCurrencySymbol()+ Utils.getAmountWithCommas(amount)
         text = amountString
     }

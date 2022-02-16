@@ -46,5 +46,6 @@
     <color name="dim_back_white">#11FFFFFF</color>
     <color name="dim_back_black">#11000000</color>
     <color name="dim_back_black_77">#77000000</color>
+    <color name="app_toast_background">#cc666666</color>
 
 </resources>
