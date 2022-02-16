@@ -13,6 +13,7 @@ import android.widget.Toast
 import com.androidvoyage.zakat.R
 import java.text.NumberFormat
 import java.util.*
+import kotlin.math.roundToInt
 
 object Utils {
 
@@ -83,6 +84,26 @@ object Utils {
             toast.view = layout
             toast.show()
         }
+    }
+
+    fun roundOff(ratingFloat: Float, decimalPlaces: Int): Float {
+        var mulDiv = 10F
+        for(i in 2..decimalPlaces){
+            mulDiv *= mulDiv
+        }
+        val x = (ratingFloat* mulDiv).roundToInt()
+        val y : Float = x/mulDiv
+        return y
+    }
+
+    fun roundOff(ratingFloat: Double, decimalPlaces: Int): Float {
+        var mulDiv = 10F
+        for(i in 2..decimalPlaces){
+            mulDiv *= mulDiv
+        }
+        val x = (ratingFloat* mulDiv).roundToInt()
+        val y : Float = x/mulDiv
+        return y
     }
 }
 

@@ -7,4 +7,6 @@
     <string name="str_about_us">About Us</string>
     <string name="str_share">Refer to Friends</string>
     <string name="str_weight_in_grams_1_tola_10_grams_at_present">Weight in grams <b>(1 Tola = 10 grams at present)</b></string>
+    <string name="str_list_all_nisab">List All Nisab</string>
+    <string name="str_cost">Price/Value : ₹%s</string>
 </resources>

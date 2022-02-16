@@ -16,9 +16,9 @@ data class NisabItem(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     var name: String = "",
-    var price: String = "",
+    var price: String = "0",
     var type: String = "",
     var karat: String = "",
     var weight: String = "",
-    var estimatedValue: String = ""
+    var estimatedValue: String = "0"
 ) : Parcelable

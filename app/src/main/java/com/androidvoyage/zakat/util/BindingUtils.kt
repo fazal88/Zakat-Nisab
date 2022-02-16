@@ -13,8 +13,8 @@ import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 import androidx.transition.*
 import com.androidvoyage.zakat.R
-import com.androidvoyage.zakat.compose.Feature
 import com.androidvoyage.zakat.model.Features
+import com.androidvoyage.zakat.model.NisabItem
 import com.androidvoyage.zakat.pref.SharedPreferencesManager
 import com.bumptech.glide.Glide
 import java.util.*
@@ -258,8 +258,8 @@ fun ImageView.setImageUrl(item: Int?) {
 }
 
 @BindingAdapter("setAmountFromPref")
-fun TextView.setAmountFromPref(key: String?) {
-    key?.let {
+fun TextView.setAmountFromPref(type: String?) {
+    type?.let {
         val amount = ""//todo add data base call
         val amountString = Utils.getCurrencySymbol()+ Utils.getAmountWithCommas(amount)
         text = amountString
@@ -267,15 +267,49 @@ fun TextView.setAmountFromPref(key: String?) {
 }
 
 @BindingAdapter("setColorFromKey")
-fun View.setColorFromKey(key: String?) {
-    key?.let {
-        backgroundTintList = ContextCompat.getColorStateList(context, Features.getColor(key))
+fun View.setColorFromKey(type: String?) {
+    type?.let {
+        backgroundTintList = ContextCompat.getColorStateList(context, Features.getColor(type))
     }
 }
 
 @BindingAdapter("setIconFromKey")
-fun ImageView.setIconFromKey(key: String?) {
-    key?.let {
-        this.setImageResource(Features.getIcon(key))
+fun ImageView.setIconFromKey(type: String?) {
+    type?.let {
+        this.setImageResource(Features.getIcon(type))
+    }
+}
+
+@BindingAdapter("setEstimatedValue")
+fun TextView.setEstimatedValue(vm : NisabItem?){
+    vm?.let {
+        val isMetail = it.type == Features.PREF_GOLD_SILVER
+
+        text = if(isMetail){
+            val grams = it.weight
+            val rate = SharedPreferencesManager.getInstance().getRate(vm.karat)
+            val estimatedValue = grams.toFloat()*rate.toFloat()
+            val roundOffEstimatedValue = Utils.roundOff(estimatedValue,2)
+            "₹ ${roundOffEstimatedValue}"
+        }else{
+            "₹ ${vm.price}"
+        }
+    }
+}
+
+@BindingAdapter("setEstimatedZakat")
+fun TextView.setEstimatedZakat(vm : NisabItem?){
+    vm?.let {
+        val isMetail = it.type == Features.PREF_GOLD_SILVER
+
+        text = if(isMetail){
+            val grams = it.weight
+            val rate = SharedPreferencesManager.getInstance().getRate(vm.karat)
+            val estimatedValue = grams.toFloat()*rate.toFloat()*0.025
+            val roundOffEstimatedValue = Utils.roundOff(estimatedValue,2)
+            "₹ ${roundOffEstimatedValue}"
+        }else{
+            "₹ ${vm.price}"
+        }
     }
 }

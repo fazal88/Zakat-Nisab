@@ -47,4 +47,8 @@ public class SharedPreferencesManager {
         return sSharedPreferenceEncrypted.getString(key, "");
     }
 
+    public String getRate(String key) {
+        return sSharedPreferenceEncrypted.getString(key, "0");
+    }
+
 }

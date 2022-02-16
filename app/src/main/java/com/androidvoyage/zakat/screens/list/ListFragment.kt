@@ -1,14 +1,15 @@
 package com.androidvoyage.zakat.screens.list
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.androidvoyage.zakat.MainActivity
-import com.androidvoyage.zakat.R
+import com.androidvoyage.zakat.databinding.ListFragmentBinding
 
 @ExperimentalFoundationApi
 class ListFragment : Fragment() {
@@ -17,20 +18,32 @@ class ListFragment : Fragment() {
         fun newInstance() = ListFragment()
     }
 
-    private lateinit var viewModel: ListViewModel
+    private val viewModel: ListViewModel by lazy {
+        ViewModelProvider(this)[ListViewModel::class.java]
+    }
+    private lateinit var binding: ListFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.list_fragment, container, false)
+    ): View {
+        binding = ListFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).hideNavBottom(isNavVisible = true, isFabVisible = true)
+        binding.vm = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.rvNisab.adapter = viewModel.adapter
+        viewModel.listNisab = (requireActivity() as MainActivity).database.nisabDao().getNisabs()
 
-        (requireActivity() as MainActivity).hideNavBottom(true,true)
+        viewModel.listNisab.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                viewModel.adapter.submitList(it)
+            }
+        })
     }
 
 }
