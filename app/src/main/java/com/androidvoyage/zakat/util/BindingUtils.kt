@@ -290,7 +290,7 @@ fun TextView.setEstimatedValue(vm : NisabItem?){
             val rate = SharedPreferencesManager.getInstance().getRate(vm.karat)
             val estimatedValue = grams.toFloat()*rate.toFloat()
             val roundOffEstimatedValue = Utils.roundOff(estimatedValue,2)
-            "₹ ${roundOffEstimatedValue}"
+            "₹ $roundOffEstimatedValue"
         }else{
             "₹ ${vm.price}"
         }
