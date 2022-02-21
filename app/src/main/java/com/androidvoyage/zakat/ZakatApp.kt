@@ -23,7 +23,7 @@ class ZakatApp : Application() {
     override fun onCreate() {
         super.onCreate()
         mInstance = this
-        RemoteConfigUtil.INSTANCE.initFirebaseRemoteConfig()
+        RemoteConfigUtil.initFirebaseRemoteConfig()
         SharedPreferencesManager.getInstance().init(this)
     }
 }
