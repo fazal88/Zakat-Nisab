@@ -100,9 +100,9 @@ fun HomeScreen() {
                             title = "Debt Owed",
                             subtitle = Random.nextInt(0,100_00_00_00).toString(),
                             R.drawable.ic_debt,
-                            OrangeYellow3,
+                            OrangeYellow1,
                             OrangeYellow2,
-                            OrangeYellow1
+                            OrangeYellow3
                         ),
                         Feature(
                             title = "Shares & Stocks",
