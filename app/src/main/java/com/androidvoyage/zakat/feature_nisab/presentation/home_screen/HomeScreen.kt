@@ -68,57 +68,57 @@ fun HomeScreen() {
                             title = "Cash in Hand",
                             subtitle = Random.nextInt(0,100_00_00_00).toString(),
                             R.drawable.ic_cash,
-                            BlueViolet1,
-                            BlueViolet2,
-                            BlueViolet3
-                        ),
-                        Feature(
-                            title = "Gold + Silver",
-                            subtitle = Random.nextInt(0,100_00_00_00).toString(),
-                            R.drawable.ic_gold,
                             LightGreen1,
                             LightGreen2,
                             LightGreen3
                         ),
                         Feature(
-                            title = "Savings & Funds",
+                            title = "Gold + Silver",
                             subtitle = Random.nextInt(0,100_00_00_00).toString(),
-                            R.drawable.ic_assets,
-                            Pink1,
-                            Pink2,
-                            Pink3
-                        ),
-                        Feature(
-                            title = "Business Assets",
-                            subtitle = Random.nextInt(0,100_00_00_00).toString(),
-                            R.drawable.ic_stocks,
-                            Violet1,
-                            Violet2,
-                            Violet3
-                        ),
-                        Feature(
-                            title = "Debt Owed",
-                            subtitle = Random.nextInt(0,100_00_00_00).toString(),
-                            R.drawable.ic_debt,
-                            OrangeYellow1,
-                            OrangeYellow2,
-                            OrangeYellow3
-                        ),
-                        Feature(
-                            title = "Shares & Stocks",
-                            subtitle = Random.nextInt(0,100_00_00_00).toString(),
-                            R.drawable.ic_invest,
+                            R.drawable.ic_gold,
                             Blue1,
                             Blue2,
                             Blue3
                         ),
                         Feature(
-                            title = "Properties + Cars",
+                            title = "Savings & Funds",
                             subtitle = Random.nextInt(0,100_00_00_00).toString(),
-                            R.drawable.ic_asset,
+                            R.drawable.ic_assets,
+                            Violet1,
+                            Violet2,
+                            Violet3
+                        ),
+                        Feature(
+                            title = "Business Assets",
+                            subtitle = Random.nextInt(0,100_00_00_00).toString(),
+                            R.drawable.ic_stocks,
                             Beige1,
                             Beige2,
                             Beige3
+                        ),
+                        Feature(
+                            title = "Debt Owed",
+                            subtitle = Random.nextInt(0,100_00_00_00).toString(),
+                            R.drawable.ic_debt,
+                            OrangeYellow3,
+                            OrangeYellow2,
+                            OrangeYellow1
+                        ),
+                        Feature(
+                            title = "Shares & Stocks",
+                            subtitle = Random.nextInt(0,100_00_00_00).toString(),
+                            R.drawable.ic_invest,
+                            BlueViolet1,
+                            BlueViolet2,
+                            BlueViolet3
+                        ),
+                        Feature(
+                            title = "Properties + Cars",
+                            subtitle = Random.nextInt(0,100_00_00_00).toString(),
+                            R.drawable.ic_asset,
+                            Pink1,
+                            Pink2,
+                            Pink3
                         )
                     )
                 )
