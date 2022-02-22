@@ -1,5 +1,8 @@
-package com.androidvoyage.zakat;
+package com.androidvoyage.zakat.retrofit;
 
+
+import com.androidvoyage.zakat.BuildConfig;
+import com.androidvoyage.zakat.ZakatApp;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;

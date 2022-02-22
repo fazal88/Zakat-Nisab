@@ -1,4 +1,4 @@
-package com.androidvoyage.zakat.compose
+package com.androidvoyage.zakat.feature_nisab.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,7 +7,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.androidvoyage.zakat.HomeScreen
-import com.androidvoyage.zakat.compose.theme.MyZakatTheme
+import com.androidvoyage.zakat.ui.theme.MyZakatTheme
 
 @ExperimentalFoundationApi
 class HomeActivity : ComponentActivity() {

@@ -1,4 +1,4 @@
-package com.androidvoyage.zakat.compose.theme
+package com.androidvoyage.zakat.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

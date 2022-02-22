@@ -1,4 +1,4 @@
-package com.androidvoyage.zakat.compose
+package com.androidvoyage.zakat.feature_nisab.presentation.home_screen
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color

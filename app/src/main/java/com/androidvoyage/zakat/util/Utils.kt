@@ -65,27 +65,6 @@ object Utils {
         return scaleAnimation
     }
 
-
-    fun showToast(context: Context, message: String?, longDuration: Boolean) {
-        if (TextUtils.isEmpty(message)) return
-        val handler = Handler(Looper.getMainLooper())
-        handler.post {
-            val inflater = LayoutInflater.from(context)
-            val layout = inflater.inflate(R.layout.toast_layout, null)
-            val text = layout.findViewById<View>(R.id.text) as TextView
-            text.text = message
-            var toast = mToast
-            if (toast == null) {
-                toast = Toast(context.applicationContext)
-                mToast = toast
-            }
-            toast.duration =
-                if (longDuration) Toast.LENGTH_LONG else Toast.LENGTH_SHORT
-            toast.view = layout
-            toast.show()
-        }
-    }
-
     fun roundOff(ratingFloat: Float, decimalPlaces: Int): Float {
         var mulDiv = 10F
         for(i in 2..decimalPlaces){

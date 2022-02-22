@@ -35,8 +35,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.androidvoyage.zakat.compose.Feature
-import com.androidvoyage.zakat.compose.theme.*
+import com.androidvoyage.zakat.feature_nisab.presentation.home_screen.BottomMenuContent
+import com.androidvoyage.zakat.feature_nisab.presentation.home_screen.Feature
+import com.androidvoyage.zakat.ui.theme.*
 import com.androidvoyage.zakat.util.Utils
 import kotlin.random.Random
 
