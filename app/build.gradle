@@ -121,7 +121,21 @@ dependencies {
     api 'com.squareup.okhttp3:okhttp:4.9.1'
     api 'com.squareup.okhttp3:logging-interceptor:4.9.1'
 
-    //chuk
-    //implementation 'com.readystatesoftware.chuck:library:1.1.0'
+
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
+    // Compose dependencies
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-alpha02"
+    implementation "androidx.compose.material:material-icons-extended:1.1.0"
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
+
+    //Dagger - Hilt
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
 
 }

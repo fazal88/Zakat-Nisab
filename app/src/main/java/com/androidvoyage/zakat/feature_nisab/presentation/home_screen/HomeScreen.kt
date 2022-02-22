@@ -84,9 +84,9 @@ fun HomeScreen() {
                             title = "Savings & Funds",
                             subtitle = Random.nextInt(0,100_00_00_00).toString(),
                             R.drawable.ic_assets,
-                            Violet1,
-                            Violet2,
-                            Violet3
+                            Pink1,
+                            Pink2,
+                            Pink3
                         ),
                         Feature(
                             title = "Business Assets",
@@ -116,9 +116,9 @@ fun HomeScreen() {
                             title = "Properties + Cars",
                             subtitle = Random.nextInt(0,100_00_00_00).toString(),
                             R.drawable.ic_asset,
-                            Pink1,
-                            Pink2,
-                            Pink3
+                            Violet1,
+                            Violet2,
+                            Violet3
                         )
                     )
                 )
