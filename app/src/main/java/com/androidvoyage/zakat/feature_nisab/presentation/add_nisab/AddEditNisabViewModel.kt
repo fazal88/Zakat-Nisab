@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androidvoyage.zakat.feature_nisab.domain.model.InvalidNisabException
 import com.androidvoyage.zakat.feature_nisab.domain.model.Nisab
-import com.plcoding.cleanarchitecturenoteapp.feature_note.domain.use_case.NisabUseCases
+import com.androidvoyage.zakat.feature_nisab.domain.use_case.NisabUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -16,26 +16,23 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddEditNisabViewModel @Inject constructor(
-    private val noteUseCases: NisabUseCases,
+    private val nisabUseCases: NisabUseCases,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _noteTitle = mutableStateOf(
+    private val _nisabTitle = mutableStateOf(
         NisabTextFieldState(
         hint = "Enter title..."
     )
     )
-    val nisabTitle: State<NisabTextFieldState> = _noteTitle
+    val nisabTitle: State<NisabTextFieldState> = _nisabTitle
 
-    private val _noteContent = mutableStateOf(
+    private val _nisabContent = mutableStateOf(
         NisabTextFieldState(
         hint = "Enter some content"
     )
     )
-    val nisabContent: State<NisabTextFieldState> = _noteContent
-
-    /*private val _noteColor = mutableStateOf(Nisab.noteColors.random().toArgb())
-    val noteColor: State<Int> = _noteColor*/
+    val nisabContent: State<NisabTextFieldState> = _nisabContent
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
@@ -43,20 +40,20 @@ class AddEditNisabViewModel @Inject constructor(
     private var currentNoteId: Long? = null
 
     init {
-        savedStateHandle.get<Int>("noteId")?.let { noteId ->
-            if(noteId != -1) {
+        savedStateHandle.get<Int>("nisabId")?.let { nisabId ->
+            if(nisabId != -1) {
                 viewModelScope.launch {
-                    noteUseCases.getNisab(noteId)?.also { note ->
-                        currentNoteId = note.id
-                        _noteTitle.value = nisabTitle.value.copy(
-                            text = note.name,
+                    nisabUseCases.getNisab(nisabId)?.also { nisab ->
+                        currentNoteId = nisab.id
+                        _nisabTitle.value = nisabTitle.value.copy(
+                            text = nisab.name,
                             isHintVisible = false
                         )
-                        _noteContent.value = _noteContent.value.copy(
-                            text = note.price.toString(),
+                        _nisabContent.value = _nisabContent.value.copy(
+                            text = nisab.price.toString(),
                             isHintVisible = false
                         )
-                        /*_noteColor.value = note.type*/
+                        /*_nisabColor.value = nisab.type*/
                     }
                 }
             }
@@ -66,34 +63,34 @@ class AddEditNisabViewModel @Inject constructor(
     fun onEvent(event: AddEditNisabEvent) {
         when(event) {
             is AddEditNisabEvent.EnteredTitle -> {
-                _noteTitle.value = nisabTitle.value.copy(
+                _nisabTitle.value = nisabTitle.value.copy(
                     text = event.value
                 )
             }
             is AddEditNisabEvent.ChangeTitleFocus -> {
-                _noteTitle.value = nisabTitle.value.copy(
+                _nisabTitle.value = nisabTitle.value.copy(
                     isHintVisible = !event.focusState.isFocused &&
                             nisabTitle.value.text.isBlank()
                 )
             }
             is AddEditNisabEvent.EnteredContent -> {
-                _noteContent.value = _noteContent.value.copy(
+                _nisabContent.value = _nisabContent.value.copy(
                     text = event.value
                 )
             }
             is AddEditNisabEvent.ChangeContentFocus -> {
-                _noteContent.value = _noteContent.value.copy(
+                _nisabContent.value = _nisabContent.value.copy(
                     isHintVisible = !event.focusState.isFocused &&
-                            _noteContent.value.text.isBlank()
+                            _nisabContent.value.text.isBlank()
                 )
             }
             is AddEditNisabEvent.ChangeColor -> {
-                /*_noteColor.value = event.color*/
+                /*_nisabColor.value = event.color*/
             }
             is AddEditNisabEvent.SaveNisab -> {
                 viewModelScope.launch {
                     try {
-                        noteUseCases.addNisab(
+                        nisabUseCases.addNisab(
                             Nisab(
                                 name = nisabTitle.value.text,
                                 price = nisabContent.value.text.toLong(),
@@ -101,11 +98,11 @@ class AddEditNisabViewModel @Inject constructor(
                                 id = currentNoteId
                             )
                         )
-                        _eventFlow.emit(UiEvent.SaveNote)
+                        _eventFlow.emit(UiEvent.SaveNisab)
                     } catch(e: InvalidNisabException) {
                         _eventFlow.emit(
                             UiEvent.ShowSnackbar(
-                                message = e.message ?: "Couldn't save note"
+                                message = e.message ?: "Couldn't save nisab"
                             )
                         )
                     }
@@ -116,6 +113,6 @@ class AddEditNisabViewModel @Inject constructor(
 
     sealed class UiEvent {
         data class ShowSnackbar(val message: String): UiEvent()
-        object SaveNote: UiEvent()
+        object SaveNisab: UiEvent()
     }
 }

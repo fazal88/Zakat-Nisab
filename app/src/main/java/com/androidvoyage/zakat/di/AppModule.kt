@@ -2,7 +2,6 @@ package com.androidvoyage.zakat.di
 
 import android.app.Application
 import androidx.room.Room
-import com.androidvoyage.zakat.feature_nisab.data.data_source.NisabDao
 import com.androidvoyage.zakat.feature_nisab.data.data_source.NisabDatabase
 import com.androidvoyage.zakat.feature_nisab.data.repository.NisabRepositoryImpl
 import com.androidvoyage.zakat.feature_nisab.domain.repository.NisabRepository
@@ -10,7 +9,7 @@ import com.androidvoyage.zakat.feature_nisab.domain.use_case.AddNisab
 import com.androidvoyage.zakat.feature_nisab.domain.use_case.DeleteNisab
 import com.androidvoyage.zakat.feature_nisab.domain.use_case.GetAllNisab
 import com.androidvoyage.zakat.feature_nisab.domain.use_case.GetNisab
-import com.plcoding.cleanarchitecturenoteapp.feature_note.domain.use_case.NisabUseCases
+import com.androidvoyage.zakat.feature_nisab.domain.use_case.NisabUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

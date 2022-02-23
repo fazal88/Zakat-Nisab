@@ -1,4 +1,4 @@
-package com.plcoding.cleanarchitecturenoteapp.feature_note.domain.use_case
+package com.androidvoyage.zakat.feature_nisab.domain.use_case
 
 import com.androidvoyage.zakat.feature_nisab.domain.use_case.AddNisab
 import com.androidvoyage.zakat.feature_nisab.domain.use_case.DeleteNisab

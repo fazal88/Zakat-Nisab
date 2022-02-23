@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androidvoyage.zakat.feature_nisab.domain.model.Nisab
 import com.androidvoyage.zakat.feature_nisab.domain.util.NisabOrder
-import com.plcoding.cleanarchitecturenoteapp.feature_note.domain.use_case.NisabUseCases
+import com.androidvoyage.zakat.feature_nisab.domain.use_case.NisabUseCases
 import com.plcoding.cleanarchitecturenoteapp.feature_note.domain.util.OrderType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job

@@ -37,7 +37,7 @@ fun AddEditNisabScreen(
                         message = event.message
                     )
                 }
-                is AddEditNisabViewModel.UiEvent.SaveNote -> {
+                is AddEditNisabViewModel.UiEvent.SaveNisab -> {
                     navController.navigateUp()
                 }
             }
