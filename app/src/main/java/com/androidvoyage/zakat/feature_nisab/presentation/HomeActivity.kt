@@ -38,26 +38,26 @@ class HomeActivity : ComponentActivity() {
                         }
                         composable(
                             route = Screen.AddEditNisabScreen.route +
-                                    "?noteId={noteId}",
+                                    "?nisabId={nisabId}",
                             arguments = listOf(
                                 navArgument(
-                                    name = "noteId"
+                                    name = "nisabId"
                                 ) {
                                     type = NavType.IntType
                                     defaultValue = -1
                                 },
-                                /*navArgument(
-                                    name = "noteColor"
+                                navArgument(
+                                    name = "nisabType"
                                 ) {
                                     type = NavType.IntType
                                     defaultValue = -1
-                                },*/
+                                },
                             )
                         ) {
-                            val color = it.arguments?.getInt("noteColor") ?: -1
+                            val color = it.arguments?.getString("nisabType") ?: ""
                             AddEditNisabScreen(
                                 navController = navController,
-                                noteColor = color
+                                nisabType = color
                             )
                         }
                     }

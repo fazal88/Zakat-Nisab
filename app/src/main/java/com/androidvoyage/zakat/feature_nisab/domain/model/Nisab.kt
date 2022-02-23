@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Nisab(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
+    val id: Long? = 0L,
     var price: Long = 0L,
     var date: Long = 0L,
     var name: String = "",

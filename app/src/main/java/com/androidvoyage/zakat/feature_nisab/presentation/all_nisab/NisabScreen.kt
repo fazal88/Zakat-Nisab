@@ -95,14 +95,14 @@ fun NisabScreen(
                             .clickable {
                                 navController.navigate(
                                     Screen.AddEditNisabScreen.route +
-                                            "?noteId=${nisab.id}}"
+                                            "?nisabId=${nisab.id}}"
                                 )
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NisabEvent.DeleteNisab(nisab))
                             scope.launch {
                                 val result = scaffoldState.snackbarHostState.showSnackbar(
-                                    message = "Note deleted",
+                                    message = "Nisab deleted",
                                     actionLabel = "Undo"
                                 )
                                 if(result == SnackbarResult.ActionPerformed) {

@@ -98,7 +98,7 @@ class AddEditNisabViewModel @Inject constructor(
                                 name = nisabTitle.value.text,
                                 price = nisabContent.value.text.toLong(),
                                 date = System.currentTimeMillis(),
-                                id = currentNoteId?.toLong()!!
+                                id = currentNoteId
                             )
                         )
                         _eventFlow.emit(UiEvent.SaveNote)
