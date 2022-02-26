@@ -18,6 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.androidvoyage.zakat.R
+import com.androidvoyage.zakat.ui.theme.AccentColor
+import com.androidvoyage.zakat.ui.theme.PrimaryColor
 import com.androidvoyage.zakat.ui.theme.PrimaryDarkColor
 import com.androidvoyage.zakat.ui.theme.PrimaryLightBack
 
@@ -30,7 +32,7 @@ import com.androidvoyage.zakat.ui.theme.PrimaryLightBack
 fun AppTopBar() {
     TopAppBar(
         elevation = 0.dp,
-        backgroundColor = PrimaryLightBack
+        backgroundColor = PrimaryLightBack,
     ) {
         ConstraintLayout(
             modifier = Modifier.fillMaxWidth()
@@ -67,15 +69,13 @@ fun AppTopBar() {
     }
 }
 
-
-
 @Composable
 fun CenterButton(onClick : ()->Unit) {
     FloatingActionButton(
         onClick = onClick,
-        shape = RoundedCornerShape(50),
-        backgroundColor = MaterialTheme.colors.primary,
-        contentColor = Color.White
+        shape = RoundedCornerShape(64),
+        backgroundColor = AccentColor,
+        contentColor = PrimaryColor
     ) {
         Icon(Icons.Filled.Add, "")
     }

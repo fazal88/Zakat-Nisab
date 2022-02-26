@@ -7,7 +7,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Sort
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -16,9 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.androidvoyage.zakat.feature_nisab.presentation.Screen
 import com.androidvoyage.zakat.feature_nisab.presentation.all_nisab.component.NisabItem
-import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
 import com.plcoding.cleanarchitecturenoteapp.feature_note.presentation.notes.components.OrderSection
 import kotlinx.coroutines.launch
 
@@ -33,16 +30,6 @@ fun NisabScreen(
     val scope = rememberCoroutineScope()
 
     Scaffold(
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    /*navController.navigate(Screen.AddEditNisabScreen.route)*/
-                },
-                backgroundColor = MaterialTheme.colors.primary
-            ) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
-            }
-        },
         scaffoldState = scaffoldState
     ) {
         Column(
@@ -102,7 +89,7 @@ fun NisabScreen(
                                     message = "Nisab deleted",
                                     actionLabel = "Undo"
                                 )
-                                if(result == SnackbarResult.ActionPerformed) {
+                                if (result == SnackbarResult.ActionPerformed) {
                                     viewModel.onEvent(NisabEvent.RestoreNisab)
                                 }
                             }
