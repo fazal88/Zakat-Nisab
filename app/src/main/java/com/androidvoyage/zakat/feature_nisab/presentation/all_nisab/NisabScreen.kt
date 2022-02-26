@@ -43,8 +43,8 @@ fun NisabScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Your note",
-                    style = MaterialTheme.typography.h4
+                    text = "Your Nisab",
+                    style = MaterialTheme.typography.h5
                 )
                 IconButton(
                     onClick = {
