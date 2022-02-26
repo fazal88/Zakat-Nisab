@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.androidvoyage.zakat.feature_nisab.presentation.add_nisab.AddEditNisabScreen
+import com.androidvoyage.zakat.feature_nisab.presentation.all_nisab.NisabScreen
 import com.androidvoyage.zakat.feature_nisab.presentation.home_screen.HomeScreen
 import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
 import com.androidvoyage.zakat.ui.theme.MyZakatTheme
@@ -36,6 +37,9 @@ class HomeActivity : ComponentActivity() {
                     ) {
                         composable(route = Screen.HomeScreen.route) {
                             HomeScreen(navController = navController)
+                        }
+                        composable(route = Screen.AllNisabScreen.route) {
+                            NisabScreen(navController = navController)
                         }
                         composable(
                             route = Screen.AddEditNisabScreen.route +
