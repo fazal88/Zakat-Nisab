@@ -11,7 +11,7 @@ interface NisabDao {
     fun getNotes(): Flow<List<Nisab>>
 
     @Query("SELECT * FROM nisab WHERE id = :id")
-    suspend fun getNoteById(id: Int): Nisab?
+    suspend fun getNoteById(id: Long): Nisab?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: Nisab)

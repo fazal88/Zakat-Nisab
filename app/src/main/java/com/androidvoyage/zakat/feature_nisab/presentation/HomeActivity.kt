@@ -13,7 +13,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.androidvoyage.zakat.feature_nisab.presentation.add_nisab.AddEditNisabScreen
-import com.androidvoyage.zakat.feature_nisab.presentation.all_nisab.NisabScreen
+import com.androidvoyage.zakat.feature_nisab.presentation.home_screen.HomeScreen
+import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
 import com.androidvoyage.zakat.ui.theme.MyZakatTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,33 +32,35 @@ class HomeActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.AllNisabScreen.route
+                        startDestination = Screen.HomeScreen.route
                     ) {
-                        composable(route = Screen.AllNisabScreen.route) {
-                            NisabScreen(navController = navController)
+                        composable(route = Screen.HomeScreen.route) {
+                            HomeScreen(navController = navController)
                         }
                         composable(
                             route = Screen.AddEditNisabScreen.route +
-                                    "?nisabId={nisabId}",
+                                    "?nisabId={nisabId}&nisabType={nisabType}",
                             arguments = listOf(
                                 navArgument(
                                     name = "nisabId"
                                 ) {
-                                    type = NavType.IntType
+                                    type = NavType.LongType
                                     defaultValue = -1
                                 },
                                 navArgument(
                                     name = "nisabType"
                                 ) {
-                                    type = NavType.IntType
-                                    defaultValue = -1
+                                    type = NavType.StringType
+                                    defaultValue = Features.PREF_CASH_IN_HAND
                                 },
                             )
                         ) {
-                            val color = it.arguments?.getString("nisabType") ?: ""
+                            val nisabId = it.arguments?.getLong("nisabId") ?: -1
+                            val nisabType = it.arguments?.getString("nisabType") ?: ""
                             AddEditNisabScreen(
                                 navController = navController,
-                                nisabType = color
+                                nisabId = nisabId,
+                                nisabType = nisabType
                             )
                         }
                     }

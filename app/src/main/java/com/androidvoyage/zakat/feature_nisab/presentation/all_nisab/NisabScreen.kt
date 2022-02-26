@@ -36,7 +36,7 @@ fun NisabScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    navController.navigate(Screen.AddEditNisabScreen.route)
+                    /*navController.navigate(Screen.AddEditNisabScreen.route)*/
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
@@ -93,10 +93,7 @@ fun NisabScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                navController.navigate(
-                                    Screen.AddEditNisabScreen.route +
-                                            "?nisabId=${nisab.id}}"
-                                )
+                                /*navController.navigate(Screen.AddEditNisabScreen.route)*/
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NisabEvent.DeleteNisab(nisab))

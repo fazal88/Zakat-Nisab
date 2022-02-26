@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.collectLatest
 @Composable
 fun AddEditNisabScreen(
     navController: NavController,
+    nisabId: Long,
     nisabType: String,
     viewModel: AddEditNisabViewModel = hiltViewModel()
 ) {

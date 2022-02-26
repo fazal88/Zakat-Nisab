@@ -11,7 +11,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -30,27 +29,28 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.navigation.NavController
 import com.androidvoyage.zakat.R
-import com.androidvoyage.zakat.feature_nisab.presentation.home_screen.component.BottomMenuContent
+import com.androidvoyage.zakat.feature_nisab.presentation.Screen
 import com.androidvoyage.zakat.feature_nisab.presentation.home_screen.component.Feature
 import com.androidvoyage.zakat.ui.theme.*
 import com.androidvoyage.zakat.util.Utils
 import kotlin.random.Random
 
 @ExperimentalFoundationApi
-@Preview
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Scaffold(
         topBar = { AppTopBar() },
         bottomBar = { AppBottomBar(RoundedCornerShape(50)) },
         floatingActionButton = {
-            CenterButton()
+            CenterButton {
+                navController.navigate(Screen.AddEditNisabScreen.route)
+            }
         },
         isFloatingActionButtonDocked = true,
         floatingActionButtonPosition = FabPosition.Center,
@@ -62,7 +62,7 @@ fun HomeScreen() {
                 .background(PrimaryLightBack)
         ) {
             Column {
-                CurrentMeditation()
+                CurrentStatus()
                 FeatureSection(
                     features = listOf(
                         Feature(
@@ -200,11 +200,9 @@ fun AppBottomBar(fabShape: RoundedCornerShape) {
 }
 
 @Composable
-fun CenterButton() {
+fun CenterButton(onClick : ()->Unit) {
     FloatingActionButton(
-        onClick = {
-
-        },
+        onClick = onClick,
         shape = RoundedCornerShape(50),
         backgroundColor = MaterialTheme.colors.primary,
         contentColor = Color.White
@@ -214,7 +212,7 @@ fun CenterButton() {
 }
 
 @Composable
-fun CurrentMeditation(
+fun CurrentStatus(
     color: Color = LightRed
 ) {
     Row(
@@ -281,22 +279,22 @@ fun FeatureItem(
 ) {
     BoxWithConstraints(
         modifier = Modifier
-            .padding(7.5.dp)
+            .padding(8.dp)
             .aspectRatio(1f)
-            .clip(RoundedCornerShape(10.dp))
+            .clip(RoundedCornerShape(16.dp))
             .background(feature.darkColor)
     ) {
         val width = constraints.maxWidth
         val height = constraints.maxHeight
 
-        // Medium colored path
-        val mediumColoredPoint1 = Offset(0f, height * 0.3f)
-        val mediumColoredPoint2 = Offset(width * 0.1f, height * 0.35f)
-        val mediumColoredPoint3 = Offset(width * 0.4f, height * 0.05f)
-        val mediumColoredPoint4 = Offset(width * 0.75f, height * 0.7f)
-        val mediumColoredPoint5 = Offset(width * 1.4f, -height.toFloat())
-
         val mediumColoredPath = Path().apply {
+            // Medium colored path
+            val mediumColoredPoint1 = Offset(0f, height * 0.3f)
+            val mediumColoredPoint2 = Offset(width * 0.1f, height * 0.35f)
+            val mediumColoredPoint3 = Offset(width * 0.4f, height * 0.05f)
+            val mediumColoredPoint4 = Offset(width * 0.75f, height * 0.7f)
+            val mediumColoredPoint5 = Offset(width * 1.4f, -height.toFloat())
+
             moveTo(mediumColoredPoint1.x, mediumColoredPoint1.y)
             standardQuadFromTo(mediumColoredPoint1, mediumColoredPoint2)
             standardQuadFromTo(mediumColoredPoint2, mediumColoredPoint3)
@@ -306,15 +304,13 @@ fun FeatureItem(
             lineTo(-100f, height.toFloat() + 100f)
             close()
         }
-
-        // Light colored path
-        val lightPoint1 = Offset(0f, height * 0.35f)
-        val lightPoint2 = Offset(width * 0.1f, height * 0.4f)
-        val lightPoint3 = Offset(width * 0.3f, height * 0.35f)
-        val lightPoint4 = Offset(width * 0.65f, height.toFloat())
-        val lightPoint5 = Offset(width * 1.4f, -height.toFloat() / 3f)
-
         val lightColoredPath = Path().apply {
+            // Light colored path
+            val lightPoint1 = Offset(0f, height * 0.35f)
+            val lightPoint2 = Offset(width * 0.1f, height * 0.4f)
+            val lightPoint3 = Offset(width * 0.3f, height * 0.35f)
+            val lightPoint4 = Offset(width * 0.65f, height.toFloat())
+            val lightPoint5 = Offset(width * 1.4f, -height.toFloat() / 3f)
             moveTo(lightPoint1.x, lightPoint1.y)
             standardQuadFromTo(lightPoint1, lightPoint2)
             standardQuadFromTo(lightPoint2, lightPoint3)
@@ -324,9 +320,9 @@ fun FeatureItem(
             lineTo(-100f, height.toFloat() + 100f)
             close()
         }
+
         Canvas(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
         ) {
             drawPath(
                 path = mediumColoredPath,
@@ -398,106 +394,5 @@ fun FeatureItem(
                 )
             }
         }
-    }
-}
-
-
-@Composable
-fun BottomMenu(
-    items: List<BottomMenuContent>,
-    modifier: Modifier = Modifier,
-    activeHighlightColor: Color = ButtonBlue,
-    activeTextColor: Color = Color.White,
-    inactiveTextColor: Color = AquaBlue,
-    initialSelectedItemIndex: Int = 0
-) {
-    var selectedItemIndex by remember {
-        mutableStateOf(initialSelectedItemIndex)
-    }
-    Row(
-        horizontalArrangement = Arrangement.SpaceAround,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier
-            .fillMaxWidth()
-            .background(DeepBlue)
-            .padding(15.dp)
-    ) {
-        items.forEachIndexed { index, item ->
-            BottomMenuItem(
-                item = item,
-                isSelected = index == selectedItemIndex,
-                activeHighlightColor = activeHighlightColor,
-                activeTextColor = activeTextColor,
-                inactiveTextColor = inactiveTextColor
-            ) {
-                selectedItemIndex = index
-            }
-        }
-    }
-}
-
-@Composable
-fun ChipSection(
-    chips: List<String>
-) {
-    var selectedChipIndex by remember {
-        mutableStateOf(0)
-    }
-    LazyRow {
-        items(chips.size) {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .padding(start = 15.dp, top = 15.dp, bottom = 15.dp)
-                    .clickable {
-                        selectedChipIndex = it
-                    }
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(
-                        if (selectedChipIndex == it) ButtonBlue
-                        else DarkerButtonBlue
-                    )
-                    .padding(15.dp)
-            ) {
-                Text(text = chips[it], color = TextWhite)
-            }
-        }
-    }
-}
-
-@Composable
-fun BottomMenuItem(
-    item: BottomMenuContent,
-    isSelected: Boolean = false,
-    activeHighlightColor: Color = ButtonBlue,
-    activeTextColor: Color = Color.White,
-    inactiveTextColor: Color = AquaBlue,
-    onItemClick: () -> Unit
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier.clickable {
-            onItemClick()
-        }
-    ) {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .clip(RoundedCornerShape(10.dp))
-                .background(if (isSelected) activeHighlightColor else Color.Transparent)
-                .padding(10.dp)
-        ) {
-            Icon(
-                painter = painterResource(id = item.iconId),
-                contentDescription = item.title,
-                tint = if (isSelected) activeTextColor else inactiveTextColor,
-                modifier = Modifier.size(20.dp)
-            )
-        }
-        Text(
-            text = item.title,
-            color = if (isSelected) activeTextColor else inactiveTextColor
-        )
     }
 }

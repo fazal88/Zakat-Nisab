@@ -7,7 +7,7 @@ interface NisabRepository {
 
     fun getNotes(): Flow<List<Nisab>>
 
-    suspend fun getNoteById(id: Int): Nisab?
+    suspend fun getNoteById(id: Long): Nisab?
 
     suspend fun insertNote(note: Nisab)
 

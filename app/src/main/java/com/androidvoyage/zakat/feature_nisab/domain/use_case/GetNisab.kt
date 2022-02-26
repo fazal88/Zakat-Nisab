@@ -8,7 +8,7 @@ class GetNisab(
     private val repository: NisabRepository
 ) {
 
-    suspend operator fun invoke(id: Int): Nisab? {
+    suspend operator fun invoke(id: Long): Nisab? {
         return repository.getNoteById(id)
     }
 }
