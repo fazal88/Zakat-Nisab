@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.androidvoyage.zakat.compose.BottomMenuContent
 import com.androidvoyage.zakat.compose.Feature
 import com.androidvoyage.zakat.compose.theme.*
 import com.androidvoyage.zakat.util.Utils

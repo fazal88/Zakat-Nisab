@@ -1,24 +1,19 @@
-package com.androidvoyage.zakat
+package com.androidvoyage.zakat.screens.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.databinding.ActivityMainBinding
 import com.androidvoyage.zakat.model.NisabDatabase
 import com.androidvoyage.zakat.screens.dashboard.DashboardFragmentDirections
 import com.androidvoyage.zakat.util.onClickWithAnimation
 import com.androidvoyage.zakat.util.visibleSlide
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 
 
 @ExperimentalFoundationApi

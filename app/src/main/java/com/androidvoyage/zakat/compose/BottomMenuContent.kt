@@ -1,4 +1,4 @@
-package com.androidvoyage.zakat
+package com.androidvoyage.zakat.compose
 
 import androidx.annotation.DrawableRes
 

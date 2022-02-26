@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyZakat.NoActionBar">
         <activity
-            android:name=".MainActivity"
+            android:name=".screens.main.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

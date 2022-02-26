@@ -1,17 +1,12 @@
-package com.androidvoyage.zakat
+package com.androidvoyage.zakat.screens.main
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.androidvoyage.zakat.model.Features
-import com.androidvoyage.zakat.model.MetalResponse
+import com.androidvoyage.zakat.api.RetrofitClient
 import com.androidvoyage.zakat.model.NisabApi
 import com.androidvoyage.zakat.util.LogUtils
-import com.androidvoyage.zakat.util.Utils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.*
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MainViewModel : ViewModel() {
 

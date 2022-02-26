@@ -12,7 +12,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.androidvoyage.zakat.MainActivity
+import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.databinding.DashboardFragmentBinding
 

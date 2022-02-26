@@ -1,6 +1,5 @@
 package com.androidvoyage.zakat.screens.splash
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.ExperimentalFoundationApi
-import com.androidvoyage.zakat.MainActivity
+import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.R
 
 @ExperimentalFoundationApi
