@@ -18,10 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.androidvoyage.zakat.R
-import com.androidvoyage.zakat.ui.theme.AccentColor
-import com.androidvoyage.zakat.ui.theme.PrimaryColor
-import com.androidvoyage.zakat.ui.theme.PrimaryDarkColor
-import com.androidvoyage.zakat.ui.theme.PrimaryLightBack
+import com.androidvoyage.zakat.ui.theme.*
 
 /**
  * Created by Fazal on 26/02/22.
@@ -74,8 +71,8 @@ fun CenterButton(onClick : ()->Unit) {
     FloatingActionButton(
         onClick = onClick,
         shape = RoundedCornerShape(64),
-        backgroundColor = AccentColor,
-        contentColor = PrimaryColor
+        backgroundColor = PrimaryColor,
+        contentColor = ColorWhite
     ) {
         Icon(Icons.Filled.Add, "")
     }

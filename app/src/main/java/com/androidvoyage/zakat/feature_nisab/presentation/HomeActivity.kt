@@ -1,16 +1,15 @@
 package com.androidvoyage.zakat.feature_nisab.presentation
 
 import android.os.Bundle
-import android.transition.Slide
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.*
-import androidx.compose.animation.core.AnimationState
-import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
@@ -57,20 +56,23 @@ class HomeActivity : ComponentActivity() {
                 }
                 navController.addOnDestinationChangedListener { controller, destination, arguments ->
                     stateNavRoute.value = destination.route!!
-                    bottomBarState.value = ( stateNavRoute.value.equals(Screen.HomeScreen.route) || stateNavRoute.value.equals(Screen.AllNisabScreen.route))
+                    bottomBarState.value =
+                        (stateNavRoute.value.equals(Screen.HomeScreen.route) || stateNavRoute.value.equals(
+                            Screen.AllNisabScreen.route
+                        ))
                     Log.d("bottomBarState", "onCreate: ${bottomBarState.value}")
                 }
                 Scaffold(
                     topBar = { AppTopBar() },
                     bottomBar = {
                         AnimatedVisibility(visible = bottomBarState.value,
-                        enter = slideInVertically { it },
-                        exit = slideOutVertically { it }) {
+                            enter = slideInVertically { it },
+                            exit = slideOutVertically { it }) {
                             BottomAppBar(
                                 elevation = 8.dp,
                                 cutoutShape = RoundedCornerShape(64),
                                 modifier = Modifier
-                                    .height(if(bottomBarState.value)64.dp else 0.dp)
+                                    .height(if (bottomBarState.value) 64.dp else 0.dp)
 
                             ) {
                                 IconButton(
@@ -123,7 +125,7 @@ class HomeActivity : ComponentActivity() {
                     floatingActionButton = {
                         AnimatedVisibility(visible = bottomBarState.value,
                             enter = slideInVertically { it },
-                            exit = slideOutVertically { it }){
+                            exit = slideOutVertically { it }) {
                             CenterButton {
                                 navController.navigate(Screen.AddEditNisabScreen.route)
                             }

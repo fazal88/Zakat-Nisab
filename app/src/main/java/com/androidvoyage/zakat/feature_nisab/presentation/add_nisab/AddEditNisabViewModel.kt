@@ -21,11 +21,14 @@ class AddEditNisabViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _nisabTitle = mutableStateOf(
-        NisabTextFieldState(
-        hint = "Enter title..."
-    )
+        NisabTextFieldState(hint = "Enter title...")
     )
     val nisabTitle: State<NisabTextFieldState> = _nisabTitle
+
+    private val _dropDown = mutableStateOf(
+        true
+    )
+    val dropDown: State<Boolean> = _dropDown
 
     private val _nisabContent = mutableStateOf(
         NisabTextFieldState(
