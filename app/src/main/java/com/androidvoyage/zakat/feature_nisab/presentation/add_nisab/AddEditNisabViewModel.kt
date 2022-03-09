@@ -5,6 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.androidvoyage.zakat.R
+import com.androidvoyage.zakat.ZakatApp
 import com.androidvoyage.zakat.feature_nisab.domain.model.InvalidNisabException
 import com.androidvoyage.zakat.feature_nisab.domain.model.Nisab
 import com.androidvoyage.zakat.feature_nisab.domain.use_case.NisabUseCases
@@ -22,7 +24,7 @@ class AddEditNisabViewModel @Inject constructor(
 
     private val _nisabTitle = mutableStateOf(
         NisabTextFieldState(
-        hint = "Enter title..."
+        hint = ZakatApp.getInstance().getString(R.string.str_hint)
     )
     )
     val nisabTitle: State<NisabTextFieldState> = _nisabTitle

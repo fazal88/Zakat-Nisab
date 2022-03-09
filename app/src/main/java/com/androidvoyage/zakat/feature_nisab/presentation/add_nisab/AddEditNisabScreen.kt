@@ -52,7 +52,7 @@ fun AddEditNisabScreen(
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
-                Icon(imageVector = Icons.Default.Save, contentDescription = "Save note")
+                Icon(imageVector = Icons.Default.Save, contentDescription = "Save nisab")
             }
         },
         scaffoldState = scaffoldState

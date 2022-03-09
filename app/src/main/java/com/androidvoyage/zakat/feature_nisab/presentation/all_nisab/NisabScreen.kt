@@ -18,7 +18,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.androidvoyage.zakat.feature_nisab.presentation.Screen
 import com.androidvoyage.zakat.feature_nisab.presentation.all_nisab.component.NisabItem
-import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
 import com.plcoding.cleanarchitecturenoteapp.feature_note.presentation.notes.components.OrderSection
 import kotlinx.coroutines.launch
 
@@ -56,7 +55,7 @@ fun NisabScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Your note",
+                    text = "Your Nisab",
                     style = MaterialTheme.typography.h4
                 )
                 IconButton(
