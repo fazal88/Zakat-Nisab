@@ -29,6 +29,11 @@ class AddEditNisabViewModel @Inject constructor(
     )
     val nisabTitle: State<NisabTextFieldState> = _nisabTitle
 
+    private val _dropDown = mutableStateOf(
+        true
+    )
+    val dropDown: State<Boolean> = _dropDown
+
     private val _nisabContent = mutableStateOf(
         NisabTextFieldState(
         hint = "Enter some content"
@@ -42,8 +47,8 @@ class AddEditNisabViewModel @Inject constructor(
     private var currentNoteId: Long? = null
 
     init {
-        savedStateHandle.get<Int>("nisabId")?.let { nisabId ->
-            if(nisabId != -1) {
+        savedStateHandle.get<Long>("nisabId")?.let { nisabId ->
+            if(nisabId > -1) {
                 viewModelScope.launch {
                     nisabUseCases.getNisab(nisabId)?.also { nisab ->
                         currentNoteId = nisab.id

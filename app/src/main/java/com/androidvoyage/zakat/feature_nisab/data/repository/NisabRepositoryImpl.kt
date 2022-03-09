@@ -13,7 +13,7 @@ class NisabRepositoryImpl(
         return dao.getNotes()
     }
 
-    override suspend fun getNoteById(id: Int): Nisab? {
+    override suspend fun getNoteById(id: Long): Nisab? {
         return dao.getNoteById(id)
     }
 
