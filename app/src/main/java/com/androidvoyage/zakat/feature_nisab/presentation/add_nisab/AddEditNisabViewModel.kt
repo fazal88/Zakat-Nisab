@@ -24,10 +24,18 @@ class AddEditNisabViewModel @Inject constructor(
 
     private val _nisabTitle = mutableStateOf(
         NisabTextFieldState(
-        hint = ZakatApp.getInstance().getString(R.string.str_hint)
-    )
+        hint = ZakatApp.getInstance().getString(R.string.str_hint))
     )
     val nisabTitle: State<NisabTextFieldState> = _nisabTitle
+
+    private val _nisabAmount = mutableStateOf(
+        NisabTextFieldState(
+        hint = ZakatApp.getInstance().getString(R.string.str_hint_cost))
+    )
+    val nisabAmount: State<NisabTextFieldState> = _nisabAmount
+
+    private val _nisabType = mutableStateOf("")
+    val nisabType: State<String> = _nisabType
 
     private val _dropDown = mutableStateOf(
         true
@@ -36,7 +44,7 @@ class AddEditNisabViewModel @Inject constructor(
 
     private val _nisabContent = mutableStateOf(
         NisabTextFieldState(
-        hint = "Enter some content"
+        hint = "Description"
     )
     )
     val nisabContent: State<NisabTextFieldState> = _nisabContent
@@ -80,6 +88,17 @@ class AddEditNisabViewModel @Inject constructor(
                             nisabTitle.value.text.isBlank()
                 )
             }
+            is AddEditNisabEvent.EnteredAmount -> {
+                _nisabAmount.value = nisabAmount.value.copy(
+                    text = event.value
+                )
+            }
+            is AddEditNisabEvent.ChangeAmountFocus -> {
+                _nisabAmount.value = nisabAmount.value.copy(
+                    isHintVisible = !event.focusState.isFocused &&
+                            nisabAmount.value.text.isBlank()
+                )
+            }
             is AddEditNisabEvent.EnteredContent -> {
                 _nisabContent.value = _nisabContent.value.copy(
                     text = event.value
@@ -116,6 +135,10 @@ class AddEditNisabViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun setNisabType(type: String) {
+        _nisabType.value = type
     }
 
     sealed class UiEvent {
