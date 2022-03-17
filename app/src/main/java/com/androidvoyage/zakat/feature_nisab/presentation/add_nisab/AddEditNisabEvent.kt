@@ -7,6 +7,7 @@ sealed class AddEditNisabEvent{
     data class ChangeTitleFocus(val focusState: FocusState): AddEditNisabEvent()
     data class EnteredAmount(val value: String): AddEditNisabEvent()
     data class ChangeAmountFocus(val focusState: FocusState): AddEditNisabEvent()
+    data class SelectedType(val value: String): AddEditNisabEvent()
     data class EnteredContent(val value: String): AddEditNisabEvent()
     data class ChangeContentFocus(val focusState: FocusState): AddEditNisabEvent()
     data class ChangeColor(val color: Int): AddEditNisabEvent()

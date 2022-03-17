@@ -11,4 +11,5 @@
     <string name="str_cost">Price/Value : ₹%s</string>
     <string name="str_hint">Enter Name</string>
     <string name="str_hint_cost">Enter Cost</string>
+    <string name="str_hint_select_nisab">Select Nisab Type</string>
 </resources>

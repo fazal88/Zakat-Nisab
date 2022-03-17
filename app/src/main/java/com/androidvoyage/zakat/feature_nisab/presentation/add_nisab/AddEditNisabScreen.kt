@@ -1,10 +1,10 @@
 package com.androidvoyage.zakat.feature_nisab.presentation.add_nisab
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -16,11 +16,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.androidvoyage.zakat.R
+import com.androidvoyage.zakat.ZakatApp
+import com.androidvoyage.zakat.feature_nisab.presentation.add_nisab.components.BottomSheetNisabType
 import com.androidvoyage.zakat.feature_nisab.presentation.add_nisab.components.TransparentHintTextField
 import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
 import kotlinx.coroutines.flow.collectLatest
@@ -37,9 +40,13 @@ fun AddEditNisabScreen(
     val titleState = viewModel.nisabTitle.value
     val amountState = viewModel.nisabAmount.value
     val contentState = viewModel.nisabContent.value
+    val nisabType = viewModel.nisabType.value
 
     val scaffoldState = rememberScaffoldState()
-    val scope = rememberCoroutineScope()
+    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
+        bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
+    )
+    val coroutineScope = rememberCoroutineScope()
 
     LaunchedEffect(key1 = true) {
         viewModel.eventFlow.collectLatest { event ->
@@ -56,16 +63,11 @@ fun AddEditNisabScreen(
         }
     }
 
-
-    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
-        bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
-    )
-    val coroutineScope = rememberCoroutineScope()
     BottomSheetScaffold(
         scaffoldState = bottomSheetScaffoldState,
         sheetContent = {
-            BottomSheetNisabType(viewModel.nisabType.value) {
-                viewModel.setNisabType(it)
+            BottomSheetNisabType(nisabType) {
+                viewModel.onEvent(AddEditNisabEvent.SelectedType(it))
                 coroutineScope.launch {
                     bottomSheetScaffoldState.bottomSheetState.collapse()
                 }
@@ -79,13 +81,13 @@ fun AddEditNisabScreen(
                     bottomSheetScaffoldState.bottomSheetState.collapse()
                 }
             }) {
-
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp)
+                    .padding(horizontal = 16.dp)
             ) {
-                Box(
+                Spacer(modifier = Modifier.height(16.dp))
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .border(
@@ -102,23 +104,37 @@ fun AddEditNisabScreen(
                                 }
                             }
                         }
+                        .padding(16.dp)
                 ) {
+                    Icon(
+                        painter = painterResource(id = Features.getIcon(nisabType)),
+                        contentDescription = "nisab type",
+                        tint = Color.Unspecified,
+                        modifier = Modifier
+                            .size(36.dp)
+                            .padding(end = 16.dp)
+                            .align(Alignment.CenterVertically)
+                    )
                     Text(
-                        text = if (viewModel.nisabType.value.isEmpty()) "Select Nisab Type" else viewModel.nisabType.value,
-                        style = MaterialTheme.typography.h5,
-                        color = Color.Black,
+                        text = nisabType.ifEmpty {
+                            ZakatApp.getInstance()
+                                .getString(R.string.str_hint_select_nisab)
+                        },
+                        style = MaterialTheme.typography.h2,
+                        color = if (nisabType.isEmpty()) Color.LightGray else Color.Black,
+                        textAlign = TextAlign.Start,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(color = Color.Transparent)
-                            .padding(16.dp)
+                            .weight(1f)
+                            .align(Alignment.CenterVertically)
+
                     )
                     Icon(
                         imageVector = Icons.Default.ArrowDropDown,
-                        contentDescription = "Select Nisab Type",
+                        contentDescription = "Select Nisab Down",
                         modifier = Modifier
                             .wrapContentSize()
-                            .align(Alignment.CenterEnd)
-                            .offset(-16.dp, 0.dp)
+                            .align(Alignment.CenterVertically)
                     )
                 }
                 Spacer(modifier = Modifier.height(16.dp))
@@ -133,14 +149,19 @@ fun AddEditNisabScreen(
                     },
                     isHintVisible = amountState.isHintVisible,
                     singleLine = true,
-                    textStyle = MaterialTheme.typography.h5,
+                    textStyle = MaterialTheme.typography.h3,
+                    drawableStart = R.drawable.ic_rupee,
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number
+                    ),
                     modifier = Modifier
                         .fillMaxWidth()
                         .border(
                             width = 1.dp,
                             color = Color.Gray,
                             shape = RoundedCornerShape(8.dp)
-                        ).padding(16.dp)
+                        )
+                        .padding(16.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 TransparentHintTextField(
@@ -154,14 +175,15 @@ fun AddEditNisabScreen(
                     },
                     isHintVisible = titleState.isHintVisible,
                     singleLine = true,
-                    textStyle = MaterialTheme.typography.h5,
+                    textStyle = MaterialTheme.typography.h3,
                     modifier = Modifier
                         .fillMaxWidth()
                         .border(
                             width = 1.dp,
                             color = Color.Gray,
                             shape = RoundedCornerShape(8.dp)
-                        ).padding(16.dp)
+                        )
+                        .padding(16.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 TransparentHintTextField(
@@ -175,13 +197,16 @@ fun AddEditNisabScreen(
                     },
                     isHintVisible = contentState.isHintVisible,
                     textStyle = MaterialTheme.typography.body2,
+                    textAlignment = Alignment.Top,
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
+                        .fillMaxHeight(0.5f)
                         .border(
                             width = 0.5.dp,
                             color = Color.Gray,
                             shape = RoundedCornerShape(8.dp)
-                        ).padding(16.dp)
+                        )
+                        .padding(16.dp)
                 )
             }
             FloatingActionButton(
@@ -195,68 +220,6 @@ fun AddEditNisabScreen(
             ) {
                 Icon(imageVector = Icons.Default.Save, contentDescription = "Save nisab")
             }
-        }
-    }
-}
-
-@Composable
-fun BottomSheetNisabType(typeSelected: String, callbackFun: (nisabType: String) -> Unit) {
-    Column() {
-        for (nisabType in Features.prefTitleList) {
-            NisabDropdownItem(nisabType = nisabType, typeSelected, callbackFun)
-        }
-    }
-
-}
-
-@Composable
-fun NisabDropdownItem(
-    nisabType: String,
-    selected: String,
-    callbackFun: (nisabType: String) -> Unit
-) {
-    Box(
-        modifier = Modifier
-            .wrapContentSize()
-            .padding(16.dp)
-            .clickable {
-                callbackFun(nisabType)
-            }
-    ) {
-        ConstraintLayout(
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-        ) {
-            val (title, icon) = createRefs()
-            Icon(
-                painter = painterResource(id = Features.getIcon(nisabType)),
-                contentDescription = nisabType,
-                tint = Color.Unspecified,
-                modifier = Modifier
-                    .constrainAs(icon) {
-                        bottom.linkTo(parent.bottom)
-                        start.linkTo(parent.start)
-                        top.linkTo(parent.top)
-                        width = Dimension.wrapContent
-                        height = Dimension.wrapContent
-                    }
-            )
-            Text(
-                text = nisabType,
-                style = MaterialTheme.typography.h2,
-                color = Color.Black,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .constrainAs(title) {
-                        top.linkTo(parent.top)
-                        start.linkTo(icon.end)
-                        bottom.linkTo(parent.bottom)
-                        end.linkTo(parent.end)
-                        width = Dimension.fillToConstraints
-                        height = Dimension.wrapContent
-                    }
-            )
         }
     }
 }

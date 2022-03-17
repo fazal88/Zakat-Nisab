@@ -24,28 +24,26 @@ class AddEditNisabViewModel @Inject constructor(
 
     private val _nisabTitle = mutableStateOf(
         NisabTextFieldState(
-        hint = ZakatApp.getInstance().getString(R.string.str_hint))
+            hint = ZakatApp.getInstance().getString(R.string.str_hint)
+        )
     )
     val nisabTitle: State<NisabTextFieldState> = _nisabTitle
 
     private val _nisabAmount = mutableStateOf(
         NisabTextFieldState(
-        hint = ZakatApp.getInstance().getString(R.string.str_hint_cost))
+            hint = ZakatApp.getInstance().getString(R.string.str_hint_cost)
+        )
     )
     val nisabAmount: State<NisabTextFieldState> = _nisabAmount
 
-    private val _nisabType = mutableStateOf("")
+    private val _nisabType =
+        mutableStateOf("")
     val nisabType: State<String> = _nisabType
-
-    private val _dropDown = mutableStateOf(
-        true
-    )
-    val dropDown: State<Boolean> = _dropDown
 
     private val _nisabContent = mutableStateOf(
         NisabTextFieldState(
-        hint = "Description"
-    )
+            hint = "Description"
+        )
     )
     val nisabContent: State<NisabTextFieldState> = _nisabContent
 
@@ -56,7 +54,7 @@ class AddEditNisabViewModel @Inject constructor(
 
     init {
         savedStateHandle.get<Long>("nisabId")?.let { nisabId ->
-            if(nisabId > -1) {
+            if (nisabId > -1) {
                 viewModelScope.launch {
                     nisabUseCases.getNisab(nisabId)?.also { nisab ->
                         currentNoteId = nisab.id
@@ -76,7 +74,7 @@ class AddEditNisabViewModel @Inject constructor(
     }
 
     fun onEvent(event: AddEditNisabEvent) {
-        when(event) {
+        when (event) {
             is AddEditNisabEvent.EnteredTitle -> {
                 _nisabTitle.value = nisabTitle.value.copy(
                     text = event.value
@@ -99,6 +97,9 @@ class AddEditNisabViewModel @Inject constructor(
                             nisabAmount.value.text.isBlank()
                 )
             }
+            is AddEditNisabEvent.SelectedType -> {
+                _nisabType.value = event.value
+            }
             is AddEditNisabEvent.EnteredContent -> {
                 _nisabContent.value = _nisabContent.value.copy(
                     text = event.value
@@ -119,13 +120,13 @@ class AddEditNisabViewModel @Inject constructor(
                         nisabUseCases.addNisab(
                             Nisab(
                                 name = nisabTitle.value.text,
-                                price = nisabContent.value.text.toLong(),
+                                price = nisabAmount.value.text.toLong(),
                                 date = System.currentTimeMillis(),
                                 id = currentNoteId
                             )
                         )
                         _eventFlow.emit(UiEvent.SaveNisab)
-                    } catch(e: InvalidNisabException) {
+                    } catch (e: InvalidNisabException) {
                         _eventFlow.emit(
                             UiEvent.ShowSnackbar(
                                 message = e.message ?: "Couldn't save nisab"
@@ -137,12 +138,8 @@ class AddEditNisabViewModel @Inject constructor(
         }
     }
 
-    fun setNisabType(type: String) {
-        _nisabType.value = type
-    }
-
     sealed class UiEvent {
-        data class ShowSnackbar(val message: String): UiEvent()
-        object SaveNisab: UiEvent()
+        data class ShowSnackbar(val message: String) : UiEvent()
+        object SaveNisab : UiEvent()
     }
 }
