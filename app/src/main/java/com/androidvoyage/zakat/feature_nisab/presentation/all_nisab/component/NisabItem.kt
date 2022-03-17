@@ -17,6 +17,8 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -46,13 +48,13 @@ fun NisabItem(
 
             clipPath(clipPath) {
                 drawRoundRect(
-                    color = Color(Features.getColor(nisab.type)),
+                    color = Features.getColor(nisab.type),
                     size = size,
                     cornerRadius = CornerRadius(cornerRadius.toPx())
                 )
                 drawRoundRect(
                     color = Color(
-                        ColorUtils.blendARGB(Features.getColor(nisab.type), 0x000000, 0.2f)
+                        ColorUtils.blendARGB(Features.getColor(nisab.type).toArgb(), 0x000000, 0.2f)
                     ),
                     topLeft = Offset(size.width - cutCornerSize.toPx(), -100f),
                     size = Size(cutCornerSize.toPx() + 100f, cutCornerSize.toPx() + 100f),
@@ -67,18 +69,27 @@ fun NisabItem(
                 .padding(end = 32.dp)
         ) {
             Text(
+                text = nisab.type,
+                style = MaterialTheme.typography.subtitle1,
+                fontStyle = FontStyle.Italic,
+                color = Color.White,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
                 text = nisab.name,
                 style = MaterialTheme.typography.h6,
-                color = MaterialTheme.colors.onSurface,
+                color = Color.White,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = nisab.price.toString(),
-                style = MaterialTheme.typography.body1,
-                color = MaterialTheme.colors.onSurface,
-                maxLines = 10,
+                style = MaterialTheme.typography.h2,
+                color = Color.White,
+                maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
         }
@@ -89,7 +100,7 @@ fun NisabItem(
             Icon(
                 imageVector = Icons.Default.Delete,
                 contentDescription = "Delete note",
-                tint = MaterialTheme.colors.onSurface
+                tint = Color.Black
             )
         }
     }

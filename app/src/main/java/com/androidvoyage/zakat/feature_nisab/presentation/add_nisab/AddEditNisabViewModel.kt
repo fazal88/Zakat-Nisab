@@ -36,9 +36,21 @@ class AddEditNisabViewModel @Inject constructor(
     )
     val nisabAmount: State<NisabTextFieldState> = _nisabAmount
 
+    private val _nisabWeight = mutableStateOf(
+        NisabTextFieldState(
+            text = "",
+            hint = ZakatApp.getInstance().getString(R.string.str_hint_weight)
+        )
+    )
+    val nisabWeight: State<NisabTextFieldState> = _nisabWeight
+
     private val _nisabType =
         mutableStateOf("")
     val nisabType: State<String> = _nisabType
+
+    private val _nisabKarat =
+        mutableStateOf("")
+    val nisabKarat: State<String> = _nisabKarat
 
     private val _nisabContent = mutableStateOf(
         NisabTextFieldState(
@@ -121,8 +133,11 @@ class AddEditNisabViewModel @Inject constructor(
                             Nisab(
                                 name = nisabTitle.value.text,
                                 price = nisabAmount.value.text.toLong(),
+                                type = nisabType.value,
                                 date = System.currentTimeMillis(),
-                                id = currentNoteId
+                                id = currentNoteId,
+                                karat = nisabKarat.value,
+                                weight = nisabWeight.value.text
                             )
                         )
                         _eventFlow.emit(UiEvent.SaveNisab)

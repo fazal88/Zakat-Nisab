@@ -1,6 +1,8 @@
 package com.androidvoyage.zakat.feature_nisab.presentation.util
 
+import androidx.compose.ui.graphics.Color
 import com.androidvoyage.zakat.R
+import com.androidvoyage.zakat.ui.theme.*
 
 object Features {
 
@@ -68,31 +70,31 @@ object Features {
         }
     }
 
-    fun getColor(key : String) : Int{
+    fun getColor(key : String) : Color {
         return when (key) {
             PREF_CASH_IN_HAND -> {
-                R.color.Beige3
+                Beige3
             }
             PREF_GOLD_SILVER -> {
-                R.color.Blue3
+                Blue3
             }
             PREF_SAVINGS_FUNDS -> {
-                R.color.Pink3
+                Pink3
             }
             PREF_BUSINESS_ASSETS -> {
-                R.color.LightGreen3
+                LightGreen3
             }
             PREF_DEBT_OWNED -> {
-                R.color.OrangeYellow3
+                OrangeYellow3
             }
             PREF_SHARES_STOCKS -> {
-                R.color.BlueViolet3
+                BlueViolet3
             }
             PREF_PROPERTIES_CARS -> {
-                R.color.Violet3
+                Violet3
             }
             else -> {
-                R.color.black
+                ColorBlack
             }
         }
     }
