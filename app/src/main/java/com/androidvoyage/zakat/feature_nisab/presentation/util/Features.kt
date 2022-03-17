@@ -73,7 +73,7 @@ object Features {
     fun getColor(key : String) : Color {
         return when (key) {
             PREF_CASH_IN_HAND -> {
-                Beige3
+                LightGreen3
             }
             PREF_GOLD_SILVER -> {
                 Blue3
@@ -82,7 +82,7 @@ object Features {
                 Pink3
             }
             PREF_BUSINESS_ASSETS -> {
-                LightGreen3
+                Beige3
             }
             PREF_DEBT_OWNED -> {
                 OrangeYellow3

@@ -9,7 +9,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -18,11 +17,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import androidx.core.graphics.ColorUtils
+import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.feature_nisab.domain.model.Nisab
 import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
 
@@ -62,46 +66,94 @@ fun NisabItem(
                 )
             }
         }
-        Column(
+        ConstraintLayout(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-                .padding(end = 32.dp)
+                .fillMaxWidth()
+                .wrapContentHeight()
         ) {
+            val (icon, type, title, iconRupee, amount, description, delete) = createRefs()
+            Icon(
+                painter = painterResource(id = Features.getIcon(nisab.type)),
+                contentDescription = "nisabType",
+                tint = Color.Unspecified,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .size(24.dp)
+                    .constrainAs(icon) {
+                        start.linkTo(parent.start)
+                        top.linkTo(parent.top)
+                        width = Dimension.wrapContent
+                        height = Dimension.wrapContent
+                    }
+            )
+            Text(
+                text = nisab.name,
+                style = MaterialTheme.typography.h2,
+                color = Color.White,
+                modifier = Modifier
+                    .padding(top=16.dp,end = 32.dp)
+                    .constrainAs(title) {
+                        top.linkTo(parent.top)
+                        start.linkTo(icon.end)
+                        end.linkTo(parent.end)
+                        width = Dimension.fillToConstraints
+                        height = Dimension.wrapContent
+                    }
+            )
             Text(
                 text = nisab.type,
                 style = MaterialTheme.typography.subtitle1,
-                fontStyle = FontStyle.Italic,
                 color = Color.White,
+                fontSize = 12.sp,
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier
+                    .constrainAs(type) {
+                        top.linkTo(title.bottom)
+                        start.linkTo(title.start)
+                        end.linkTo(title.end)
+                        width = Dimension.fillToConstraints
+                    }
             )
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = nisab.name,
-                style = MaterialTheme.typography.h6,
-                color = Color.White,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Spacer(modifier = Modifier.height(8.dp))
+            Icon(
+                painter = painterResource(id = R.drawable.ic_rupee),
+                contentDescription = "Rupee",
+                tint = Color.Unspecified,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .size(24.dp)
+                    .constrainAs(iconRupee) {
+                    top.linkTo(icon.bottom)
+                    start.linkTo(icon.start)
+                })
             Text(
                 text = nisab.price.toString(),
                 style = MaterialTheme.typography.h2,
                 color = Color.White,
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier
+                    .wrapContentSize()
+                    .constrainAs(amount) {
+                        top.linkTo(iconRupee.top)
+                        start.linkTo(iconRupee.end)
+                        bottom.linkTo(iconRupee.bottom)
+                    }
             )
-        }
-        IconButton(
-            onClick = onDeleteClick,
-            modifier = Modifier.align(Alignment.BottomEnd)
-        ) {
-            Icon(
-                imageVector = Icons.Default.Delete,
-                contentDescription = "Delete note",
-                tint = Color.Black
-            )
+            IconButton(
+                onClick = onDeleteClick,
+                modifier = Modifier.constrainAs(delete) {
+                    end.linkTo(parent.end)
+                    top.linkTo(iconRupee.top)
+                    bottom.linkTo(iconRupee.bottom)
+                }
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = "Delete note",
+                    tint = Color.Black
+                )
+            }
         }
     }
 }
