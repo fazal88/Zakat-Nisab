@@ -68,6 +68,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-config:21.0.1'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
+    implementation 'com.google.android.material:material:1.5.0'
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:1.0.5"
     implementation 'androidx.activity:activity-compose:1.4.0'
