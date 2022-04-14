@@ -6,8 +6,9 @@
     tools:context=".screens.splash.SplashFragment">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@mipmap/ic_launcher_foreground"/>
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_nisab"/>
 
 </FrameLayout>

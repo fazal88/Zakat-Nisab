@@ -63,7 +63,7 @@ object Features {
                 R.drawable.ic_asset
             }
             else -> {
-                R.drawable.ic_zakat
+                R.drawable.ic_nisab
             }
         }
     }

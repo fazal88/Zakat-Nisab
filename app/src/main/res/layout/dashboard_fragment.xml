@@ -41,88 +41,72 @@
             app:layout_constraintTop_toTopOf="@+id/tv_title_dashboard"
             app:tint="@color/primaryDarkColor" />
 
-        <LinearLayout
-            android:id="@+id/ll_date"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@drawable/back_rect_round_8dp"
-            android:elevation="8dp"
-            android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="16dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_dashboard">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="Monday, 14th Feb"
-                android:textColor="@color/TextWhite"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_light"
-                android:text="13 Sha'ban, 1444 AH"
-                android:textColor="@color/TextWhite" />
+                <TextView
+                    android:id="@+id/tv_subtitle_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:text="An estimation of your total accumulated wealth as per you list of records."
+                    android:textColor="@color/primaryDarkColor"
+                    android:textSize="14sp" />
 
-        </LinearLayout>
+                <include
+                    android:id="@+id/inc_overview"
+                    layout="@layout/item_dashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp" />
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:elevation="8dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_zakat"
-            app:layout_constraintBottom_toBottomOf="@+id/ll_date"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="@+id/ll_date"
-            app:layout_constraintTop_toTopOf="@+id/ll_date" />
+                <TextView
+                    android:id="@+id/tv_nisab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Nisab"
+                    android:textColor="@color/primaryDarkColor"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_nisab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:padding="16dp"
-            android:text="Nisab"
-            android:textColor="@color/primaryDarkColor"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_date" />
+                <TextView
+                    android:id="@+id/tv_subtitle_nisab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:padding="4dp"
+                    android:text="List of broad categories in which wealth can be distributed."
+                    android:textColor="@color/primaryDarkColor"
+                    android:textSize="14sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_dashboard"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:clipToPadding="false"
-            android:padding="8dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_nisab"
-            app:spanCount="2"
-            tools:itemCount="7"
-            tools:listitem="@layout/item_dashboard" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_dashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:padding="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="1"
+                    tools:itemCount="7"
+                    tools:listitem="@layout/item_dashboard" />
 
-        <View
-            android:id="@+id/view_shadow"
-            android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:background="@drawable/back_shadow_white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rv_dashboard" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

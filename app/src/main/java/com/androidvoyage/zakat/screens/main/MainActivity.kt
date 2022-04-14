@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         binding.vm = viewModel
         binding.lifecycleOwner = this
 
-        binding.ivBtnDashboard.onClickWithAnimation {
+        /*binding.ivBtnDashboard.onClickWithAnimation {
             if (navController.currentDestination?.id != R.id.dashboardFragment) {
                 onBackPressed()
             }
@@ -52,19 +52,19 @@ class MainActivity : AppCompatActivity() {
             if (navController.currentDestination?.id != R.id.editFragment) {
                 navController.navigate(R.id.editFragment)
             }
-        }
+        }*/
 
     }
 
     fun hideNavBottom(isNavVisible : Boolean, isFabVisible : Boolean = false){
-        if (binding.llBottomNav.visibility != View.VISIBLE && isNavVisible
+        /*if (binding.llBottomNav.visibility != View.VISIBLE && isNavVisible
             || binding.llBottomNav.visibility == View.VISIBLE && !isNavVisible) {
             visibleSlide(binding.llBottomNav, isNavVisible)
         }
         if (binding.llFab.visibility != View.VISIBLE && isFabVisible
             || binding.llFab.visibility == View.VISIBLE && !isFabVisible) {
             visibleSlide(binding.llFab, isFabVisible)
-        }
+        }*/
     }
 
     val navController: NavController by lazy {
