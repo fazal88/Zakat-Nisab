@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyZakat.NoActionBar">
+        <!--android:name=".feature_nisab.presentation.HomeActivity"-->
         <activity
             android:name=".screens.main.MainActivity"
             android:exported="true"

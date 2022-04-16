@@ -3,11 +3,13 @@ package com.androidvoyage.zakat
 import android.app.Application
 import com.androidvoyage.zakat.fire_base_remote_config.RemoteConfigUtil
 import com.androidvoyage.zakat.pref.SharedPreferencesManager
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Created by Fazal on 09/02/22.
  * Copyright (c) 2022 Fazal. All rights reserved.
  */
+@HiltAndroidApp
 class ZakatApp : Application() {
 
     companion object{
@@ -18,7 +20,6 @@ class ZakatApp : Application() {
             return mInstance
         }
     }
-
 
     override fun onCreate() {
         super.onCreate()

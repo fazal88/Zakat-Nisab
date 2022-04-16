@@ -2,10 +2,9 @@ package com.androidvoyage.zakat.pref;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
-
-import com.androidvoyage.zakat.util.LogUtils;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -15,7 +14,7 @@ import java.util.Set;
  * Created by Akhil on 01/02/17.
  */
 public class ObscuredSharedPreferences implements SharedPreferences {
-    private static final String DEBUG = "ObscuredSharedPreferences";
+    private static final String DEBUG = "SharedPreferences";
 
     private String secret;
     protected SharedPreferences delegate;
@@ -200,7 +199,7 @@ public class ObscuredSharedPreferences implements SharedPreferences {
             return new SharedPreferenceEncryption(secret).encrypt(value);
         } catch (Exception e) {
             if(e.getMessage() != null){
-                LogUtils.d(DEBUG, e.getMessage());
+                Log.d(DEBUG, "encrypt: "+e.getMessage());
             }else{
                 e.printStackTrace();
             }
@@ -213,7 +212,7 @@ public class ObscuredSharedPreferences implements SharedPreferences {
             return new SharedPreferenceEncryption(secret).decrypt(value);
         } catch (Exception e) {
             if(e.getMessage() != null){
-                LogUtils.d(DEBUG, e.getMessage());
+                Log.d(DEBUG, "encrypt: "+e.getMessage());
             }else{
                 e.printStackTrace();
             }

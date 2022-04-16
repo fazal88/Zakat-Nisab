@@ -1,6 +1,7 @@
-package com.androidvoyage.zakat.compose.theme
+package com.androidvoyage.zakat.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -26,6 +27,12 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp
     ),
+    body2 = TextStyle(
+        color = ColorBlack,
+        fontFamily = monterserratA1,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp
+    ),
     h1 = TextStyle(
         color = TextWhite,
         fontFamily = monterserratA1,
@@ -34,6 +41,12 @@ val Typography = Typography(
     ),
     h2 = TextStyle(
         color = TextWhite,
+        fontFamily = monterserratA1,
+        fontWeight = FontWeight.Bold,
+        fontSize = 18.sp
+    ),
+    h3 = TextStyle(
+        color = Color.Black,
         fontFamily = monterserratA1,
         fontWeight = FontWeight.Bold,
         fontSize = 18.sp

@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.compose.foundation.ExperimentalFoundationApi
 import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.databinding.EditFragmentBinding
-import com.androidvoyage.zakat.model.Features
-import com.androidvoyage.zakat.model.Features.PREF_GOLD_SILVER
+import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
+import com.androidvoyage.zakat.feature_nisab.presentation.util.Features.PREF_GOLD_SILVER
 import com.androidvoyage.zakat.util.OnSelectListener
 import com.androidvoyage.zakat.util.Utils
 import com.androidvoyage.zakat.util.onClickWithAnimation

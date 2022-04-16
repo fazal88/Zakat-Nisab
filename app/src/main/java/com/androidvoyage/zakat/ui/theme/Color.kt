@@ -1,4 +1,4 @@
-package com.androidvoyage.zakat.compose.theme
+package com.androidvoyage.zakat.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -6,7 +6,7 @@ val ColorWhite = Color(0xFFFFFFFF)
 val ColorBlack = Color(0xFF333333)
 val PrimaryLightBack = Color(0xFFF7F5FF)
 val PrimaryLightColor = Color(0xFFE3DEFE)
-val PrimaryColor = Color(0xFF6348EB)
+val PrimaryColor = Color(0xFF6200EE)
 val PrimaryDarkColor = Color(0xFF36219E)
 val AccentColor = Color(0xFF03DAC5)
 val OrangeLight = Color(0xFFFFEBBF)
@@ -19,9 +19,9 @@ val DarkerButtonBlue = Color(0xff566894)
 val LightRed = Color(0xfffc879a)
 val AquaBlue = Color(0xff9aa5c4)
 
-val OrangeYellow1 = Color(0xfff0bd28)
+val OrangeYellow1 = Color(0xfff4cf65)
 val OrangeYellow2 = Color(0xfff1c746)
-val OrangeYellow3 = Color(0xfff4cf65)
+val OrangeYellow3 = Color(0xfff0bd28)
 val Beige1 = Color(0xfffdbda1)
 val Beige2 = Color(0xfffcaf90)
 val Beige3 = Color(0xfff9a27b)
