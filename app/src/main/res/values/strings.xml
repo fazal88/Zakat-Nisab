@@ -21,4 +21,7 @@
     <string name="str_list_categories">List of broad categories in which wealth can be distributed.</string>
     <string name="str_zakat_amp_nisab"><![CDATA[Zakat & Nisab]]></string>
     <string name="str_overflow_menu">overflow_menu</string>
+    <string name="str_cost_label"><b>Cost</b> : ₹12,000</string>
+    <string name="str_estimated_value">Estimated Value :</string>
+    <string name="str_purchase_cost">Purchase Cost :</string>
 </resources>

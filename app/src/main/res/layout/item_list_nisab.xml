@@ -19,15 +19,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:background="@drawable/back_rect_round_8dp">
+        android:background="@drawable/back_rect_round_8dp"
+        android:paddingBottom="16dp">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/back_rect_round_8dp"
+            android:backgroundTint="#ddffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_item"
             setIconFromKey="@{vm.type}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_zakat"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_nisab"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,87 +50,84 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:textColor="@color/TextWhite"
+            android:text="@{vm.name}"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:text="@{vm.name}"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_item"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_item"
-            app:layout_constraintTop_toTopOf="@+id/iv_item"
+            app:layout_constraintTop_toBottomOf="@+id/tv_purchase_date"
             tools:text="Necklace" />
 
         <TextView
-            android:id="@+id/tv_amount"
+            android:id="@+id/tv_purchase_date"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:textColor="@color/TextWhite"
-            android:textSize="16sp"
+            android:layout_height="wrap_content"
             android:text="@{@string/str_cost(vm.price)}"
-            app:layout_constraintBottom_toTopOf="@+id/tv_lable_estimated_value"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/tv_item"
             app:layout_constraintStart_toStartOf="@+id/tv_item"
-            app:layout_constraintTop_toBottomOf="@+id/tv_item"
-            tools:text="Cost : ₹12,000" />
+            app:layout_constraintTop_toTopOf="@+id/iv_item"
+            tools:text="Purchased on : 11 April 2022" />
+
+        <TextView
+            android:id="@+id/tv_lable_purchase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/str_purchase_cost"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_item" />
+
+        <TextView
+            android:id="@+id/tv_purchase_value"
+            setEstimatedValue="@{vm}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="@{@string/str_cost(vm.price)}"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_lable_purchase"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@+id/tv_lable_purchase"
+            app:layout_constraintTop_toTopOf="@+id/tv_lable_purchase"
+            tools:text="₹ 14,000" />
 
         <TextView
             android:id="@+id/tv_lable_estimated_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/TextWhite"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_item"
-            android:text="Estimated Value : " />
-
-        <TextView
-            android:id="@+id/tv_estimated_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/TextWhite"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            setEstimatedValue="@{vm}"
-            app:layout_constraintBottom_toTopOf="@+id/tv_lable_estimated_zakat"
-            app:layout_constraintStart_toEndOf="@+id/tv_lable_estimated_value"
-            app:layout_constraintTop_toTopOf="@+id/tv_lable_estimated_value"
-            tools:text="₹ 14,000" />
-
-        <TextView
-            android:id="@+id/tv_lable_estimated_zakat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:textColor="@color/TextWhite"
+            android:text="@string/str_estimated_value"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lable_estimated_value"
-            android:text="Estimated Zakat : " />
+            app:layout_constraintTop_toBottomOf="@+id/tv_lable_purchase" />
 
         <TextView
-            android:id="@+id/tv_estimated_zakat"
+            android:id="@+id/tv_estimated_value"
+            setEstimatedValue="@{vm}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:textColor="@color/TextWhite"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintEnd_toEndOf="parent"
             android:textStyle="bold"
-            setEstimatedZakat="@{vm}"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_lable_estimated_zakat"
-            app:layout_constraintStart_toEndOf="@+id/tv_lable_estimated_zakat"
-            app:layout_constraintTop_toTopOf="@+id/tv_lable_estimated_zakat"
-            tools:text="₹ 3,500" />
+            app:layout_constraintBottom_toBottomOf="@+id/tv_lable_estimated_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@+id/tv_lable_estimated_value"
+            app:layout_constraintTop_toTopOf="@+id/tv_lable_estimated_value"
+            tools:text="₹ 14,000" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

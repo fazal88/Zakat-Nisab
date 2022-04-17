@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -15,6 +16,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        onClickWithAnimation="@{()->click.onClickFeature(item.type)}"
         setColorFromKey="@{item.type}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +24,6 @@
         android:background="@drawable/back_rect_round_8dp"
         android:backgroundTint="@color/primaryColor"
         android:elevation="2dp"
-        onClickWithAnimation="@{()->click.onClickFeature(item.type)}"
         android:paddingBottom="8dp">
 
         <View
@@ -40,13 +41,14 @@
 
         <TextView
             android:id="@+id/tv_timestamp"
+            setDate="@{item.lastUpdated}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            setDate="@{item.lastUpdated}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            tools:text="Last updated : 23rd April 2022" />
 
 
         <TextView
@@ -62,7 +64,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/tv_timestamp" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_timestamp"
+            tools:text="Total Nisab" />
 
         <TextView
             android:id="@+id/tv_label_value"
@@ -86,7 +89,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_label_value"
             app:layout_constraintTop_toTopOf="@+id/tv_label_value"
-            app:setAmountFromPref="@{item.totalValue}" />
+            app:setAmountFromPref="@{item.totalValue}"
+            tools:text="2000" />
 
         <TextView
             android:id="@+id/tv_label_zakat"
@@ -110,7 +114,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_label_zakat"
             app:layout_constraintTop_toTopOf="@+id/tv_label_zakat"
-            app:setAmountFromPref="@{item.zakatValue}" />
+            app:setAmountFromPref="@{item.zakatValue}"
+            tools:text="2000" />
 
         <Space
             android:layout_width="0dp"
@@ -126,11 +131,11 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_margin="16dp"
+            android:contentDescription="@string/str_nisab_icon"
             android:scaleType="centerInside"
             android:src="@drawable/ic_nisab"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/str_nisab_icon" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
