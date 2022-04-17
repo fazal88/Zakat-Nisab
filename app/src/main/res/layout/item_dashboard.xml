@@ -22,7 +22,7 @@
         android:background="@drawable/back_rect_round_8dp"
         android:backgroundTint="@color/primaryColor"
         android:elevation="2dp"
-        android:onClick="@{()->click.onClickFeature(item.type)}"
+        onClickWithAnimation="@{()->click.onClickFeature(item.type)}"
         android:paddingBottom="8dp">
 
         <View

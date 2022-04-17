@@ -67,6 +67,7 @@
                     android:id="@+id/inc_overview"
                     layout="@layout/item_dashboard"
                     app:item="@{vm.overview}"
+                    app:click="@{vm.clickListener}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp" />
