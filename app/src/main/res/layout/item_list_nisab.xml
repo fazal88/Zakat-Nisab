@@ -46,6 +46,28 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_purchase_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/str_cost(vm.price)}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/tv_item"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/tv_item"
+            app:layout_constraintTop_toTopOf="@+id/iv_item"
+            tools:text="Purchased on : 11 April 2022" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:src="@drawable/ic_delete_24"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_purchase_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_purchase_date"
+            app:tint="@color/LightRed" />
+
+        <TextView
             android:id="@+id/tv_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -60,28 +82,60 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_purchase_date"
             tools:text="Necklace" />
 
-        <TextView
-            android:id="@+id/tv_purchase_date"
+        <LinearLayout
+            android:id="@+id/ll_weight"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{@string/str_cost(vm.price)}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_item"
-            app:layout_constraintStart_toStartOf="@+id/tv_item"
-            app:layout_constraintTop_toTopOf="@+id/iv_item"
-            tools:text="Purchased on : 11 April 2022" />
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_item">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Weight"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_weight" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="916 / 22 karat"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_weight" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="7.86 gram"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_weight" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_lable_purchase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/str_purchase_cost"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_item" />
+            app:layout_constraintTop_toBottomOf="@+id/ll_weight" />
 
         <TextView
             android:id="@+id/tv_purchase_value"
@@ -91,6 +145,7 @@
             android:layout_marginHorizontal="16dp"
             android:text="@{@string/str_cost(vm.price)}"
             android:textColor="@color/black"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_lable_purchase"
             app:layout_constraintEnd_toEndOf="parent"

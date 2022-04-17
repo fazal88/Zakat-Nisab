@@ -15,10 +15,11 @@ import kotlinx.parcelize.Parcelize
 data class NisabItem(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
+    var datePurchase: Long = System.currentTimeMillis(),
     var name: String = "",
-    var price: String = "0",
     var type: String = "",
-    var karat: String = "",
+    var purity: String = "",
     var weight: String = "",
-    var estimatedValue: String = "0"
+    var price: Long = 0,
+    var estimatedValue: Long = 0
 ) : Parcelable

@@ -18,7 +18,7 @@ class EditViewModel : ViewModel() {
     }
 
     fun setKarat(item: String) {
-        nisanItem.value?.karat = item
+        nisanItem.value?.purity = item
         notifyModel()
     }
 
