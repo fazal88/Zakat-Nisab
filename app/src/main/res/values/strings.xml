@@ -16,4 +16,9 @@
     <string name="str_total_value">Total Value :</string>
     <string name="str_estimated_zakat">Estimated Zakat :</string>
     <string name="str_nisab_icon">nisab icon</string>
+    <string name="str_an_estimation">An estimation of your total accumulated wealth as per you list of records.</string>
+    <string name="str_nisab">Nisab</string>
+    <string name="str_list_categories">List of broad categories in which wealth can be distributed.</string>
+    <string name="str_zakat_amp_nisab"><![CDATA[Zakat & Nisab]]></string>
+    <string name="str_overflow_menu">overflow_menu</string>
 </resources>

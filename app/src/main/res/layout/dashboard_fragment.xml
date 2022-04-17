@@ -20,7 +20,7 @@
             android:layout_height="56dp"
             android:gravity="center_vertical"
             android:paddingHorizontal="16dp"
-            android:text="Zakat &amp; Nisab"
+            android:text="@string/str_zakat_amp_nisab"
             android:textColor="@color/primaryDarkColor"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -38,7 +38,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_title_dashboard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_title_dashboard"
-            app:tint="@color/primaryDarkColor" />
+            app:tint="@color/primaryDarkColor"
+            android:contentDescription="@string/str_overflow_menu" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
@@ -59,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:paddingVertical="8dp"
-                    android:text="An estimation of your total accumulated wealth as per you list of records."
+                    android:text="@string/str_an_estimation"
                     android:textColor="@color/primaryDarkColor"
                     android:textSize="14sp" />
 
@@ -78,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="Nisab"
+                    android:text="@string/str_nisab"
                     android:textColor="@color/primaryDarkColor"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -89,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:padding="4dp"
-                    android:text="List of broad categories in which wealth can be distributed."
+                    android:text="@string/str_list_categories"
                     android:textColor="@color/primaryDarkColor"
                     android:textSize="14sp" />
 
