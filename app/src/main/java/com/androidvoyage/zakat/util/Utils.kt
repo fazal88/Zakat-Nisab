@@ -33,6 +33,16 @@ object Utils {
         return myNumber
     }
 
+    fun getAmountWithCommas(amount: Long): String {
+        val myNumber = if (amount>0) {
+            NumberFormat.getNumberInstance(Locale.UK)
+                .format(amount)
+        }else{
+            "0"
+        }
+        return myNumber
+    }
+
     var scaleAnimation: Animation? = null
 
     fun setClickedAnimation(view: View, onClickedAnimationListener: OnClickedAnimationListener?) {

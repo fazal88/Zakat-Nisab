@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="vm"
             type="com.androidvoyage.zakat.screens.dashboard.DashboardViewModel" />
@@ -67,6 +66,7 @@
                 <include
                     android:id="@+id/inc_overview"
                     layout="@layout/item_dashboard"
+                    app:item="@{vm.overview}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp" />

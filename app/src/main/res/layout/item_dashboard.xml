@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="key"
-            type="String" />
+            name="item"
+            type="com.androidvoyage.zakat.model.NisabCategoryItem" />
 
         <variable
             name="click"
@@ -15,14 +15,14 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        setColorFromKey="@{key}"
+        setColorFromKey="@{item.type}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/back_rect_round_8dp"
         android:backgroundTint="@color/primaryColor"
         android:elevation="2dp"
-        android:onClick="@{()->click.onClickFeature(key)}"
+        android:onClick="@{()->click.onClickFeature(item.type)}"
         android:paddingBottom="8dp">
 
         <View
@@ -43,7 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:text="last updated : 12, April 2022"
+            setDate="@{item.lastUpdated}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="4dp"
-            android:text="@{key}"
+            android:text="@{item.type}"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Total Value : "
+            android:text="@string/str_total_value"
             app:layout_constraintStart_toStartOf="@id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -86,14 +86,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_label_value"
             app:layout_constraintTop_toTopOf="@+id/tv_label_value"
-            app:setAmountFromPref="@{key}" />
+            app:setAmountFromPref="@{item.totalValue}" />
 
         <TextView
             android:id="@+id/tv_label_zakat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Estimated Zakat : "
+            android:text="@string/str_estimated_zakat"
             app:layout_constraintStart_toStartOf="@id/tv_label_value"
             app:layout_constraintTop_toBottomOf="@+id/tv_label_value" />
 
@@ -110,7 +110,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_label_zakat"
             app:layout_constraintTop_toTopOf="@+id/tv_label_zakat"
-            app:setAmountFromPref="@{key}" />
+            app:setAmountFromPref="@{item.zakatValue}" />
 
         <Space
             android:layout_width="0dp"
@@ -122,14 +122,15 @@
 
         <ImageView
             android:id="@+id/imageView"
-            setIconFromKey="@{key}"
+            setIconFromKey="@{item.type}"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_margin="16dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_nisab"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/str_nisab_icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -137,7 +138,7 @@
             android:layout_margin="16dp"
             android:background="@drawable/back_rect_round_4dp"
             android:elevation="4dp"
-            android:onClick="@{()->click.onAddFeature(key)}"
+            android:onClick="@{()->click.onAddFeature(item.type)}"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
             android:text="@string/str_add"

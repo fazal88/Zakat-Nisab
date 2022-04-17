@@ -24,7 +24,7 @@ class DashboardFragment : Fragment() {
     }
 
     private val viewModel by lazy {
-        ViewModelProvider(this).get(DashboardViewModel::class.java)
+        ViewModelProvider(this)[DashboardViewModel::class.java]
     }
     private lateinit var binding: DashboardFragmentBinding
 

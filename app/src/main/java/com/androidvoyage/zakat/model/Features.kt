@@ -36,7 +36,8 @@ object Features {
         PREF_22_K,
         PREF_18_K,
         PREF_14_K,
-        PREF_23_KDM
+        PREF_23_KDM,
+        PREF_SILVER,
     )
 
     fun getIcon(key: String): Int {
@@ -92,7 +93,7 @@ object Features {
                 R.color.Violet3
             }
             else -> {
-                R.color.black
+                R.color.primaryColor
             }
         }
     }

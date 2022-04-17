@@ -11,7 +11,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
-import androidx.transition.*
+import androidx.transition.Fade
+import androidx.transition.Slide
+import androidx.transition.Transition
+import androidx.transition.TransitionManager
 import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.NisabItem
@@ -189,6 +192,17 @@ fun TextView.setDate(item: String?) {
     }
 }
 
+@BindingAdapter("setDate")
+fun TextView.setDate(item: Long?) {
+    item?.let {
+        text = if (item > 0) {
+            DateTimeUtility.convertDateToString(item, DateTimeUtility.D_MMM_YYYY)
+        } else {
+            ""
+        }
+    }
+}
+
 
 @BindingAdapter(value = ["cardNo", "index", "isHidden"], requireAll = false)
 fun TextView.cardNumber(cardNo: String?, index: Int, isHidden: Boolean) {
@@ -260,8 +274,15 @@ fun ImageView.setImageUrl(item: Int?) {
 @BindingAdapter("setAmountFromPref")
 fun TextView.setAmountFromPref(type: String?) {
     type?.let {
-        val amount = ""//todo add data base call
-        val amountString = Utils.getCurrencySymbol()+ Utils.getAmountWithCommas(amount)
+        val amountString = "₹ " + Utils.getAmountWithCommas(it)
+        text = amountString
+    }
+}
+
+@BindingAdapter("setAmountFromPref")
+fun TextView.setAmountFromPref(type: Long?) {
+    type?.let {
+        val amountString = "₹ " + Utils.getAmountWithCommas(it)
         text = amountString
     }
 }
@@ -281,34 +302,34 @@ fun ImageView.setIconFromKey(type: String?) {
 }
 
 @BindingAdapter("setEstimatedValue")
-fun TextView.setEstimatedValue(vm : NisabItem?){
+fun TextView.setEstimatedValue(vm: NisabItem?) {
     vm?.let {
         val isMetail = it.type == Features.PREF_GOLD_SILVER
 
-        text = if(isMetail){
+        text = if (isMetail) {
             val grams = it.weight
             val rate = SharedPreferencesManager.getInstance().getRate(vm.karat)
-            val estimatedValue = grams.toFloat()*rate.toFloat()
-            val roundOffEstimatedValue = Utils.roundOff(estimatedValue,2)
+            val estimatedValue = grams.toFloat() * rate.toFloat()
+            val roundOffEstimatedValue = Utils.roundOff(estimatedValue, 2)
             "₹ $roundOffEstimatedValue"
-        }else{
+        } else {
             "₹ ${vm.price}"
         }
     }
 }
 
 @BindingAdapter("setEstimatedZakat")
-fun TextView.setEstimatedZakat(vm : NisabItem?){
+fun TextView.setEstimatedZakat(vm: NisabItem?) {
     vm?.let {
         val isMetail = it.type == Features.PREF_GOLD_SILVER
 
-        text = if(isMetail){
+        text = if (isMetail) {
             val grams = it.weight
             val rate = SharedPreferencesManager.getInstance().getRate(vm.karat)
-            val estimatedValue = grams.toFloat()*rate.toFloat()*0.025
-            val roundOffEstimatedValue = Utils.roundOff(estimatedValue,2)
+            val estimatedValue = grams.toFloat() * rate.toFloat() * 0.025
+            val roundOffEstimatedValue = Utils.roundOff(estimatedValue, 2)
             "₹ ${roundOffEstimatedValue}"
-        }else{
+        } else {
             "₹ ${vm.price}"
         }
     }

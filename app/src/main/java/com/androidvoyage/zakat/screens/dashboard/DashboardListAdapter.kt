@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.androidvoyage.zakat.databinding.ItemDashboardBinding
+import com.androidvoyage.zakat.model.NisabCategoryItem
 
 
 open class DashboardListAdapter(
     private val clickListener: DashboardClickListener
-) : ListAdapter<String, DashboardListAdapter.ViewHolder>(
+) : ListAdapter<NisabCategoryItem, DashboardListAdapter.ViewHolder>(
     PassbookDiffCallback()
 ) {
 
@@ -23,12 +24,12 @@ open class DashboardListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(getItem(position), clickListener)
 
-    class PassbookDiffCallback : DiffUtil.ItemCallback<String>() {
-        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean =
+    class PassbookDiffCallback : DiffUtil.ItemCallback<NisabCategoryItem>() {
+        override fun areItemsTheSame(oldItem: NisabCategoryItem, newItem: NisabCategoryItem): Boolean =
             oldItem == newItem
 
-        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean =
-            oldItem == newItem
+        override fun areContentsTheSame(oldItem: NisabCategoryItem, newItem: NisabCategoryItem): Boolean =
+            oldItem.type == newItem.type
     }
 
     class ViewHolder private constructor(val binding: ItemDashboardBinding) :
@@ -37,10 +38,10 @@ open class DashboardListAdapter(
 
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
         fun bind(
-            item: String,
+            item: NisabCategoryItem,
             clickListener: DashboardClickListener
         ) {
-            binding.key = item
+            binding.item = item
             binding.click = clickListener
             binding.executePendingBindings()
         }
