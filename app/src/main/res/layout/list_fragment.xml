@@ -15,7 +15,7 @@
         tools:context=".screens.list.ListFragment">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/iv_back"
             android:layout_width="56dp"
             android:layout_height="56dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/iv_back"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -53,6 +53,7 @@
             tools:listitem="@layout/item_list_nisab" />
 
         <ImageView
+            android:id="@+id/iv_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/back_round"

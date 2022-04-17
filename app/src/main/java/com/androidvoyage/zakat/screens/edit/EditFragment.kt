@@ -75,6 +75,8 @@ class EditFragment : Fragment() {
             Utils.showToast(requireActivity(),"Saved!",true)
             requireActivity().onBackPressed()
         }
+
+        binding.ivBack.setOnClickListener { requireActivity().onBackPressed() }
     }
 
     @OptIn(ExperimentalFoundationApi::class)

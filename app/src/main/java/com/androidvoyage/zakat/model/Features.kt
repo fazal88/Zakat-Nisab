@@ -14,11 +14,11 @@ object Features {
     const val PREF_SHARES_STOCKS: String = "Shares & Stocks"
     const val PREF_PROPERTIES_CARS: String = "Properties & Cars"
 
-    const val PREF_24_K: String = "24 Karat or 999"
-    const val PREF_22_K: String = "22 Karat or 916"
-    const val PREF_18_K: String = "18 Karat or 750"
-    const val PREF_14_K: String = "14 Karat or 583"
-    const val PREF_23_KDM: String = "23 KDM or 18 Karat"
+    const val PREF_24_K: String = "24 Karat / 999"
+    const val PREF_22_K: String = "22 Karat / 916"
+    const val PREF_18_K: String = "18 Karat / 750"
+    const val PREF_14_K: String = "14 Karat / 583"
+    const val PREF_23_KDM: String = "23 KDM"
     const val PREF_SILVER: String = "Silver"
 
     val prefTitleList = listOf(

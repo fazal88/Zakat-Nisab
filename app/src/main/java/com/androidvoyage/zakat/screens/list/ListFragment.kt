@@ -8,8 +8,10 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.databinding.ListFragmentBinding
+import com.androidvoyage.zakat.util.onClickWithAnimation
 
 @ExperimentalFoundationApi
 class ListFragment : Fragment() {
@@ -44,6 +46,15 @@ class ListFragment : Fragment() {
                 viewModel.adapter.submitList(it)
             }
         })
+
+        binding.ivAdd.onClickWithAnimation {
+            binding.root.findNavController().navigate(ListFragmentDirections.actionListFragmentToEditFragment())
+        }
+
+        binding.ivBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
     }
 
 }

@@ -17,6 +17,15 @@
         android:layout_height="match_parent"
         tools:context=".screens.edit.EditFragment">
 
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_back" />
+
         <TextView
             android:id="@+id/tv_title_edit"
             android:layout_width="0dp"
@@ -28,7 +37,7 @@
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_back"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

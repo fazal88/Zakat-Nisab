@@ -294,6 +294,13 @@ fun View.setColorFromKey(type: String?) {
     }
 }
 
+@BindingAdapter("setPuritySection")
+fun View.setPuritySection(type: String?) {
+    type?.let {
+        visibility = if (type == Features.PREF_GOLD_SILVER) View.VISIBLE else View.GONE
+    }
+}
+
 @BindingAdapter("setIconFromKey")
 fun ImageView.setIconFromKey(type: String?) {
     type?.let {

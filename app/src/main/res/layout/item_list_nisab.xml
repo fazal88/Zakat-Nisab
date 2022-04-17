@@ -84,6 +84,7 @@
 
         <LinearLayout
             android:id="@+id/ll_weight"
+            setPuritySection="@{vm.type}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -107,22 +108,24 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="916 / 22 karat"
-                android:textColor="@color/black"
+                android:text="@{vm.purity}"
+                android:textColor="@color/Blue3"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ll_weight" />
+                app:layout_constraintTop_toBottomOf="@+id/ll_weight"
+                tools:text="916 / 22 karat" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="7.86 gram"
-                android:textColor="@color/black"
+                android:text="@{vm.weight}"
+                android:textColor="@color/Blue3"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ll_weight" />
+                app:layout_constraintTop_toBottomOf="@+id/ll_weight"
+                tools:text="7.86 gram" />
 
         </LinearLayout>
 
