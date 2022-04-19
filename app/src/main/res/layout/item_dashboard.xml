@@ -50,7 +50,6 @@
             app:layout_constraintTop_toTopOf="@+id/imageView"
             tools:text="Last updated : 23rd April 2022" />
 
-
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="0dp"
