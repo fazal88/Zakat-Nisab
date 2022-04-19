@@ -43,7 +43,7 @@ public class SpinnerListAdapter extends RecyclerView.Adapter<SpinnerListAdapter.
 
         try {
             holder.tvAreaName.setText(listArea.get(position));
-            holder.itemView.setOnClickListener(v -> {
+            UtilsKt.setOnClickAnimateListener(holder.itemView, view -> {
                 onAreaSelectListener.onSelected(listArea.get(position));
             });
         } catch (Exception e) {

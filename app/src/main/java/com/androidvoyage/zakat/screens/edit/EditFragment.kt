@@ -46,7 +46,7 @@ class EditFragment : Fragment() {
         (requireActivity() as MainActivity).hideNavBottom(false)
 
 
-        binding.tvSpnType.setOnClickListener {
+        binding.tvSpnType.onClickWithAnimation {
             val list = arrayListOf<String>()
             list.addAll(Features.prefTitleList)
             showListSelectionDialog(requireContext(),list ,object : OnSelectListener{
@@ -59,7 +59,7 @@ class EditFragment : Fragment() {
         }
 
 
-        binding.tvSpnKarat.setOnClickListener {
+        binding.tvSpnKarat.onClickWithAnimation {
             val list = arrayListOf<String>()
             list.addAll(Features.prefKaratList)
             showListSelectionDialog(requireContext(),list ,object : OnSelectListener{
@@ -76,7 +76,7 @@ class EditFragment : Fragment() {
             requireActivity().onBackPressed()
         }
 
-        binding.ivBack.setOnClickListener { requireActivity().onBackPressed() }
+        binding.ivBack.onClickWithAnimation { requireActivity().onBackPressed() }
     }
 
     @OptIn(ExperimentalFoundationApi::class)

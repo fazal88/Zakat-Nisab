@@ -51,7 +51,7 @@ class ListFragment : Fragment() {
             binding.root.findNavController().navigate(ListFragmentDirections.actionListFragmentToEditFragment())
         }
 
-        binding.ivBack.setOnClickListener {
+        binding.ivBack.onClickWithAnimation {
             requireActivity().onBackPressed()
         }
 
