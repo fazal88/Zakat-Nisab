@@ -74,7 +74,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-
             android:text="24K or 999"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -87,8 +86,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-
-            android:text="24K or 999"
+            android:text="22K or 916"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +99,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="4dp"
-
             android:text="5000 ₹/gram"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -115,7 +112,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-
             android:text="4500 ₹/gram"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -130,8 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-
-            android:text="18K or 999"
+            android:text="18K or 750"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/tv_label_14"
@@ -143,8 +138,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-
-            android:text="18K or 999"
+            android:text="14K or 583"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -157,7 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="4dp"
-            android:text="5000 ₹/gram"
+            android:text="4000 ₹/gram"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -171,15 +165,66 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
+            android:text="3000 ₹/gram"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_18"
+            app:layout_constraintTop_toTopOf="@+id/tv_18" />
 
-            android:text="4500 ₹/gram"
+        <TextView
+            android:id="@+id/tv_label_23"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:text="23 KDM"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_label_14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_18" />
+
+        <TextView
+            android:id="@+id/tv_label_silver"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="Silver"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_label_23"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_23" />
+
+        <TextView
+            android:id="@+id/tv_23"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="4dp"
+            android:text="3500 ₹/gram"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tv_silver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_label_23" />
+
+        <TextView
+            android:id="@+id/tv_silver"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="70 ₹/gram"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/tv_tola"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_18"
-            app:layout_constraintTop_toTopOf="@+id/tv_18" />
+            app:layout_constraintStart_toEndOf="@+id/tv_23"
+            app:layout_constraintTop_toTopOf="@+id/tv_23" />
 
 
         <TextView

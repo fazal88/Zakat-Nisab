@@ -35,4 +35,13 @@ interface NisabDao {
 
     @Query("SELECT * FROM category")
     fun getNisabCategory() : LiveData<List<NisabCategoryItem>>
+
+    @Insert
+    suspend fun insertNisabRate(item : NisabRateItem)
+
+    @Update
+    suspend fun updateNisabRate(item : NisabCategoryItem)
+
+    @Query("SELECT * FROM rates")
+    fun getNisabRates() : LiveData<NisabRateItem>
 }

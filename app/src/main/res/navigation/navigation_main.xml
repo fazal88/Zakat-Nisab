@@ -46,6 +46,9 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/faqFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_editFragment"
+            app:destination="@id/editFragment" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"
