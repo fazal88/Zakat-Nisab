@@ -66,9 +66,8 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/editFragment" />
-        <argument android:name="type"
-            app:argType="string"
-            android:defaultValue=" " />
+        <argument android:name="nisabType"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/editFragment"

@@ -6,6 +6,7 @@ object Features {
 
     const val OUNCE_TO_GRAM : Float = 0.0353F
 
+    const val PREF_OVER_ALL: String = "Over All"
     const val PREF_CASH_IN_HAND: String = "Cash in Hand"
     const val PREF_GOLD_SILVER: String = "Gold & Silver"
     const val PREF_SAVINGS_FUNDS: String = "Savings & Funds"

@@ -55,16 +55,16 @@ class DashboardFragment : Fragment() {
         viewModel.clickedFeature.observe(viewLifecycleOwner, Observer {
             it?.let {
                 viewModel.clickedFeature.postValue(null)
-                (requireActivity() as MainActivity).navController.navigate(DashboardFragmentDirections.actionDashboardFragmentToListFragment())
+                (requireActivity() as MainActivity).navController.navigate(DashboardFragmentDirections.actionDashboardFragmentToListFragment(it))
             }
         })
 
-        viewModel.clickedAddFeature.observe(viewLifecycleOwner, Observer {
+        /*viewModel.clickedAddFeature.observe(viewLifecycleOwner, Observer {
             it?.let {
                 viewModel.clickedAddFeature.postValue(null)
                 (requireActivity() as MainActivity).navController.navigate(DashboardFragmentDirections.actionDashboardFragmentToEditFragment())
             }
-        })
+        })*/
     }
 
     private fun showPopupMenu(infoView: View) {
