@@ -28,7 +28,7 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.core.graphics.ColorUtils
 import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.feature_nisab.domain.model.Nisab
-import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
+import com.androidvoyage.zakat.model.Features
 
 @Composable
 fun NisabItem(

@@ -32,7 +32,7 @@ import com.androidvoyage.zakat.feature_nisab.presentation.all_nisab.NisabScreen
 import com.androidvoyage.zakat.feature_nisab.presentation.home_screen.HomeScreen
 import com.androidvoyage.zakat.feature_nisab.presentation.home_screen.component.AppTopBar
 import com.androidvoyage.zakat.feature_nisab.presentation.home_screen.component.CenterButton
-import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
+import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.ui.theme.ColorWhite
 import com.androidvoyage.zakat.ui.theme.MyZakatTheme
 import com.androidvoyage.zakat.ui.theme.PrimaryColor

@@ -290,7 +290,7 @@ fun TextView.setAmountFromPref(type: Long?) {
 @BindingAdapter("setColorFromKey")
 fun View.setColorFromKey(type: String?) {
     type?.let {
-        backgroundTintList = ContextCompat.getColorStateList(context, Features.getColor(type))
+        backgroundTintList = ContextCompat.getColorStateList(context, Features.getColorRes(type))
     }
 }
 

@@ -25,7 +25,7 @@ import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.ZakatApp
 import com.androidvoyage.zakat.feature_nisab.presentation.add_nisab.components.BottomSheetNisabType
 import com.androidvoyage.zakat.feature_nisab.presentation.add_nisab.components.TransparentHintTextField
-import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
+import com.androidvoyage.zakat.model.Features
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

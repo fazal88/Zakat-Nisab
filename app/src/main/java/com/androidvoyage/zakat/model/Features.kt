@@ -1,6 +1,8 @@
 package com.androidvoyage.zakat.model
 
+import androidx.compose.ui.graphics.Color
 import com.androidvoyage.zakat.R
+import com.androidvoyage.zakat.ui.theme.*
 
 object Features {
 
@@ -70,7 +72,36 @@ object Features {
         }
     }
 
-    fun getColor(key : String) : Int{
+    fun getColor(key : String) : Color {
+        return when (key) {
+            Features.PREF_CASH_IN_HAND -> {
+                Beige3
+            }
+            Features.PREF_GOLD_SILVER -> {
+                Blue3
+            }
+            Features.PREF_SAVINGS_FUNDS -> {
+                Pink3
+            }
+            Features.PREF_BUSINESS_ASSETS -> {
+                LightGreen3
+            }
+            Features.PREF_DEBT_OWNED -> {
+                OrangeYellow3
+            }
+            Features.PREF_SHARES_STOCKS -> {
+                BlueViolet3
+            }
+            Features.PREF_PROPERTIES_CARS -> {
+                Violet3
+            }
+            else -> {
+                PrimaryColor
+            }
+        }
+    }
+
+    fun getColorRes(key : String) : Int{
         return when (key) {
             PREF_CASH_IN_HAND -> {
                 R.color.Beige3

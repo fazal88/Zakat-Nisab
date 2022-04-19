@@ -25,7 +25,7 @@ import androidx.navigation.NavController
 import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.feature_nisab.presentation.Screen
 import com.androidvoyage.zakat.feature_nisab.presentation.home_screen.component.*
-import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
+import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.ui.theme.*
 import kotlin.random.Random
 

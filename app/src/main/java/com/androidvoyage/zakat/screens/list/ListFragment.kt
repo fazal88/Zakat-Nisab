@@ -58,7 +58,7 @@ class ListFragment : Fragment() {
 
         binding.ivAdd.onClickWithAnimation {
             binding.root.findNavController()
-                .navigate(ListFragmentDirections.actionListFragmentToEditFragment())
+                .navigate(ListFragmentDirections.actionListFragmentToEditFragment(args.nisabType))
         }
 
         binding.ivBack.onClickWithAnimation {

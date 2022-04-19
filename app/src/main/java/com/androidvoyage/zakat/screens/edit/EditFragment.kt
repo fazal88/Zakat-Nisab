@@ -1,16 +1,16 @@
 package com.androidvoyage.zakat.screens.edit
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.ExperimentalFoundationApi
-import com.androidvoyage.zakat.screens.main.MainActivity
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.androidvoyage.zakat.databinding.EditFragmentBinding
-import com.androidvoyage.zakat.feature_nisab.presentation.util.Features
-import com.androidvoyage.zakat.feature_nisab.presentation.util.Features.PREF_GOLD_SILVER
+import com.androidvoyage.zakat.model.Features
+import com.androidvoyage.zakat.model.Features.PREF_GOLD_SILVER
+import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.util.OnSelectListener
 import com.androidvoyage.zakat.util.Utils
 import com.androidvoyage.zakat.util.onClickWithAnimation
@@ -29,12 +29,14 @@ class EditFragment : Fragment() {
         ViewModelProvider(this)[EditViewModel::class.java]
     }
     private lateinit var binding: EditFragmentBinding
+    private lateinit var args : EditFragmentArgs
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = EditFragmentBinding.inflate(inflater,container,false)
+        args = arguments?.let { EditFragmentArgs.fromBundle(it) }!!
         return binding.root
     }
 
@@ -45,20 +47,15 @@ class EditFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         (requireActivity() as MainActivity).hideNavBottom(false)
 
-
         binding.tvSpnType.onClickWithAnimation {
             val list = arrayListOf<String>()
             list.addAll(Features.prefTitleList)
             showListSelectionDialog(requireContext(),list ,object : OnSelectListener{
                 override fun onSelected(item: String) {
-                    binding.tvSpnType.text = item
-                    viewModel.isMetal.postValue(item == PREF_GOLD_SILVER)
-                    viewModel.setType(item)
+                    setSpinner(item)
                 }
             })
         }
-
-
         binding.tvSpnKarat.onClickWithAnimation {
             val list = arrayListOf<String>()
             list.addAll(Features.prefKaratList)
@@ -69,14 +66,21 @@ class EditFragment : Fragment() {
                 }
             })
         }
-
         binding.tvBtnSave.onClickWithAnimation {
             save()
             Utils.showToast(requireActivity(),"Saved!",true)
             requireActivity().onBackPressed()
         }
-
         binding.ivBack.onClickWithAnimation { requireActivity().onBackPressed() }
+
+        setSpinner(args.nisabType)
+    }
+
+    private fun setSpinner(item: String) {
+        val type = if (item == Features.PREF_OVER_ALL) "" else item
+        binding.tvSpnType.text = type
+        viewModel.isMetal.postValue(type == PREF_GOLD_SILVER)
+        viewModel.setType(type)
     }
 
     @OptIn(ExperimentalFoundationApi::class)

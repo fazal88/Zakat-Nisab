@@ -33,13 +33,6 @@
             app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/listFragment" />
         <action
-            android:id="@+id/action_dashboardFragment_to_editFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:destination="@id/editFragment" />
-        <action
             android:id="@+id/action_dashboardFragment_to_aboutFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -75,9 +68,8 @@
         android:label="edit_fragment"
         tools:layout="@layout/edit_fragment" >
         <argument
-            android:name="type"
-            app:argType="string"
-            android:defaultValue=" " />
+            android:name="nisabType"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

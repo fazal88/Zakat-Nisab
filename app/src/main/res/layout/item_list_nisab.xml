@@ -134,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="@string/str_purchase_cost"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
