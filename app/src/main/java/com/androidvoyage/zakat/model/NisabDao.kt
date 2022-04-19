@@ -26,4 +26,13 @@ interface NisabDao {
 
     @Query("SELECT * FROM nisab WHERE type IN (:nisabType)")
     fun getNisabs(nisabType : String) : LiveData<List<NisabItem>>
+
+    @Insert
+    suspend fun insertNisabCategory(item : NisabCategoryItem)
+
+    @Update
+    suspend fun updateNisabCategory(item : NisabCategoryItem)
+
+    @Query("SELECT * FROM category")
+    fun getNisabCategory() : LiveData<List<NisabCategoryItem>>
 }

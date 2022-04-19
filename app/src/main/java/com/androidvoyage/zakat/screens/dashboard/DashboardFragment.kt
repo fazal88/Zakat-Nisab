@@ -1,6 +1,7 @@
 package com.androidvoyage.zakat.screens.dashboard
 
 import android.content.Context
+import android.database.sqlite.SQLiteConstraintException
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -12,9 +13,15 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.databinding.DashboardFragmentBinding
+import com.androidvoyage.zakat.model.Features
+import com.androidvoyage.zakat.model.NisabCategoryItem
+import com.androidvoyage.zakat.screens.main.MainActivity
+import com.androidvoyage.zakat.util.Utils
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @ExperimentalFoundationApi
 class DashboardFragment : Fragment() {
@@ -45,17 +52,39 @@ class DashboardFragment : Fragment() {
 
         viewModel.isOptionClick.observe(viewLifecycleOwner, Observer {
             it?.let {
-                if(it){
+                if (it) {
                     showPopupMenu(binding.ivOption)
                     viewModel.isOptionClick.postValue(false)
                 }
             }
         })
 
+        (requireActivity() as MainActivity).database.nisabDao().getNisabCategory()
+            .observe(viewLifecycleOwner) {
+                it?.let {
+                    if(it.isEmpty()){
+                        Utils.showToast(requireContext(),"empty",false)
+                        CoroutineScope(Dispatchers.Default).launch {
+                            for (i in Features.prefTitleList) {
+                                try {
+                                    (requireActivity() as MainActivity).database.nisabDao()
+                                        .insertNisabCategory(NisabCategoryItem(i))
+                                } catch (e: SQLiteConstraintException) {
+                                }
+                            }
+                        }
+                    }else{
+                        viewModel.adapter.submitList(it)
+                    }
+                }
+            }
+
         viewModel.clickedFeature.observe(viewLifecycleOwner, Observer {
             it?.let {
                 viewModel.clickedFeature.postValue(null)
-                (requireActivity() as MainActivity).navController.navigate(DashboardFragmentDirections.actionDashboardFragmentToListFragment(it))
+                (requireActivity() as MainActivity).navController.navigate(
+                    DashboardFragmentDirections.actionDashboardFragmentToListFragment(it)
+                )
             }
         })
 
@@ -68,7 +97,8 @@ class DashboardFragment : Fragment() {
     }
 
     private fun showPopupMenu(infoView: View) {
-        val inflater = requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val inflater =
+            requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflater.inflate(R.layout.layout_popup_menu, null)
         val filterPopup = PopupWindow(
             view,

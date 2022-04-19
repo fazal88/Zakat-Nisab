@@ -30,12 +30,6 @@ class DashboardViewModel : ViewModel() {
             0,
             System.currentTimeMillis()
         )
-
-        val list = mutableListOf<NisabCategoryItem>()
-        for (i in Features.prefTitleList){
-            list.add(NisabCategoryItem(i,0,0,System.currentTimeMillis()))
-        }
-        adapter.submitList(list)
     }
 
     fun onClickOption() {

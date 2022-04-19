@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
  * Created by Fazal on 16/02/22.
  * Copyright (c) 2022 PayNearby. All rights reserved.
  */
-@Database(entities = [NisabItem::class], version = 1)
+@Database(entities = [NisabItem::class,NisabCategoryItem::class], version = 1)
 abstract class NisabDatabase : RoomDatabase() {
 
     abstract fun nisabDao(): NisabDao

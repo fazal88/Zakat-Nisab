@@ -1,12 +1,20 @@
 package com.androidvoyage.zakat.model
 
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
+
 /**
  * Created by Fazal on 16/04/22.
  * Copyright (c) 2022 PayNearby. All rights reserved.
  */
+@Entity(tableName = "category")
+@Parcelize
 data class NisabCategoryItem(
-    var type : String,
-    val totalValue : Long,
-    val zakatValue : Long,
-    val lastUpdated : Long,
-)
+    @PrimaryKey
+    val type : String,
+    val totalValue : Long = 0,
+    val zakatValue : Long = 0,
+    val lastUpdated : Long = System.currentTimeMillis(),
+) : Parcelable
