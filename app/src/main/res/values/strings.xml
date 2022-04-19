@@ -9,6 +9,7 @@
     <string name="str_weight_in_grams_1_tola_10_grams_at_present">Weight in grams <b>(1 Tola = 10 grams at present)</b></string>
     <string name="str_list_all_nisab">List All Nisab</string>
     <string name="str_cost">Price/Value : ₹%s</string>
+    <string name="str_concate_rupee">₹  ₹%s</string>
     <string name="str_hint">Enter Name</string>
     <string name="str_hint_cost">Enter Cost</string>
     <string name="str_hint_select_nisab">Select Nisab Type</string>

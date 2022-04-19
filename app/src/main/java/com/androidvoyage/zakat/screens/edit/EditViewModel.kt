@@ -9,20 +9,25 @@ class EditViewModel : ViewModel() {
     val isMetal = MutableLiveData(false)
 
 
-    val nisanItem = MutableLiveData(NisabItem())
+    val nisabItem  = MutableLiveData(NisabItem())
 
 
     fun setType(item : String) {
-        nisanItem.value?.type = item
+        nisabItem.value?.type = item
         notifyModel()
     }
 
     fun setKarat(item: String) {
-        nisanItem.value?.purity = item
+        nisabItem.value?.purity = item
         notifyModel()
     }
 
     private fun notifyModel() {
-        nisanItem.postValue(nisanItem.value)
+        nisabItem.postValue(nisabItem.value)
+    }
+
+    fun getNisab() : NisabItem {
+        nisabItem.value?.estimatedValue = nisabItem.value?.price!!
+        return nisabItem.value!!
     }
 }

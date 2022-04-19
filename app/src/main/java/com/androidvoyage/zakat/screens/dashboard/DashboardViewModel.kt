@@ -27,7 +27,6 @@ class DashboardViewModel : ViewModel() {
         overview.value = NisabCategoryItem(
             Features.PREF_OVER_ALL,
             0,
-            0,
             System.currentTimeMillis()
         )
     }

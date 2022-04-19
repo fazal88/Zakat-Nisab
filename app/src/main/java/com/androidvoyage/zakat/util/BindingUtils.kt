@@ -22,6 +22,7 @@ import com.androidvoyage.zakat.pref.SharedPreferencesManager
 import com.bumptech.glide.Glide
 import java.util.*
 import kotlin.math.max
+import kotlin.math.roundToLong
 
 val TAG: String = "BindingUtils"
 
@@ -271,6 +272,13 @@ fun ImageView.setImageUrl(item: Int?) {
     }
 }
 
+@BindingAdapter("setZakatVisibile")
+fun TextView.setZakatVisibile(type: String?) {
+    type?.let {
+        visibility = if(type == Features.PREF_OVER_ALL) View.VISIBLE else View.GONE
+    }
+}
+
 @BindingAdapter("setAmountFromPref")
 fun TextView.setAmountFromPref(type: String?) {
     type?.let {
@@ -326,6 +334,11 @@ fun TextView.setEstimatedValue(vm: NisabItem?) {
 }
 
 @BindingAdapter("setEstimatedZakat")
+fun TextView.setEstimatedZakat(totalValue : Long?){
+    text = "₹ ${totalValue?.times(0.025)?.roundToLong()}"
+}
+
+@BindingAdapter("setEstimatedZakat")
 fun TextView.setEstimatedZakat(vm: NisabItem?) {
     vm?.let {
         val isMetail = it.type == Features.PREF_GOLD_SILVER
@@ -335,7 +348,7 @@ fun TextView.setEstimatedZakat(vm: NisabItem?) {
             val rate = SharedPreferencesManager.getInstance().getRate(vm.purity)
             val estimatedValue = grams.toFloat() * rate.toFloat() * 0.025
             val roundOffEstimatedValue = Utils.roundOff(estimatedValue, 2)
-            "₹ ${roundOffEstimatedValue}"
+            "₹ $roundOffEstimatedValue"
         } else {
             "₹ ${vm.price}"
         }

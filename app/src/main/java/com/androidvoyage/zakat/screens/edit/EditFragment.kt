@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.androidvoyage.zakat.databinding.EditFragmentBinding
 import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.Features.PREF_GOLD_SILVER
+import com.androidvoyage.zakat.model.NisabCategoryItem
 import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.util.OnSelectListener
 import com.androidvoyage.zakat.util.Utils
@@ -18,6 +19,7 @@ import com.androidvoyage.zakat.util.showListSelectionDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.math.roundToLong
 
 class EditFragment : Fragment() {
 
@@ -25,17 +27,17 @@ class EditFragment : Fragment() {
         fun newInstance() = EditFragment()
     }
 
-    private val viewModel: EditViewModel  by lazy {
+    private val viewModel: EditViewModel by lazy {
         ViewModelProvider(this)[EditViewModel::class.java]
     }
     private lateinit var binding: EditFragmentBinding
-    private lateinit var args : EditFragmentArgs
+    private lateinit var args: EditFragmentArgs
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = EditFragmentBinding.inflate(inflater,container,false)
+        binding = EditFragmentBinding.inflate(inflater, container, false)
         args = arguments?.let { EditFragmentArgs.fromBundle(it) }!!
         return binding.root
     }
@@ -50,7 +52,7 @@ class EditFragment : Fragment() {
         binding.tvSpnType.onClickWithAnimation {
             val list = arrayListOf<String>()
             list.addAll(Features.prefTitleList)
-            showListSelectionDialog(requireContext(),list ,object : OnSelectListener{
+            showListSelectionDialog(requireContext(), list, object : OnSelectListener {
                 override fun onSelected(item: String) {
                     setSpinner(item)
                 }
@@ -59,16 +61,36 @@ class EditFragment : Fragment() {
         binding.tvSpnKarat.onClickWithAnimation {
             val list = arrayListOf<String>()
             list.addAll(Features.prefKaratList)
-            showListSelectionDialog(requireContext(),list ,object : OnSelectListener{
+            showListSelectionDialog(requireContext(), list, object : OnSelectListener {
                 override fun onSelected(item: String) {
                     binding.tvSpnKarat.text = item
                     viewModel.setKarat(item)
                 }
             })
         }
+        (requireActivity() as MainActivity).database.nisabDao().getNisabs(viewModel.getNisab().type)
+            .observe(
+                viewLifecycleOwner
+            ) {
+                it?.let {
+                    var total = 0.0
+                    for (i in it) {
+                        total += i.estimatedValue.toDouble()
+                    }
+                    CoroutineScope(Dispatchers.Default).launch {
+                        (requireActivity() as MainActivity).database.nisabDao().updateNisabCategory(
+                            NisabCategoryItem(
+                                viewModel.getNisab().type,
+                                total.roundToLong(),
+                                System.currentTimeMillis()
+                            )
+                        )
+                    }
+                }
+            }
         binding.tvBtnSave.onClickWithAnimation {
             save()
-            Utils.showToast(requireActivity(),"Saved!",true)
+            Utils.showToast(requireActivity(), "Saved!", true)
             requireActivity().onBackPressed()
         }
         binding.ivBack.onClickWithAnimation { requireActivity().onBackPressed() }
@@ -86,7 +108,10 @@ class EditFragment : Fragment() {
     @OptIn(ExperimentalFoundationApi::class)
     private fun save() {
         CoroutineScope(Dispatchers.Default).launch {
-            (requireActivity() as MainActivity).database.nisabDao().insertNisab(viewModel.nisanItem.value!!)
+            val nisab = viewModel.getNisab()
+            (requireActivity() as MainActivity).database.nisabDao().insertNisab(nisab)
+
+
         }
     }
 

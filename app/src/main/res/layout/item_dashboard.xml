@@ -96,27 +96,32 @@
             android:id="@+id/tv_label_zakat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="@string/str_estimated_zakat"
             android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_zakat"
             app:layout_constraintStart_toStartOf="@id/tv_label_value"
-            app:layout_constraintTop_toBottomOf="@+id/tv_label_value" />
+            app:layout_constraintTop_toTopOf="@+id/tv_zakat"
+            app:setZakatVisibile="@{item.type}"
+            tools:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_zakat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:gravity="end"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_label_zakat"
+            setEstimatedZakat="@{item.totalValue}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_label_zakat"
-            app:layout_constraintTop_toTopOf="@+id/tv_label_zakat"
-            app:setAmountFromPref="@{item.zakatValue}"
-            tools:text="2000" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_value"
+            app:setZakatVisibile="@{item.type}"
+            tools:text="2000"
+            tools:visibility="gone" />
 
         <Space
             android:layout_width="0dp"

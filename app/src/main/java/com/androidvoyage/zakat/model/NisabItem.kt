@@ -21,5 +21,5 @@ data class NisabItem(
     var purity: String = "",
     var weight: String = "",
     var price: String = "",
-    var estimatedValue: Long = 0
+    var estimatedValue: String = ""
 ) : Parcelable

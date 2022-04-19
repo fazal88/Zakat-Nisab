@@ -15,6 +15,5 @@ data class NisabCategoryItem(
     @PrimaryKey
     val type : String,
     val totalValue : Long = 0,
-    val zakatValue : Long = 0,
     val lastUpdated : Long = System.currentTimeMillis(),
 ) : Parcelable
