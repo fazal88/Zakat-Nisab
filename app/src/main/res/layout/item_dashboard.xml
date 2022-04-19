@@ -72,6 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/str_total_value"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -97,6 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/str_estimated_zakat"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@id/tv_label_value"
             app:layout_constraintTop_toBottomOf="@+id/tv_label_value" />
 
