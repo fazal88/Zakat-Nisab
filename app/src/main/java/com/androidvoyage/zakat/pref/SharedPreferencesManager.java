@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.androidvoyage.zakat.model.Features;
+
 import javax.inject.Singleton;
 
 /**
@@ -51,4 +53,11 @@ public class SharedPreferencesManager {
         return sSharedPreferenceEncrypted.getString(key, "0");
     }
 
+    public void setTotal( double totalOverAll) {
+        sSharedPreferenceEncrypted.edit().putString(Features.PREF_OVER_ALL, totalOverAll + "").apply();
+    }
+
+    public String getTotal(){
+        return sSharedPreferenceEncrypted.getString(Features.PREF_OVER_ALL, "0");
+    }
 }

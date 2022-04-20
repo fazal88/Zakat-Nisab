@@ -68,26 +68,6 @@ class EditFragment : Fragment() {
                 }
             })
         }
-        (requireActivity() as MainActivity).database.nisabDao().getNisabs(viewModel.getNisab().type)
-            .observe(
-                viewLifecycleOwner
-            ) {
-                it?.let {
-                    var total = 0.0
-                    for (i in it) {
-                        total += i.estimatedValue.toDouble()
-                    }
-                    CoroutineScope(Dispatchers.Default).launch {
-                        (requireActivity() as MainActivity).database.nisabDao().updateNisabCategory(
-                            NisabCategoryItem(
-                                viewModel.getNisab().type,
-                                total,
-                                System.currentTimeMillis()
-                            )
-                        )
-                    }
-                }
-            }
         binding.tvBtnSave.onClickWithAnimation {
             save()
             Utils.showToast(requireActivity(), "Saved!", true)
@@ -109,9 +89,8 @@ class EditFragment : Fragment() {
     private fun save() {
         CoroutineScope(Dispatchers.Default).launch {
             val nisab = viewModel.getNisab()
+            (requireActivity() as MainActivity).type = nisab.type
             (requireActivity() as MainActivity).database.nisabDao().insertNisab(nisab)
-
-
         }
     }
 

@@ -74,26 +74,6 @@
                     android:layout_marginHorizontal="16dp" />
 
                 <TextView
-                    android:id="@+id/tv_subtitle_overview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:paddingVertical="8dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/str_an_estimation"
-                    android:textColor="@color/primaryDarkColor"
-                    android:textSize="14sp" />
-
-                <include
-                    android:id="@+id/inc_overview"
-                    layout="@layout/item_dashboard"
-                    app:item="@{vm.overview}"
-                    app:click="@{vm.clickListener}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp" />
-
-                <TextView
                     android:id="@+id/tv_nisab"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

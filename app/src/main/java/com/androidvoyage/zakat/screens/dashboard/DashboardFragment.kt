@@ -68,10 +68,10 @@ class DashboardFragment : Fragment() {
                     if(it.isEmpty()){
                         Utils.showToast(requireContext(),"empty",false)
                         CoroutineScope(Dispatchers.Default).launch {
+                            (requireActivity() as MainActivity).database.nisabDao().insertNisabCategory(NisabCategoryItem(Features.PREF_OVER_ALL))
                             for (i in Features.prefTitleList) {
                                 try {
-                                    (requireActivity() as MainActivity).database.nisabDao()
-                                        .insertNisabCategory(NisabCategoryItem(i))
+                                    (requireActivity() as MainActivity).database.nisabDao().insertNisabCategory(NisabCategoryItem(i))
                                 } catch (e: SQLiteConstraintException) {
                                 }
                             }

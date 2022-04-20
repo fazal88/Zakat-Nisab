@@ -1,7 +1,6 @@
 package com.androidvoyage.zakat.screens.main
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.databinding.DataBindingUtil
@@ -10,22 +9,26 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.databinding.ActivityMainBinding
+import com.androidvoyage.zakat.model.Features
+import com.androidvoyage.zakat.model.NisabCategoryItem
 import com.androidvoyage.zakat.model.NisabDatabase
-import com.androidvoyage.zakat.screens.dashboard.DashboardFragmentDirections
-import com.androidvoyage.zakat.util.onClickWithAnimation
-import com.androidvoyage.zakat.util.visibleSlide
+import com.androidvoyage.zakat.pref.SharedPreferencesManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 @ExperimentalFoundationApi
 class MainActivity : AppCompatActivity() {
 
+    var type: String = Features.PREF_OVER_ALL
     private val TAG: String = "MainActivity"
     val viewModel by lazy {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
 
     private lateinit var binding: ActivityMainBinding
-    val database : NisabDatabase by lazy {
+    val database: NisabDatabase by lazy {
         NisabDatabase.getDatabase(this)
     }
 
@@ -36,27 +39,39 @@ class MainActivity : AppCompatActivity() {
         binding.vm = viewModel
         binding.lifecycleOwner = this
 
-        /*binding.ivBtnDashboard.onClickWithAnimation {
-            if (navController.currentDestination?.id != R.id.dashboardFragment) {
-                onBackPressed()
+        database.nisabDao().getNisabs()
+            .observe(
+                this
+            ) {
+                it?.let {
+                    var totalOverAll = 0.0
+                    var total = 0.0
+                    for (i in it) {
+                        totalOverAll += i.estimatedValue.toDouble()
+                        if (type == i.type) total += i.estimatedValue.toDouble()
+                    }
+                    CoroutineScope(Dispatchers.Default).launch {
+                        database.nisabDao().updateNisabCategory(
+                            NisabCategoryItem(
+                                type,
+                                total,
+                                System.currentTimeMillis()
+                            )
+                        )
+                        database.nisabDao().updateNisabCategory(
+                            NisabCategoryItem(
+                                Features.PREF_OVER_ALL,
+                                totalOverAll,
+                                System.currentTimeMillis()
+                            )
+                        )
+                    }
+                }
             }
-        }
-
-        binding.ivBtnList.onClickWithAnimation {
-            if (navController.currentDestination?.id != R.id.listFragment) {
-                navController.navigate(DashboardFragmentDirections.actionDashboardFragmentToListFragment())
-            }
-        }
-
-        binding.ivBtnAdd.onClickWithAnimation {
-            if (navController.currentDestination?.id != R.id.editFragment) {
-                navController.navigate(R.id.editFragment)
-            }
-        }*/
 
     }
 
-    fun hideNavBottom(isNavVisible : Boolean, isFabVisible : Boolean = false){
+    fun hideNavBottom(isNavVisible: Boolean, isFabVisible: Boolean = false) {
         /*if (binding.llBottomNav.visibility != View.VISIBLE && isNavVisible
             || binding.llBottomNav.visibility == View.VISIBLE && !isNavVisible) {
             visibleSlide(binding.llBottomNav, isNavVisible)

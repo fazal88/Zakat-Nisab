@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.NisabCategoryItem
+import com.androidvoyage.zakat.pref.SharedPreferencesManager
 
 class DashboardViewModel : ViewModel() {
 
@@ -11,7 +12,6 @@ class DashboardViewModel : ViewModel() {
 
     val clickedFeature = MutableLiveData<String>(null)
     val clickedAddFeature = MutableLiveData<String>(null)
-    val overview = MutableLiveData<NisabCategoryItem>()
     val clickListener = DashboardListAdapter.DashboardClickListener(
         { item ->
             clickedFeature.postValue(item)
@@ -22,14 +22,6 @@ class DashboardViewModel : ViewModel() {
     )
 
     val adapter = DashboardListAdapter(clickListener)
-
-    init {
-        overview.value = NisabCategoryItem(
-            Features.PREF_OVER_ALL,
-            0.0,
-            System.currentTimeMillis()
-        )
-    }
 
     fun onClickOption() {
         if (!isOptionClick.value!!) {

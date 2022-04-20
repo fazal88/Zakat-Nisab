@@ -74,6 +74,23 @@ fun visibleWithAnimation(view: View, isVisible: Boolean) {
 }
 
 
+@BindingAdapter("visibleIfMetal")
+fun visibleWithAnimation(view: View, type: String) {
+
+    val isVisible = type==Features.PREF_GOLD_SILVER
+    if (view.parent is ViewGroup) {
+        val transition: Transition = Fade()
+        transition.duration = 600
+        transition.addTarget(view)
+        TransitionManager.beginDelayedTransition(view.parent as ViewGroup, transition)
+    }
+
+    view.visibility = if (isVisible) View.VISIBLE else View.GONE
+}
+
+
+
+
 @BindingAdapter("visibleSlide")
 fun visibleSlide(view: View, isVisible: Boolean) {
 

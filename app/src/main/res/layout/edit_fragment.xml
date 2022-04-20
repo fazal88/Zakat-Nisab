@@ -7,9 +7,6 @@
         <variable
             name="vm"
             type="com.androidvoyage.zakat.screens.edit.EditViewModel" />
-        <variable
-            name="features"
-            type="com.androidvoyage.zakat.model.Features" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -90,7 +87,7 @@
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    visibleWithAnimation="@{vm.nisabItem.type == features.PREF_GOLD_SILVER}"
+                    visibleIfMetal="@{vm.nisabItem.type}"
                     android:text="Karat"/>
 
                 <TextView
@@ -98,14 +95,14 @@
                     style="@style/style_input_spinner"
                     android:layout_width="match_parent"
                     android:hint="Karat"
-                    visibleWithAnimation="@{vm.nisabItem.type == features.PREF_GOLD_SILVER}"
+                    visibleIfMetal="@{vm.nisabItem.type}"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    visibleWithAnimation="@{vm.nisabItem.type == features.PREF_GOLD_SILVER}"
+                    visibleIfMetal="@{vm.nisabItem.type}"
                     android:text="@string/str_weight_in_grams_1_tola_10_grams_at_present"/>
 
                 <EditText
@@ -114,7 +111,7 @@
                     android:hint="grams"
                     android:inputType="numberDecimal"
                     android:text="@={vm.nisabItem.weight}"
-                    visibleWithAnimation="@{vm.nisabItem.type == features.PREF_GOLD_SILVER}"
+                    visibleIfMetal="@{vm.nisabItem.type}"
                     android:layout_height="wrap_content"/>
 
                 <TextView
@@ -147,6 +144,7 @@
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:text="Estimated Zakat"/>
 
@@ -154,7 +152,7 @@
                     style="@style/style_title_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    setEstimatedZakat="@{vm.nisabItem}"
+                    android:visibility="gone"
                     tools:text="₹ 10,000"/>
 
             </LinearLayout>
