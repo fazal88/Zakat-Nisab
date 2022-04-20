@@ -81,7 +81,7 @@ class EditFragment : Fragment() {
                         (requireActivity() as MainActivity).database.nisabDao().updateNisabCategory(
                             NisabCategoryItem(
                                 viewModel.getNisab().type,
-                                total.roundToLong(),
+                                total,
                                 System.currentTimeMillis()
                             )
                         )

@@ -142,11 +142,10 @@
 
         <TextView
             android:id="@+id/tv_purchase_value"
-            setEstimatedValue="@{vm}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:text="@{@string/str_cost(vm.price)}"
+            setAmountFromPref="@{vm.price}"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"

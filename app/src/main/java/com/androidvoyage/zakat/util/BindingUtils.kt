@@ -288,9 +288,9 @@ fun TextView.setAmountFromPref(type: String?) {
 }
 
 @BindingAdapter("setAmountFromPref")
-fun TextView.setAmountFromPref(type: Long?) {
+fun TextView.setAmountFromPref(type: Double?) {
     type?.let {
-        val amountString = "₹ " + Utils.getAmountWithCommas(it)
+        val amountString = "₹ " + Utils.getAmountWithCommas(it.roundToLong())
         text = amountString
     }
 }
@@ -328,13 +328,13 @@ fun TextView.setEstimatedValue(vm: NisabItem?) {
             val roundOffEstimatedValue = Utils.roundOff(estimatedValue, 2)
             "₹ $roundOffEstimatedValue"
         } else {
-            "₹ ${vm.price}"
+            "₹ ${Utils.getAmountWithCommas(vm.price)}"
         }
     }
 }
 
 @BindingAdapter("setEstimatedZakat")
-fun TextView.setEstimatedZakat(totalValue : Long?){
+fun TextView.setEstimatedZakat(totalValue : Double?){
     text = "₹ ${totalValue?.times(0.025)?.roundToLong()}"
 }
 

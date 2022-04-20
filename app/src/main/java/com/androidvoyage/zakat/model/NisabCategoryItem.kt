@@ -14,6 +14,6 @@ import kotlinx.parcelize.Parcelize
 data class NisabCategoryItem(
     @PrimaryKey
     val type : String,
-    val totalValue : Long = 0,
+    val totalValue : Double = 0.0,
     val lastUpdated : Long = System.currentTimeMillis(),
 ) : Parcelable
