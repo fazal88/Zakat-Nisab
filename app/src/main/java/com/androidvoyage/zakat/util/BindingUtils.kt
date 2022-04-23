@@ -345,6 +345,36 @@ fun TextView.setEstimatedZakat(totalValue : Double?){
     text = "₹ ${totalValue?.times(0.025)?.roundToLong()}"
 }
 
+@BindingAdapter("set24KRate")
+fun TextView.set24KRate(i : String){
+    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_24_K)+" "+i
+}
+
+@BindingAdapter("set22KRate")
+fun TextView.set22KRate(i : String){
+    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_22_K)+" "+i
+}
+
+@BindingAdapter("set18KRate")
+fun TextView.set18KRate(i : String){
+    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_18_K)+" "+i
+}
+
+@BindingAdapter("set14KRate")
+fun TextView.set14KRate(i : String){
+    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_14_K)+" "+i
+}
+
+@BindingAdapter("set23KRate")
+fun TextView.set23KRate(i : String){
+    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_23_KDM)+" "+i
+}
+
+@BindingAdapter("setSilverRate")
+fun TextView.setSilverRate(i : String){
+    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_SILVER)+" "+i
+}
+
 @BindingAdapter("setEstimatedZakat")
 fun TextView.setEstimatedZakat(vm: NisabItem?) {
     vm?.let {

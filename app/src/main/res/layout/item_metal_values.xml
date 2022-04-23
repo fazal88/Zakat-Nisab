@@ -4,10 +4,6 @@
 
     <data>
 
-        <variable
-            name="vm"
-            type="com.androidvoyage.zakat.screens.dashboard.DashboardViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -101,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{@string/str_per_gram(vm.rate24)}"
+            set24KRate="@{@string/str_rupee_per_gram}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/tv_22"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +108,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:text="@{@string/str_per_gram(vm.rate22)}"
+            set22KRate="@{@string/str_rupee_per_gram}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_24"
@@ -151,7 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{@string/str_per_gram(vm.rate18)}"
+            set18KRate="@{@string/str_rupee_per_gram}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/tv_14"
             app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
-            android:text="@{@string/str_per_gram(vm.rate14)}"
+            set14KRate="@{@string/str_rupee_per_gram}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_18"
@@ -202,7 +198,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{@string/str_per_gram(vm.rate23)}"
+            set23KRate="@{@string/str_rupee_per_gram}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/tv_silver"
             app:layout_constraintStart_toStartOf="parent"
@@ -214,7 +210,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
-            android:text="@{@string/str_per_gram(vm.rateSilver)}"
+            setSilverRate="@{@string/str_rupee_per_gram}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/tv_tola"
             app:layout_constraintEnd_toEndOf="parent"
