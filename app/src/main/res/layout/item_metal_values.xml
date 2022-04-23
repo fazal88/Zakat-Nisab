@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="item"
-            type="com.androidvoyage.zakat.model.NisabCategoryItem" />
+            name="vm"
+            type="com.androidvoyage.zakat.screens.dashboard.DashboardViewModel" />
 
     </data>
 
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:text="5000 ₹/gram"
+            android:text="@{@string/str_per_gram(vm.rate24)}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/tv_22"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +112,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:text="4500 ₹/gram"
+            android:text="@{@string/str_per_gram(vm.rate22)}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_24"
@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:text="4000 ₹/gram"
+            android:text="@{@string/str_per_gram(vm.rate18)}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/tv_14"
             app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
-            android:text="3000 ₹/gram"
+            android:text="@{@string/str_per_gram(vm.rate14)}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_18"
@@ -202,7 +202,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:text="3500 ₹/gram"
+            android:text="@{@string/str_per_gram(vm.rate23)}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/tv_silver"
             app:layout_constraintStart_toStartOf="parent"
@@ -214,7 +214,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
-            android:text="70 ₹/gram"
+            android:text="@{@string/str_per_gram(vm.rateSilver)}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/tv_tola"
             app:layout_constraintEnd_toEndOf="parent"

@@ -14,6 +14,7 @@ import com.androidvoyage.zakat.R
 import java.text.NumberFormat
 import java.util.*
 import kotlin.math.roundToInt
+import kotlin.math.roundToLong
 
 object Utils {
 
@@ -24,23 +25,18 @@ object Utils {
     }
 
     fun getAmountWithCommas(amount: String): String {
-        val myNumber = if (amount.isNotEmpty()) {
-            NumberFormat.getNumberInstance(Locale.UK)
-                .format(amount.toInt())
-        }else{
-            "0"
-        }
-        return myNumber
-    }
+        var temp = if(amount.contains('.')){
+            val tempDouble = amount.toDouble()
+            tempDouble.roundToLong()
+        }else
+            amount.toLong()
 
-    fun getAmountWithCommas(amount: Long): String {
-        val myNumber = if (amount>0) {
+        return if (temp > 0) {
             NumberFormat.getNumberInstance(Locale.UK)
-                .format(amount)
-        }else{
+                .format(temp)
+        } else {
             "0"
         }
-        return myNumber
     }
 
     var scaleAnimation: Animation? = null

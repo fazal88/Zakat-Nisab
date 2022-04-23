@@ -2,7 +2,11 @@ package com.androidvoyage.zakat.screens.edit
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.NisabItem
+import com.androidvoyage.zakat.pref.SharedPreferencesManager
+import com.androidvoyage.zakat.util.Utils
+import kotlin.math.roundToLong
 
 class EditViewModel : ViewModel() {
 
@@ -27,7 +31,15 @@ class EditViewModel : ViewModel() {
     }
 
     fun getNisab() : NisabItem {
-        nisabItem.value?.estimatedValue = nisabItem.value?.price!!
+        if(nisabItem.value?.type == Features.PREF_GOLD_SILVER){
+            val grams = nisabItem.value?.weight!!
+            val rate = SharedPreferencesManager.getInstance().getRate(nisabItem.value?.purity)
+            val estimatedValue = grams.toFloat() * rate.toFloat()
+            val roundOffEstimatedValue = estimatedValue.roundToLong()
+            nisabItem.value?.estimatedValue = roundOffEstimatedValue.toString()
+        }else{
+            nisabItem.value?.estimatedValue = nisabItem.value?.price!!
+        }
         return nisabItem.value!!
     }
 }

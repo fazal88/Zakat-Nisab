@@ -1,11 +1,12 @@
-package com.androidvoyage.zakat.screens.dashboard
+package com.androidvoyage.zakat.screens.rates
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.androidvoyage.zakat.model.Features
+import com.androidvoyage.zakat.model.NisabItem
 import com.androidvoyage.zakat.pref.SharedPreferencesManager
 
-class DashboardViewModel : ViewModel() {
+class RateViewModel : ViewModel() {
 
     val rate24  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_24_K))
     val rate23  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_22_K))
@@ -14,24 +15,15 @@ class DashboardViewModel : ViewModel() {
     val rate14  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_23_KDM))
     val rateSilver  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_SILVER))
 
-    val isOptionClick = MutableLiveData(false)
 
-    val clickedFeature = MutableLiveData<String>(null)
-    val clickedAddFeature = MutableLiveData<String>(null)
-    val clickListener = DashboardListAdapter.DashboardClickListener(
-        { item ->
-            clickedFeature.postValue(item)
-        },
-        { item ->
-            clickedAddFeature.postValue(item)
-        }
-    )
-
-    val adapter = DashboardListAdapter(clickListener)
-
-    fun onClickOption() {
-        if (!isOptionClick.value!!) {
-            isOptionClick.value = true
-        }
+    fun save(){
+        SharedPreferencesManager.getInstance().setRate(Features.PREF_24_K,rate24.value)
+        SharedPreferencesManager.getInstance().setRate(Features.PREF_22_K,rate22.value)
+        SharedPreferencesManager.getInstance().setRate(Features.PREF_18_K,rate18.value)
+        SharedPreferencesManager.getInstance().setRate(Features.PREF_14_K,rate14.value)
+        SharedPreferencesManager.getInstance().setRate(Features.PREF_23_KDM,rate23.value)
+        SharedPreferencesManager.getInstance().setRate(Features.PREF_SILVER,rateSilver.value)
     }
+
+
 }

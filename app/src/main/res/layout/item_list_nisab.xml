@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="@{vm.weight}"
+                android:text="@{@string/str_concate_g(vm.weight)}"
                 android:textColor="@color/Blue3"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -145,7 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            setAmountFromPref="@{vm.price}"
+            setAmountWithRupee="@{vm.price}"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -172,7 +172,7 @@
 
         <TextView
             android:id="@+id/tv_estimated_value"
-            setEstimatedValue="@{vm}"
+            setAmountWithRupee="@{vm.estimatedValue}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"

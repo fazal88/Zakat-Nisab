@@ -296,18 +296,18 @@ fun TextView.setZakatVisibile(type: String?) {
     }
 }
 
-@BindingAdapter("setAmountFromPref")
-fun TextView.setAmountFromPref(type: String?) {
+@BindingAdapter("setAmountWithRupee")
+fun TextView.setAmountWithRupee(type: String?) {
     type?.let {
         val amountString = "₹ " + Utils.getAmountWithCommas(it)
         text = amountString
     }
 }
 
-@BindingAdapter("setAmountFromPref")
-fun TextView.setAmountFromPref(type: Double?) {
+@BindingAdapter("setAmountWithRupee")
+fun TextView.setAmountWithRupee(type: Double?) {
     type?.let {
-        val amountString = "₹ " + Utils.getAmountWithCommas(it.roundToLong())
+        val amountString = "₹ " + Utils.getAmountWithCommas(it.roundToLong().toString())
         text = amountString
     }
 }
@@ -336,17 +336,7 @@ fun ImageView.setIconFromKey(type: String?) {
 @BindingAdapter("setEstimatedValue")
 fun TextView.setEstimatedValue(vm: NisabItem?) {
     vm?.let {
-        val isMetail = it.type == Features.PREF_GOLD_SILVER
-
-        text = if (isMetail) {
-            val grams = it.weight
-            val rate = SharedPreferencesManager.getInstance().getRate(vm.purity)
-            val estimatedValue = grams.toFloat() * rate.toFloat()
-            val roundOffEstimatedValue = Utils.roundOff(estimatedValue, 2)
-            "₹ $roundOffEstimatedValue"
-        } else {
-            "₹ ${Utils.getAmountWithCommas(vm.price)}"
-        }
+        text = "₹ ${Utils.getAmountWithCommas(vm.price)}"
     }
 }
 

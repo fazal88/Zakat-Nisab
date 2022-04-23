@@ -26,4 +26,6 @@
     <string name="str_estimated_value">Estimated Value :</string>
     <string name="str_purchase_cost">Purchase Cost :</string>
     <string name="str_rate_update">Please update rates of gold as per purity based on your region and country</string>
+    <string name="str_per_gram">%s ₹/gram</string>
+    <string name="str_concate_g">%sg</string>
 </resources>

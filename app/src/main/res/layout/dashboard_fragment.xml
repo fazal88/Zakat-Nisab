@@ -69,6 +69,7 @@
                 <include
                     android:id="@+id/inc_metal_values"
                     layout="@layout/item_metal_values"
+                    app:vm="@{vm}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp" />

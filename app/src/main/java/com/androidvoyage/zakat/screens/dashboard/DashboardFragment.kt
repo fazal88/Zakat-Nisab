@@ -96,6 +96,11 @@ class DashboardFragment : Fragment() {
                 .navigate(DashboardFragmentDirections.actionDashboardFragmentToEditFragment(""))
         }
 
+        binding.incMetalValues.root.onClickWithAnimation {
+            binding.root.findNavController()
+                .navigate(DashboardFragmentDirections.actionDashboardFragmentToRateFragment())
+        }
+
         /*viewModel.clickedAddFeature.observe(viewLifecycleOwner, Observer {
             it?.let {
                 viewModel.clickedAddFeature.postValue(null)

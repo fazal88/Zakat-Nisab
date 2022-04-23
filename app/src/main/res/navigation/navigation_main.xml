@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_editFragment"
             app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_rateFragment"
+            app:destination="@id/rateFragment" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"
@@ -84,4 +87,9 @@
         android:name="com.androidvoyage.zakat.screens.faq.FaqFragment"
         android:label="about_fragment"
         tools:layout="@layout/about_fragment" />
+    <fragment
+        android:id="@+id/rateFragment"
+        android:name="com.androidvoyage.zakat.screens.rates.RateFragment"
+        tools:layout="@layout/rate_fragment"
+        android:label="RateFragment" />
 </navigation>
