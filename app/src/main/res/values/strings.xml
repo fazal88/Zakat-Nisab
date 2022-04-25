@@ -29,4 +29,5 @@
     <string name="str_per_gram">%s ₹/gram</string>
     <string name="str_rupee_per_gram">₹/gram</string>
     <string name="str_concate_g">%sg</string>
+    <string name="str_empty"> </string>
 </resources>

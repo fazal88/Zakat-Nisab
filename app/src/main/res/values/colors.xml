@@ -16,6 +16,8 @@
     <color name="DarkerButtonBlue">#566894</color>
     <color name="LightRed">#fc879a</color>
     <color name="AquaBlue">#9aa5c4</color>
+    <color name="yellow">#FFE3DEFE</color>
+    <color name="pgreen">#FFF7F5FF</color>
 
     <color name="OrangeYellow1">#f0bd28</color>
     <color name="OrangeYellow2">#f1c746</color>
