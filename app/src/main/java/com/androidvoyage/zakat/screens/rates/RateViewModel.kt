@@ -9,10 +9,10 @@ import com.androidvoyage.zakat.pref.SharedPreferencesManager
 class RateViewModel : ViewModel() {
 
     val rate24  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_24_K))
-    val rate23  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_22_K))
-    val rate22  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_18_K))
-    val rate18  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_14_K))
-    val rate14  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_23_KDM))
+    val rate22  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_22_K))
+    val rate18  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_18_K))
+    val rate14  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_14_K))
+    val rate23  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_23_KDM))
     val rateSilver  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_SILVER))
 
 

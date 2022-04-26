@@ -42,7 +42,7 @@ public class SharedPreferencesManager {
     }
 
     public void setValue(String key,String value) {
-        sSharedPreferenceEncrypted.edit().putString(key, value).apply();
+        sSharedPreferenceEncrypted.edit().putString(key, value).commit();
     }
 
     public String getValue(String key) {
