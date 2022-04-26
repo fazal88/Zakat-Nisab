@@ -54,7 +54,7 @@ public class SharedPreferencesManager {
     }
 
     public String getRate(String key) {
-        return sSharedPreferenceEncrypted.getString(key, "0.0");
+        return sSharedPreferenceEncrypted.getString(key, "NA");
     }
 
     public void setTotal( double totalOverAll) {
