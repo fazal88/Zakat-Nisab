@@ -52,6 +52,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_title_edit" />
 
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Attention! Rates are in grams."
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_edit" />
+
         <ScrollView
             android:id="@+id/sv_edit"
             android:layout_width="0dp"
@@ -60,165 +73,170 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_edit">
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:clipToPadding="false"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
 
 
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="24 Karat or 999 Hallmark"/>
+                    android:text="24 Karat or 999 Hallmark" />
 
                 <EditText
                     style="@style/style_input_edittext"
                     android:layout_width="match_parent"
-                    android:hint="0.0"
+                    android:layout_height="wrap_content"
+                    android:hint="123.45"
                     android:inputType="numberDecimal"
-                    android:text="@={vm.rate24}"
-                    android:layout_height="wrap_content"/>
+                    android:text="@={vm.rate24}" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
+                    android:gravity="center"
                     android:layout_gravity="end"
+                    android:layout_marginTop="-52dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="/ gram"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="/ gram"/>
+                    android:textSize="16sp" />
 
 
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="22 Karat or 916 Hallmark"/>
+                    android:text="22 Karat or 916 Hallmark" />
 
                 <EditText
                     style="@style/style_input_edittext"
                     android:layout_width="match_parent"
-                    android:hint="0.0"
+                    android:layout_height="wrap_content"
+                    android:hint="123.45"
                     android:inputType="numberDecimal"
-                    android:text="@={vm.rate22}"
-                    android:layout_height="wrap_content"/>
+                    android:text="@={vm.rate22}" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
+                    android:gravity="center"
                     android:layout_gravity="end"
+                    android:layout_marginTop="-52dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="/ gram"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="/ gram"/>
+                    android:textSize="16sp" />
 
 
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="18 Karat or 750 Hallmark"/>
+                    android:text="18 Karat or 750 Hallmark" />
 
                 <EditText
                     style="@style/style_input_edittext"
                     android:layout_width="match_parent"
-                    android:hint="0.0"
+                    android:layout_height="wrap_content"
+                    android:hint="123.45"
                     android:inputType="numberDecimal"
-                    android:text="@={vm.rate18}"
-                    android:layout_height="wrap_content"/>
+                    android:text="@={vm.rate18}" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
+                    android:gravity="center"
                     android:layout_gravity="end"
+                    android:layout_marginTop="-52dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="/ gram"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="/ gram"/>
+                    android:textSize="16sp" />
 
 
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="14 Karat or 750 Hallmark"/>
+                    android:text="14 Karat or 750 Hallmark" />
 
                 <EditText
                     style="@style/style_input_edittext"
                     android:layout_width="match_parent"
-                    android:hint="0.0"
+                    android:layout_height="wrap_content"
+                    android:hint="123.45"
                     android:inputType="numberDecimal"
-                    android:text="@={vm.rate14}"
-                    android:layout_height="wrap_content"/>
+                    android:text="@={vm.rate14}" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
+                    android:gravity="center"
                     android:layout_gravity="end"
+                    android:layout_marginTop="-52dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="/ gram"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="/ gram"/>
+                    android:textSize="16sp" />
 
 
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="23 KDM"/>
+                    android:text="23 KDM" />
 
                 <EditText
                     style="@style/style_input_edittext"
                     android:layout_width="match_parent"
-                    android:hint="0.0"
-                    android:text="@={vm.rate23}"
+                    android:layout_height="wrap_content"
+                    android:hint="123.45"
                     android:inputType="numberDecimal"
-                    android:layout_height="wrap_content"/>
+                    android:text="@={vm.rate23}" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
+                    android:gravity="center"
                     android:layout_gravity="end"
+                    android:layout_marginTop="-52dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="/ gram"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="/ gram"/>
+                    android:textSize="16sp" />
 
 
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Silver"/>
+                    android:text="Silver" />
 
                 <EditText
                     style="@style/style_input_edittext"
                     android:layout_width="match_parent"
-                    android:hint="0.0"
+                    android:layout_height="wrap_content"
+                    android:hint="123.45"
                     android:inputType="numberDecimal"
-                    android:text="@={vm.rateSilver}"
-                    android:layout_height="wrap_content"/>
+                    android:text="@={vm.rateSilver}" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
+                    android:gravity="center"
                     android:layout_gravity="end"
+                    android:layout_marginTop="-52dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="/ gram"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="/ gram"/>
-
+                    android:textSize="16sp" />
 
 
             </LinearLayout>
