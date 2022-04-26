@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.androidvoyage.zakat.databinding.EditFragmentBinding
 import com.androidvoyage.zakat.model.Features
-import com.androidvoyage.zakat.model.Features.PREF_GOLD_SILVER
-import com.androidvoyage.zakat.model.NisabCategoryItem
 import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.util.OnSelectListener
 import com.androidvoyage.zakat.util.Utils
@@ -19,7 +17,6 @@ import com.androidvoyage.zakat.util.showListSelectionDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.math.roundToLong
 
 class EditFragment : Fragment() {
 
@@ -54,7 +51,7 @@ class EditFragment : Fragment() {
             list.addAll(Features.prefTitleList)
             showListSelectionDialog(requireContext(), list, object : OnSelectListener {
                 override fun onSelected(item: String) {
-                    setSpinner(item)
+                    viewModel.setType(item)
                 }
             })
         }
@@ -63,7 +60,6 @@ class EditFragment : Fragment() {
             list.addAll(Features.prefKaratList)
             showListSelectionDialog(requireContext(), list, object : OnSelectListener {
                 override fun onSelected(item: String) {
-                    binding.tvSpnKarat.text = item
                     viewModel.setKarat(item)
                 }
             })
@@ -74,21 +70,13 @@ class EditFragment : Fragment() {
             requireActivity().onBackPressed()
         }
         binding.ivBack.onClickWithAnimation { requireActivity().onBackPressed() }
-
-        setSpinner(args.nisabType)
-    }
-
-    private fun setSpinner(item: String) {
-        val type = if (item == Features.PREF_OVER_ALL) "" else item
-        binding.tvSpnType.text = type
-        viewModel.isMetal.postValue(type == PREF_GOLD_SILVER)
-        viewModel.setType(type)
+        viewModel.nisabItem.postValue(args.nisab)
     }
 
     @OptIn(ExperimentalFoundationApi::class)
     private fun save() {
         CoroutineScope(Dispatchers.Default).launch {
-            val nisab = viewModel.getNisab()
+            val nisab = viewModel.getNisabWithEstimation()
             (requireActivity() as MainActivity).type = nisab.type
             (requireActivity() as MainActivity).database.nisabDao().insertNisab(nisab)
         }

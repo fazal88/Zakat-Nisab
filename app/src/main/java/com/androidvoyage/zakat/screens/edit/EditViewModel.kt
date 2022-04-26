@@ -10,11 +10,7 @@ import kotlin.math.roundToLong
 
 class EditViewModel : ViewModel() {
 
-    val isMetal = MutableLiveData(false)
-
-
     val nisabItem  = MutableLiveData(NisabItem())
-
 
     fun setType(item : String) {
         nisabItem.value?.type = item
@@ -30,7 +26,7 @@ class EditViewModel : ViewModel() {
         nisabItem.postValue(nisabItem.value)
     }
 
-    fun getNisab() : NisabItem {
+    fun getNisabWithEstimation() : NisabItem {
         if(nisabItem.value?.type == Features.PREF_GOLD_SILVER){
             val grams = nisabItem.value?.weight!!
             val rate = SharedPreferencesManager.getInstance().getRate(nisabItem.value?.purity)

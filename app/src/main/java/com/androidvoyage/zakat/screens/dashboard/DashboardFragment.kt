@@ -18,6 +18,7 @@ import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.databinding.DashboardFragmentBinding
 import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.NisabCategoryItem
+import com.androidvoyage.zakat.model.NisabItem
 import com.androidvoyage.zakat.screens.list.ListFragmentDirections
 import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.util.Utils
@@ -93,7 +94,7 @@ class DashboardFragment : Fragment() {
 
         binding.ivAdd.onClickWithAnimation {
             binding.root.findNavController()
-                .navigate(DashboardFragmentDirections.actionDashboardFragmentToEditFragment(""))
+                .navigate(DashboardFragmentDirections.actionDashboardFragmentToEditFragment(NisabItem()))
         }
 
         binding.incMetalValues.root.onClickWithAnimation {

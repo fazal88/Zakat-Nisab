@@ -213,7 +213,7 @@ fun TextView.setDate(item: String?) {
 @BindingAdapter("setDate")
 fun TextView.setDate(item: Long?) {
     item?.let {
-        text = if (item > 0) {
+        text = "Last update : "+if (item > 0) {
             DateTimeUtility.convertDateToString(item, DateTimeUtility.D_MMM_YYYY)
         } else {
             ""

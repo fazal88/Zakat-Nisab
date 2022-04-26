@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.androidvoyage.zakat.screens.edit.EditViewModel" />
@@ -18,10 +19,10 @@
             android:id="@+id/iv_back"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_title_edit"
@@ -65,99 +66,100 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:clipToPadding="false"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nisab Type"/>
+                    android:text="Nisab Type" />
 
 
                 <TextView
                     android:id="@+id/tv_spn_type"
                     style="@style/style_input_spinner"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="Select Type"
-                    android:layout_height="wrap_content"/>
+                    android:text="@{vm.nisabItem.type}" />
 
                 <TextView
                     style="@style/style_label_text"
+                    visibleIfMetal="@{vm.nisabItem.type}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    visibleIfMetal="@{vm.nisabItem.type}"
-                    android:text="Karat"/>
+                    android:text="Karat" />
 
                 <TextView
                     android:id="@+id/tv_spn_karat"
                     style="@style/style_input_spinner"
-                    android:layout_width="match_parent"
-                    android:hint="Karat"
                     visibleIfMetal="@{vm.nisabItem.type}"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Karat"
+                    android:text="@{vm.nisabItem.purity}" />
 
                 <TextView
                     style="@style/style_label_text"
+                    visibleIfMetal="@{vm.nisabItem.type}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    visibleIfMetal="@{vm.nisabItem.type}"
-                    android:text="@string/str_weight_in_grams_1_tola_10_grams_at_present"/>
+                    android:text="@string/str_weight_in_grams_1_tola_10_grams_at_present" />
 
                 <EditText
                     style="@style/style_input_edittext"
+                    visibleIfMetal="@{vm.nisabItem.type}"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="grams"
                     android:inputType="numberDecimal"
-                    android:text="@={vm.nisabItem.weight}"
-                    visibleIfMetal="@{vm.nisabItem.type}"
-                    android:layout_height="wrap_content"/>
+                    android:text="@={vm.nisabItem.weight}" />
 
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name"/>
+                    android:text="Name" />
 
                 <EditText
                     style="@style/style_input_edittext"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="Name"
-                    android:text="@={vm.nisabItem.name}"
-                    android:layout_height="wrap_content"/>
+                    android:text="@={vm.nisabItem.name}" />
 
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cost / Price"/>
+                    android:text="Cost / Price" />
 
                 <EditText
                     style="@style/style_input_edittext"
                     android:layout_width="match_parent"
-                    android:inputType="numberDecimal"
+                    android:layout_height="wrap_content"
                     android:hint="Cost / Price"
-                    android:text="@={vm.nisabItem.price}"
-                    android:layout_height="wrap_content"/>
+                    android:inputType="numberDecimal"
+                    android:text="@={vm.nisabItem.price}" />
 
                 <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
-                    android:visibility="gone"
                     android:layout_height="wrap_content"
-                    android:text="Estimated Zakat"/>
+                    android:text="Estimated Zakat"
+                    android:visibility="gone" />
 
                 <TextView
                     style="@style/style_title_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
-                    tools:text="₹ 10,000"/>
+                    tools:text="₹ 10,000" />
 
             </LinearLayout>
         </ScrollView>
-
 
 
         <View

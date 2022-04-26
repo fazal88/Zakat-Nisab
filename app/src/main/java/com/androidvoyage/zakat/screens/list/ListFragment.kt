@@ -11,8 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.androidvoyage.zakat.databinding.ListFragmentBinding
 import com.androidvoyage.zakat.model.Features
+import com.androidvoyage.zakat.model.NisabItem
 import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.util.onClickWithAnimation
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @ExperimentalFoundationApi
 class ListFragment : Fragment() {
@@ -56,9 +60,24 @@ class ListFragment : Fragment() {
             }
         })
 
+        viewModel.editNisab.observe(viewLifecycleOwner) {
+            it?.let {
+                (requireActivity() as MainActivity).navController.navigate(ListFragmentDirections.actionListFragmentToEditFragment(it))
+                viewModel.editNisab.postValue(null)
+            }
+        }
+
+        viewModel.deleteNisab.observe(viewLifecycleOwner) {
+            it?.let {
+                CoroutineScope(Dispatchers.Default).launch {
+                    (requireActivity() as MainActivity).database.nisabDao().deleteNisab(it)
+                }
+            }
+        }
+
         binding.ivAdd.onClickWithAnimation {
             binding.root.findNavController()
-                .navigate(ListFragmentDirections.actionListFragmentToEditFragment(args.nisabType))
+                .navigate(ListFragmentDirections.actionListFragmentToEditFragment(NisabItem(type = args.nisabType)))
         }
 
         binding.ivBack.onClickWithAnimation {
