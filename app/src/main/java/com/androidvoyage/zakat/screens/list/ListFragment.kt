@@ -48,17 +48,15 @@ class ListFragment : Fragment() {
         binding.rvNisab.adapter = viewModel.adapter
         args.nisabType.let {
             viewModel.listNisab = if (it == Features.PREF_OVER_ALL)
-                (requireActivity() as MainActivity).database.nisabDao()
-                    .getNisabs()
+                (requireActivity() as MainActivity).database.nisabDao().getNisabs()
             else
-                (requireActivity() as MainActivity).database.nisabDao()
-                    .getNisabs(args.nisabType)
+                (requireActivity() as MainActivity).database.nisabDao().getNisabs(args.nisabType)
         }
-        viewModel.listNisab.observe(viewLifecycleOwner, Observer {
+        viewModel.listNisab.observe(viewLifecycleOwner) {
             it?.let {
                 viewModel.adapter.submitList(it)
             }
-        })
+        }
 
         viewModel.editNisab.observe(viewLifecycleOwner) {
             it?.let {

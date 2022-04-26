@@ -51,6 +51,7 @@ class RateFragment : Fragment() {
         binding.tvBtnSave.onClickWithAnimation {
             viewModel.save()
             Utils.showToast(requireActivity(), "Saved!", true)
+            (requireActivity() as MainActivity).ratesChanged()
             requireActivity().onBackPressed()
         }
         binding.ivBack.onClickWithAnimation { requireActivity().onBackPressed() }
