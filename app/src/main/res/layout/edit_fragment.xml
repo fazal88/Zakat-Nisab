@@ -86,6 +86,10 @@
                     android:text="@{vm.nisabItem.type}" />
 
                 <TextView
+                    android:text="@{vm.errorType}"
+                    style="@style/TextErrorValidation" />
+
+                <TextView
                     style="@style/style_label_text"
                     visibleIfMetal="@{vm.nisabItem.type}"
                     android:layout_width="wrap_content"
@@ -100,6 +104,10 @@
                     android:layout_height="wrap_content"
                     android:hint="Karat"
                     android:text="@{vm.nisabItem.purity}" />
+
+                <TextView
+                    android:text="@{vm.errorPurity}"
+                    style="@style/TextErrorValidation" />
 
                 <TextView
                     style="@style/style_label_text"
@@ -118,6 +126,10 @@
                     android:text="@={vm.nisabItem.weight}" />
 
                 <TextView
+                    android:text="@{vm.errorGram}"
+                    style="@style/TextErrorValidation" />
+
+                <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,6 +141,10 @@
                     android:layout_height="wrap_content"
                     android:hint="Name"
                     android:text="@={vm.nisabItem.name}" />
+
+                <TextView
+                    android:text="@{vm.errorName}"
+                    style="@style/TextErrorValidation" />
 
                 <TextView
                     style="@style/style_label_text"
@@ -145,6 +161,10 @@
                     android:text="@={vm.nisabItem.price}" />
 
                 <TextView
+                    android:text="@{vm.errorCost}"
+                    style="@style/TextErrorValidation" />
+
+                <TextView
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -156,7 +176,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
-                    tools:text="₹ 10,000" />
+                    tools:text="₹10,000" />
 
             </LinearLayout>
         </ScrollView>

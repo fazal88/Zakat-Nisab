@@ -16,14 +16,12 @@ class RateViewModel : ViewModel() {
     val rateSilver  = MutableLiveData(SharedPreferencesManager.getInstance().getRate(Features.PREF_SILVER))
 
 
-    fun save(){
-        SharedPreferencesManager.getInstance().setRate(Features.PREF_24_K,rate24.value)
-        SharedPreferencesManager.getInstance().setRate(Features.PREF_22_K,rate22.value)
-        SharedPreferencesManager.getInstance().setRate(Features.PREF_18_K,rate18.value)
-        SharedPreferencesManager.getInstance().setRate(Features.PREF_14_K,rate14.value)
-        SharedPreferencesManager.getInstance().setRate(Features.PREF_23_KDM,rate23.value)
-        SharedPreferencesManager.getInstance().setRate(Features.PREF_SILVER,rateSilver.value)
-    }
+    val error24 = MutableLiveData("")
+    val error22 = MutableLiveData("")
+    val error18 = MutableLiveData("")
+    val error14 = MutableLiveData("")
+    val error23 = MutableLiveData("")
+    val errorSilver = MutableLiveData("")
 
 
 }

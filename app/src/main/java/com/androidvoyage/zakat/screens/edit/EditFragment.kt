@@ -71,6 +71,12 @@ class EditFragment : Fragment() {
         }
         binding.ivBack.onClickWithAnimation { requireActivity().onBackPressed() }
         viewModel.nisabItem.postValue(args.nisab)
+
+        viewModel.nisabItem.observe(viewLifecycleOwner){
+            it?.let {
+
+            }
+        }
     }
 
     @OptIn(ExperimentalFoundationApi::class)
