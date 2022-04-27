@@ -11,6 +11,7 @@ import kotlin.math.roundToLong
 class EditViewModel : ViewModel() {
 
     val nisabItem  = MutableLiveData(NisabItem())
+
     val errorType  = MutableLiveData("")
     val errorPurity  = MutableLiveData("")
     val errorGram  = MutableLiveData("")

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.androidvoyage.zakat.databinding.EditFragmentBinding
@@ -66,21 +67,60 @@ class EditFragment : Fragment() {
         }
         binding.tvBtnSave.onClickWithAnimation {
             save()
-            Utils.showToast(requireActivity(), "Saved!", true)
-            requireActivity().onBackPressed()
         }
         binding.ivBack.onClickWithAnimation { requireActivity().onBackPressed() }
         viewModel.nisabItem.postValue(args.nisab)
 
-        viewModel.nisabItem.observe(viewLifecycleOwner){
-            it?.let {
-
+        binding.etName.doOnTextChanged { text, start, before, count ->
+            if (count > 0) {
+                viewModel.errorName.value = ""
+            }
+        }
+        binding.etCost.doOnTextChanged { text, start, before, count ->
+            if (count > 0) {
+                viewModel.errorCost.value = ""
+            }
+        }
+        binding.etWeight.doOnTextChanged { text, start, before, count ->
+            if (count > 0) {
+                viewModel.errorGram.value = ""
+            }
+        }
+        binding.tvSpnType.doOnTextChanged { text, start, before, count ->
+            if (count > 0) {
+                viewModel.errorType.value = ""
+            }
+        }
+        binding.tvSpnKarat.doOnTextChanged { text, start, before, count ->
+            if (count > 0) {
+                viewModel.errorPurity.value = ""
             }
         }
     }
 
     @OptIn(ExperimentalFoundationApi::class)
     private fun save() {
+        if(viewModel.nisabItem.value?.type?.isEmpty() == true){
+            viewModel.errorType.value = "Please select"
+            return
+        }
+        if (viewModel.nisabItem.value?.type == Features.PREF_GOLD_SILVER && viewModel.nisabItem.value?.purity?.isEmpty() == true) {
+            viewModel.errorPurity.value = "Please select"
+            return
+        }
+        if(viewModel.nisabItem.value?.type == Features.PREF_GOLD_SILVER &&viewModel.nisabItem.value?.weight?.isEmpty() == true){
+            viewModel.errorGram.value = "Invalid"
+            return
+        }
+        if(viewModel.nisabItem.value?.name?.isEmpty() == true){
+            viewModel.errorName.value = "Cannot be empty"
+            return
+        }
+        if(viewModel.nisabItem.value?.type != Features.PREF_GOLD_SILVER && viewModel.nisabItem.value?.price?.isEmpty() == true){
+            viewModel.errorCost.value = "Cannot be empty"
+            return
+        }
+
         CoroutineScope(Dispatchers.Default).launch {
             val nisab = viewModel.getNisabWithEstimation()
             (requireActivity() as MainActivity).type = nisab.type
@@ -90,6 +130,8 @@ class EditFragment : Fragment() {
                 (requireActivity() as MainActivity).database.nisabDao().insertNisab(nisab)
             }
         }
+        Utils.showToast(requireActivity(), "Saved!", true)
+        requireActivity().onBackPressed()
     }
 
 }

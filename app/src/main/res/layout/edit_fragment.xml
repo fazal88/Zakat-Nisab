@@ -107,6 +107,7 @@
 
                 <TextView
                     android:text="@{vm.errorPurity}"
+                    visibleIfMetal="@{vm.nisabItem.type}"
                     style="@style/TextErrorValidation" />
 
                 <TextView
@@ -117,6 +118,7 @@
                     android:text="@string/str_weight_in_grams_1_tola_10_grams_at_present" />
 
                 <EditText
+                    android:id="@+id/et_weight"
                     style="@style/style_input_edittext"
                     visibleIfMetal="@{vm.nisabItem.type}"
                     android:layout_width="match_parent"
@@ -127,6 +129,7 @@
 
                 <TextView
                     android:text="@{vm.errorGram}"
+                    visibleIfMetal="@{vm.nisabItem.type}"
                     style="@style/TextErrorValidation" />
 
                 <TextView
@@ -136,6 +139,7 @@
                     android:text="Name" />
 
                 <EditText
+                    android:id="@+id/et_name"
                     style="@style/style_input_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -153,6 +157,7 @@
                     android:text="Cost / Price" />
 
                 <EditText
+                    android:id="@+id/et_cost"
                     style="@style/style_input_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
