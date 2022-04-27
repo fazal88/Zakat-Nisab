@@ -51,6 +51,19 @@
             tools:text="Last updated : 23rd April 2022" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.count.toString()}"
+            android:textSize="24sp"
+            tools:text="24"
+            android:textStyle="bold"
+            android:layout_margin="16dp"
+            setTextColorFromKey="@{item.type}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_timestamp" />
+
+        <TextView
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

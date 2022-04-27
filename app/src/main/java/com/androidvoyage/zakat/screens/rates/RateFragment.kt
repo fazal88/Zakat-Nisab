@@ -7,20 +7,10 @@ import android.view.ViewGroup
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.androidvoyage.zakat.databinding.EditFragmentBinding
 import com.androidvoyage.zakat.databinding.RateFragmentBinding
-import com.androidvoyage.zakat.model.Features
-import com.androidvoyage.zakat.model.Features.PREF_GOLD_SILVER
-import com.androidvoyage.zakat.model.NisabCategoryItem
 import com.androidvoyage.zakat.screens.main.MainActivity
-import com.androidvoyage.zakat.util.OnSelectListener
 import com.androidvoyage.zakat.util.Utils
 import com.androidvoyage.zakat.util.onClickWithAnimation
-import com.androidvoyage.zakat.util.showListSelectionDialog
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlin.math.roundToLong
 
 class RateFragment : Fragment() {
 

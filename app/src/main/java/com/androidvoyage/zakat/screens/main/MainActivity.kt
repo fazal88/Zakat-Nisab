@@ -47,15 +47,22 @@ class MainActivity : AppCompatActivity() {
                 it?.let {
                     var totalOverAll = 0.0
                     var total = 0.0
+                    var countOverAll = 0
+                    var count = 0
                     for (i in it) {
                         totalOverAll += i.estimatedValue.toDouble()
-                        if (type == i.type) total += i.estimatedValue.toDouble()
+                        countOverAll++
+                        if (type == i.type) {
+                            total += i.estimatedValue.toDouble()
+                            count++
+                        }
                     }
                     CoroutineScope(Dispatchers.Default).launch {
                         database.nisabDao().updateNisabCategory(
                             NisabCategoryItem(
                                 type,
                                 total,
+                                count.toString(),
                                 System.currentTimeMillis()
                             )
                         )
@@ -63,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                             NisabCategoryItem(
                                 Features.PREF_OVER_ALL,
                                 totalOverAll,
+                                countOverAll.toString(),
                                 System.currentTimeMillis()
                             )
                         )
@@ -86,7 +94,7 @@ class MainActivity : AppCompatActivity() {
     fun ratesChanged() {
         type = Features.PREF_GOLD_SILVER
         val list = database.nisabDao().getNisabs(Features.PREF_GOLD_SILVER)
-        list.observe(this){
+        list.observe(this) {
             it?.let {
                 for (metalItem in it) {
                     val grams = metalItem.weight

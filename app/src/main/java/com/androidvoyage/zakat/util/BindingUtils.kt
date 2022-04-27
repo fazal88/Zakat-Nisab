@@ -319,6 +319,13 @@ fun View.setColorFromKey(type: String?) {
     }
 }
 
+@BindingAdapter("setTextColorFromKey")
+fun TextView.setTextColorFromKey(type: String?) {
+    type?.let {
+        setTextColor(ContextCompat.getColorStateList(context, Features.getColorRes(type)))
+    }
+}
+
 @BindingAdapter("setPuritySection")
 fun View.setPuritySection(type: String?) {
     type?.let {
