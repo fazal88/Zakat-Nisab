@@ -78,7 +78,11 @@ class EditFragment : Fragment() {
         CoroutineScope(Dispatchers.Default).launch {
             val nisab = viewModel.getNisabWithEstimation()
             (requireActivity() as MainActivity).type = nisab.type
-            (requireActivity() as MainActivity).database.nisabDao().insertNisab(nisab)
+            if (args.isUpdate) {
+                (requireActivity() as MainActivity).database.nisabDao().updateNisab(nisab)
+            }else{
+                (requireActivity() as MainActivity).database.nisabDao().insertNisab(nisab)
+            }
         }
     }
 

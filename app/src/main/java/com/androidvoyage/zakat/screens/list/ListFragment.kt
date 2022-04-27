@@ -60,7 +60,7 @@ class ListFragment : Fragment() {
 
         viewModel.editNisab.observe(viewLifecycleOwner) {
             it?.let {
-                (requireActivity() as MainActivity).navController.navigate(ListFragmentDirections.actionListFragmentToEditFragment(it))
+                (requireActivity() as MainActivity).navController.navigate(ListFragmentDirections.actionListFragmentToEditFragment(it,true))
                 viewModel.editNisab.postValue(null)
             }
         }
@@ -75,7 +75,7 @@ class ListFragment : Fragment() {
 
         binding.ivAdd.onClickWithAnimation {
             binding.root.findNavController()
-                .navigate(ListFragmentDirections.actionListFragmentToEditFragment(NisabItem(type = args.nisabType)))
+                .navigate(ListFragmentDirections.actionListFragmentToEditFragment(NisabItem(type = args.nisabType),false))
         }
 
         binding.ivBack.onClickWithAnimation {
