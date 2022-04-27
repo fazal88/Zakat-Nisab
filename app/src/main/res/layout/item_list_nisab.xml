@@ -18,7 +18,7 @@
         setColorFromKey="@{vm.type}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{()->click.onClickEdit(vm)}"
+        onClickWithAnimation="@{()->click.onClickEdit(vm)}"
         android:layout_margin="8dp"
         android:background="@drawable/back_rect_round_8dp"
         android:paddingBottom="16dp">

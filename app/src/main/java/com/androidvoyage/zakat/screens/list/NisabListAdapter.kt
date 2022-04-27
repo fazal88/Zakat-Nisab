@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.androidvoyage.zakat.databinding.ItemDashboardBinding
 import com.androidvoyage.zakat.databinding.ItemListNisabBinding
 import com.androidvoyage.zakat.model.NisabItem
+import com.androidvoyage.zakat.util.onClickWithAnimation
 
 
 open class NisabListAdapter(
@@ -63,7 +64,6 @@ open class NisabListAdapter(
         val editNisab: (item: NisabItem) -> Unit,
         val deleteNisab: (item: NisabItem) -> Unit,
     ) {
-
         fun onClickEdit(item: NisabItem) = editNisab(item)
         fun onClickDelete(item: NisabItem) = deleteNisab(item)
     }
