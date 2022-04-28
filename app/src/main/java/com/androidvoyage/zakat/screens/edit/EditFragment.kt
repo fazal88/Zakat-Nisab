@@ -120,14 +120,13 @@ class EditFragment : Fragment() {
             viewModel.errorCost.value = "Cannot be empty"
             return
         }
-
+        val nisab = viewModel.getNisabWithEstimation()
         CoroutineScope(Dispatchers.Default).launch {
-            val nisab = viewModel.getNisabWithEstimation()
             (requireActivity() as MainActivity).type = nisab.type
             (requireActivity() as MainActivity).database.nisabDao().insertNisab(nisab)
         }
         Utils.showToast(requireActivity(), "Saved!", true)
-        requireActivity().onBackPressed()
+        (requireActivity() as MainActivity).navController.navigate(EditFragmentDirections.actionEditFragmentToListFragment(nisab.type))
     }
 
 }

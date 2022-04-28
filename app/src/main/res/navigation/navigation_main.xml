@@ -76,6 +76,11 @@
         <argument
             android:name="nisab"
             app:argType="com.androidvoyage.zakat.model.NisabItem" />
+        <action
+            android:id="@+id/action_editFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

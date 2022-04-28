@@ -37,50 +37,51 @@
             app:layout_constraintStart_toEndOf="@+id/iv_back"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <TextView
             android:id="@+id/tv_btn_save"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:background="@drawable/back_rect_round_4dp"
+            android:gravity="center"
+            android:minHeight="52dp"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
             android:text="Save"
+            android:textAllCaps="true"
             android:textColor="@color/white"
+            android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/tv_title_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_title_edit" />
-
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Attention! Rates are in grams."
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_edit" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ScrollView
             android:id="@+id/sv_edit"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tv_btn_save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_edit">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_margin="16dp"
+                    android:text="Attention! Rates are in grams."
+                    android:textSize="18sp" />
 
 
                 <TextView
@@ -266,17 +267,6 @@
             </LinearLayout>
         </ScrollView>
 
-
-
-        <View
-            android:id="@+id/view_shadow"
-            android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:background="@drawable/back_shadow_white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/sv_edit" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
