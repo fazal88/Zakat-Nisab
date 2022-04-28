@@ -38,26 +38,11 @@
             app:layout_constraintStart_toEndOf="@+id/iv_back"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_btn_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/back_rect_round_4dp"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp"
-            android:text="Save"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/tv_title_edit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_title_edit" />
-
         <ScrollView
             android:id="@+id/sv_edit"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_btn_save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,8 +52,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/style_label_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nisab Gallery" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingVertical="4dp"
+                    android:paddingStart="120dp"
+                    android:paddingEnd="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_image_nisab" />
+
+                <FrameLayout
+                    android:id="@+id/fl_add"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="-120dp" >
+
+                    <ImageView
+                        android:layout_width="88dp"
+                        android:src="@drawable/ic_nisab"
+                        android:scaleType="centerInside"
+                        android:layout_height="88dp"
+                        android:layout_gravity="center"/>
+
+                    <ImageView
+                        android:layout_width="88dp"
+                        android:background="@drawable/back_rect_round_8dp"
+                        android:backgroundTint="#446200EE"
+                        android:src="@drawable/ic_add"
+                        android:scaleType="centerInside"
+                        android:layout_height="88dp"
+                        android:layout_gravity="center"/>
+
+                </FrameLayout>
 
                 <TextView
                     style="@style/style_label_text"
@@ -86,51 +112,58 @@
                     android:text="@{vm.nisabItem.type}" />
 
                 <TextView
-                    android:text="@{vm.errorType}"
-                    style="@style/TextErrorValidation" />
+                    style="@style/TextErrorValidation"
+                    android:text="@{vm.errorType}" />
 
-                <TextView
-                    style="@style/style_label_text"
-                    visibleIfMetal="@{vm.nisabItem.type}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Karat" />
-
-                <TextView
-                    android:id="@+id/tv_spn_karat"
-                    style="@style/style_input_spinner"
+                <LinearLayout
                     visibleIfMetal="@{vm.nisabItem.type}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Karat"
-                    android:text="@{vm.nisabItem.purity}" />
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/back_rect_round_8dp"
+                    android:backgroundTint="@color/off_white"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:text="@{vm.errorPurity}"
-                    visibleIfMetal="@{vm.nisabItem.type}"
-                    style="@style/TextErrorValidation" />
+                    <TextView
+                        style="@style/style_label_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Karat" />
 
-                <TextView
-                    style="@style/style_label_text"
-                    visibleIfMetal="@{vm.nisabItem.type}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/str_weight_in_grams_1_tola_10_grams_at_present" />
+                    <TextView
+                        android:id="@+id/tv_spn_karat"
+                        style="@style/style_input_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Karat"
+                        android:text="@{vm.nisabItem.purity}" />
 
-                <EditText
-                    android:id="@+id/et_weight"
-                    style="@style/style_input_edittext"
-                    visibleIfMetal="@{vm.nisabItem.type}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="grams"
-                    android:inputType="numberDecimal"
-                    android:text="@={vm.nisabItem.weight}" />
+                    <TextView
+                        style="@style/TextErrorValidation"
+                        android:text="@{vm.errorPurity}" />
 
-                <TextView
-                    android:text="@{vm.errorGram}"
-                    visibleIfMetal="@{vm.nisabItem.type}"
-                    style="@style/TextErrorValidation" />
+                    <TextView
+                        style="@style/style_label_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_weight_in_grams"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/et_weight"
+                        style="@style/style_input_edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="grams"
+                        android:inputType="numberDecimal"
+                        android:text="@={vm.nisabItem.weight}" />
+
+                    <TextView
+                        style="@style/TextErrorValidation"
+                        android:text="@{vm.errorGram}" />
+
+                </LinearLayout>
 
                 <TextView
                     style="@style/style_label_text"
@@ -147,8 +180,8 @@
                     android:text="@={vm.nisabItem.name}" />
 
                 <TextView
-                    android:text="@{vm.errorName}"
-                    style="@style/TextErrorValidation" />
+                    style="@style/TextErrorValidation"
+                    android:text="@{vm.errorName}" />
 
                 <TextView
                     style="@style/style_label_text"
@@ -166,8 +199,8 @@
                     android:text="@={vm.nisabItem.price}" />
 
                 <TextView
-                    android:text="@{vm.errorCost}"
-                    style="@style/TextErrorValidation" />
+                    style="@style/TextErrorValidation"
+                    android:text="@{vm.errorCost}" />
 
                 <TextView
                     style="@style/style_label_text"
@@ -186,6 +219,23 @@
             </LinearLayout>
         </ScrollView>
 
+        <TextView
+            android:id="@+id/tv_btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/back_rect_round_4dp"
+            android:gravity="center"
+            android:minHeight="52dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <View
             android:id="@+id/view_shadow"

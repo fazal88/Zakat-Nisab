@@ -1,9 +1,12 @@
 package com.androidvoyage.zakat.util
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.Animation
@@ -11,6 +14,7 @@ import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.widget.Toast
 import com.androidvoyage.zakat.R
+import java.io.ByteArrayOutputStream
 import java.text.NumberFormat
 import java.util.*
 import kotlin.math.roundToInt
@@ -138,4 +142,25 @@ fun View.setOnClickAnimateListener(clickListener: View.OnClickListener) {
 interface OnClickedAnimationListener {
 
     fun onAnimationEnd()
+}
+
+
+fun bitmapToBase64(bitmap: Bitmap?, format: Int): String? {
+    var encoded: String? = null
+    if (bitmap != null) {
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+        encoded = Base64.encodeToString(byteArray, format)
+    }
+    return encoded
+}
+
+fun base64ToBitmap(base64: String?, format: Int): Bitmap? {
+    var decoded: Bitmap? = null
+    if (base64 != null && !base64.isEmpty()) {
+        val byteArray = Base64.decode(base64, format)
+        decoded = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+    }
+    return decoded
 }

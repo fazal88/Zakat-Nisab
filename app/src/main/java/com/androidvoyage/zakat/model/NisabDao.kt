@@ -12,7 +12,7 @@ import androidx.room.*
 @Dao
 interface NisabDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNisab(item : NisabItem)
 
     @Update

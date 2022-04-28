@@ -76,9 +76,6 @@
         <argument
             android:name="nisab"
             app:argType="com.androidvoyage.zakat.model.NisabItem" />
-        <argument
-            android:name="isUpdate"
-            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

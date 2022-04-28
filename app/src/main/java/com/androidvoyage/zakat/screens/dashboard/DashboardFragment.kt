@@ -94,7 +94,7 @@ class DashboardFragment : Fragment() {
 
         binding.ivAdd.onClickWithAnimation {
             binding.root.findNavController()
-                .navigate(DashboardFragmentDirections.actionDashboardFragmentToEditFragment(NisabItem(),false))
+                .navigate(DashboardFragmentDirections.actionDashboardFragmentToEditFragment(NisabItem()))
         }
 
         binding.incMetalValues.root.onClickWithAnimation {

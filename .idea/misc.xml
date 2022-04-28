@@ -31,7 +31,9 @@
         <entry key="app/src/main/res/layout/about_fragment.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/layout/dashboard_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dialog_info.xml" value="0.27233860624198375" />
         <entry key="app/src/main/res/layout/dialog_list_spinner.xml" value="0.33177083333333335" />
+        <entry key="app/src/main/res/layout/dialog_two_button.xml" value="0.27233860624198375" />
         <entry key="app/src/main/res/layout/edit_fragment.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/layout/faq_fragment.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.125" />
