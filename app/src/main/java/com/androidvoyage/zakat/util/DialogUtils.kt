@@ -107,6 +107,14 @@ fun showInfoDialog(
     showInfoDialog(context, title, message, null)
 }
 
+fun showImageDialog(
+    context: Context,
+    image:String?,
+    list:List<String>
+){
+
+}
+
 fun showInfoDialog(
     context: Context?,
     title: String,

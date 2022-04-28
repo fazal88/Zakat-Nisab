@@ -1,15 +1,14 @@
 package com.androidvoyage.zakat.model
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 
 /**
  * Created by Fazal on 16/02/22.
  * Copyright (c) 2022 PayNearby. All rights reserved.
  */
 @Database(entities = [NisabItem::class,NisabCategoryItem::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class NisabDatabase : RoomDatabase() {
 
     abstract fun nisabDao(): NisabDao

@@ -61,11 +61,13 @@
                     android:text="Nisab Gallery" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_list_images"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:clipToPadding="false"
                     android:orientation="horizontal"
                     android:paddingVertical="4dp"
+                    setListAdapter="@{vm.nisabItem}"
                     android:paddingStart="120dp"
                     android:paddingEnd="16dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -76,11 +78,14 @@
                     android:id="@+id/fl_add"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
+                    android:elevation="8dp"
                     android:layout_marginTop="-120dp" >
 
                     <ImageView
                         android:layout_width="88dp"
                         android:src="@drawable/ic_nisab"
+                        android:background="@drawable/back_rect_round_8dp"
+                        android:backgroundTint="@color/white"
                         android:scaleType="centerInside"
                         android:layout_height="88dp"
                         android:layout_gravity="center"/>

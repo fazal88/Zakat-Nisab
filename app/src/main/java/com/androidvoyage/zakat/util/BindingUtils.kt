@@ -3,6 +3,7 @@ package com.androidvoyage.zakat.util
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.os.Build
+import android.util.Base64
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Fade
 import androidx.transition.Slide
 import androidx.transition.Transition
@@ -19,6 +21,7 @@ import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.NisabItem
 import com.androidvoyage.zakat.pref.SharedPreferencesManager
+import com.androidvoyage.zakat.screens.edit.NisabImagesAdapter
 import com.bumptech.glide.Glide
 import java.util.*
 import kotlin.math.max
@@ -41,6 +44,34 @@ fun View.onClickWithAnimation(clickFunction: () -> Unit) {
         })
     }
 
+}
+
+@BindingAdapter("setListAdapter")
+fun RecyclerView.setListAdapter(item : NisabItem?){
+    item?.let { nisab ->
+        val adapter = NisabImagesAdapter(NisabImagesAdapter.NisabClickListener { image ->
+            showImageDialog(this.context, image, nisab.listImages)
+        })
+        this.adapter = adapter
+        adapter.submitList(nisab.listImages)
+    }
+}
+
+
+@BindingAdapter("setImageBitmap")
+fun ImageView.setImageBitmap(item: String?) {
+    try {
+        item?.let {
+            Glide.with(this.context)
+                .load(base64ToBitmap(item, Base64.NO_WRAP))
+                .centerCrop()
+                .circleCrop()
+                .placeholder(R.drawable.ic_nisab)
+                .into(this)
+        }
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
 }
 
 
