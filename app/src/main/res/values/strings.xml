@@ -31,4 +31,10 @@
     <string name="str_rupee_per_gram">₹/gram</string>
     <string name="str_concate_g">%sg</string>
     <string name="str_empty"> </string>
+    <string name="you_want_to_exit">Are you sure, you want to exit?</string>
+    <string name="exit">Exit!</string>
+    <string name="str_no">No</string>
+    <string name="str_yes">Yes</string>
+    <string name="str_attention">Attention!</string>
+    <string name="str_ok">Okay</string>
 </resources>
