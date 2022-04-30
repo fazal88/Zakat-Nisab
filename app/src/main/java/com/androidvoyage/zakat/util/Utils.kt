@@ -28,8 +28,11 @@ object Utils {
         return "₹ "
     }
 
-    fun getAmountWithCommas(amount: String): String {
-        var temp = if(amount.contains('.')){
+    fun getAmountWithCommas(amount: String?): String {
+        if(amount.isNullOrEmpty()){
+            return "0"
+        }
+        val temp = if(amount.contains('.')){
             val tempDouble = amount.toDouble()
             tempDouble.roundToLong()
         }else

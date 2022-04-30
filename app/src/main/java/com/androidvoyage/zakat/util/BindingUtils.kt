@@ -385,32 +385,56 @@ fun TextView.setEstimatedZakat(totalValue : Double?){
 
 @BindingAdapter("set24KRate")
 fun TextView.set24KRate(i : String){
-    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_24_K)+" "+i
+    var rate = SharedPreferencesManager.getInstance().getRate(Features.PREF_24_K)+""+i
+    if(rate.isEmpty() || rate.isBlank()){
+        rate = "NA"
+    }
+    text = rate
 }
 
 @BindingAdapter("set22KRate")
 fun TextView.set22KRate(i : String){
-    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_22_K)+" "+i
+    var rate = SharedPreferencesManager.getInstance().getRate(Features.PREF_22_K)+""+i
+    if(rate.isEmpty() || rate.isBlank()){
+        rate = "NA"
+    }
+    text = rate
 }
 
 @BindingAdapter("set18KRate")
 fun TextView.set18KRate(i : String){
-    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_18_K)+" "+i
+    var rate = SharedPreferencesManager.getInstance().getRate(Features.PREF_18_K)+""+i
+    if(rate.isEmpty() || rate.isBlank()){
+        rate = "NA"
+    }
+    text = rate
 }
 
 @BindingAdapter("set14KRate")
 fun TextView.set14KRate(i : String){
-    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_14_K)+" "+i
+    var rate = SharedPreferencesManager.getInstance().getRate(Features.PREF_14_K)+""+i
+    if(rate.isEmpty() || rate.isBlank()){
+        rate = "NA"
+    }
+    text = rate
 }
 
 @BindingAdapter("set23KRate")
 fun TextView.set23KRate(i : String){
-    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_23_KDM)+" "+i
+    var rate = SharedPreferencesManager.getInstance().getRate(Features.PREF_23_KDM)+""+i
+    if(rate.isEmpty() || rate.isBlank()){
+        rate = "NA"
+    }
+    text = rate
 }
 
 @BindingAdapter("setSilverRate")
 fun TextView.setSilverRate(i : String){
-    text = SharedPreferencesManager.getInstance().getRate(Features.PREF_SILVER)+" "+i
+    var rate = SharedPreferencesManager.getInstance().getRate(Features.PREF_SILVER)+""+i
+    if(rate.isEmpty() || rate.isBlank()){
+        rate = "NA"
+    }
+    text = rate
 }
 
 @BindingAdapter("setEstimatedZakat")
