@@ -56,12 +56,4 @@ public class SharedPreferencesManager {
     public String getRate(String key) {
         return sSharedPreferenceEncrypted.getString(key, "");
     }
-
-    public void setTotal( double totalOverAll) {
-        sSharedPreferenceEncrypted.edit().putString(Features.PREF_OVER_ALL, totalOverAll + "").apply();
-    }
-
-    public String getTotal(){
-        return sSharedPreferenceEncrypted.getString(Features.PREF_OVER_ALL, "0");
-    }
 }

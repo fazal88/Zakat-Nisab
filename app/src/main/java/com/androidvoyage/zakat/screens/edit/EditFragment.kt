@@ -69,7 +69,8 @@ class EditFragment : Fragment() {
             save()
         }
         binding.ivBack.onClickWithAnimation { requireActivity().onBackPressed() }
-        viewModel.nisabItem.postValue(args.nisab)
+        args.nisab.type = if (args.nisab.type == Features.PREF_OVER_ALL) "" else args.nisab.type
+        viewModel.nisabItem.postValue(args.nisab.copy())
 
         binding.etName.doOnTextChanged { text, start, before, count ->
             if (count > 0) {
@@ -100,7 +101,7 @@ class EditFragment : Fragment() {
 
     @OptIn(ExperimentalFoundationApi::class)
     private fun save() {
-        if(viewModel.nisabItem.value?.type?.isEmpty() == true){
+        if (viewModel.nisabItem.value?.type?.isEmpty() == true) {
             viewModel.errorType.value = "Please select"
             return
         }
@@ -108,15 +109,15 @@ class EditFragment : Fragment() {
             viewModel.errorPurity.value = "Please select"
             return
         }
-        if(viewModel.nisabItem.value?.type == Features.PREF_GOLD_SILVER &&viewModel.nisabItem.value?.weight?.isEmpty() == true){
+        if (viewModel.nisabItem.value?.type == Features.PREF_GOLD_SILVER && viewModel.nisabItem.value?.weight?.isEmpty() == true) {
             viewModel.errorGram.value = "Invalid"
             return
         }
-        if(viewModel.nisabItem.value?.name?.isEmpty() == true){
+        if (viewModel.nisabItem.value?.name?.isEmpty() == true) {
             viewModel.errorName.value = "Cannot be empty"
             return
         }
-        if(viewModel.nisabItem.value?.type != Features.PREF_GOLD_SILVER && viewModel.nisabItem.value?.price?.isEmpty() == true){
+        if (viewModel.nisabItem.value?.type != Features.PREF_GOLD_SILVER && viewModel.nisabItem.value?.price?.isEmpty() == true) {
             viewModel.errorCost.value = "Cannot be empty"
             return
         }
@@ -126,7 +127,15 @@ class EditFragment : Fragment() {
             (requireActivity() as MainActivity).database.nisabDao().insertNisab(nisab)
         }
         Utils.showToast(requireActivity(), "Saved!", true)
-        (requireActivity() as MainActivity).navController.navigate(EditFragmentDirections.actionEditFragmentToListFragment(nisab.type))
+        if (nisab.type == args.nisab.type || args.nisab.type.isEmpty()) {
+            requireActivity().onBackPressed()
+        } else {
+            (requireActivity() as MainActivity).navController.navigate(
+                EditFragmentDirections.actionEditFragmentToListFragment(
+                    nisab.type
+                )
+            )
+        }
     }
 
 }

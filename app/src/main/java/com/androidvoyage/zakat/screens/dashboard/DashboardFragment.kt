@@ -19,7 +19,6 @@ import com.androidvoyage.zakat.databinding.DashboardFragmentBinding
 import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.NisabCategoryItem
 import com.androidvoyage.zakat.model.NisabItem
-import com.androidvoyage.zakat.screens.list.ListFragmentDirections
 import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.util.Utils
 import com.androidvoyage.zakat.util.onClickWithAnimation
@@ -66,18 +65,20 @@ class DashboardFragment : Fragment() {
         (requireActivity() as MainActivity).database.nisabDao().getNisabCategory()
             .observe(viewLifecycleOwner) {
                 it?.let {
-                    if(it.isEmpty()){
-                        Utils.showToast(requireContext(),"empty",false)
+                    if (it.isEmpty()) {
+                        Utils.showToast(requireContext(), "empty", false)
                         CoroutineScope(Dispatchers.Default).launch {
-                            (requireActivity() as MainActivity).database.nisabDao().insertNisabCategory(NisabCategoryItem(Features.PREF_OVER_ALL))
+                            (requireActivity() as MainActivity).database.nisabDao()
+                                .insertNisabCategory(NisabCategoryItem(Features.PREF_OVER_ALL))
                             for (i in Features.prefTitleList) {
                                 try {
-                                    (requireActivity() as MainActivity).database.nisabDao().insertNisabCategory(NisabCategoryItem(i))
+                                    (requireActivity() as MainActivity).database.nisabDao()
+                                        .insertNisabCategory(NisabCategoryItem(i))
                                 } catch (e: SQLiteConstraintException) {
                                 }
                             }
                         }
-                    }else{
+                    } else {
                         viewModel.adapter.submitList(it)
                     }
                 }
@@ -94,7 +95,11 @@ class DashboardFragment : Fragment() {
 
         binding.ivAdd.onClickWithAnimation {
             binding.root.findNavController()
-                .navigate(DashboardFragmentDirections.actionDashboardFragmentToEditFragment(NisabItem()))
+                .navigate(
+                    DashboardFragmentDirections.actionDashboardFragmentToEditFragment(
+                        NisabItem()
+                    )
+                )
         }
 
         binding.incMetalValues.root.onClickWithAnimation {
