@@ -22,6 +22,7 @@ import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.NisabItem
 import com.androidvoyage.zakat.pref.SharedPreferencesManager
 import com.androidvoyage.zakat.screens.edit.NisabImagesAdapter
+import com.androidvoyage.zakat.screens.list.NisabImagesSmallAdapter
 import com.bumptech.glide.Glide
 import java.util.*
 import kotlin.math.max
@@ -50,6 +51,17 @@ fun View.onClickWithAnimation(clickFunction: () -> Unit) {
 fun RecyclerView.setListAdapter(item : NisabItem?){
     item?.let { nisab ->
         val adapter = NisabImagesAdapter(NisabImagesAdapter.NisabClickListener { image ->
+            showImageDialog(this.context, image, nisab.listImages)
+        })
+        this.adapter = adapter
+        adapter.submitList(nisab.listImages)
+    }
+}
+
+@BindingAdapter("setSmallListAdapter")
+fun RecyclerView.setSmallListAdapter(item : NisabItem?){
+    item?.let { nisab ->
+        val adapter = NisabImagesSmallAdapter(NisabImagesSmallAdapter.NisabClickListener { image ->
             showImageDialog(this.context, image, nisab.listImages)
         })
         this.adapter = adapter

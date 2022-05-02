@@ -97,6 +97,35 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_purchase_date"
             tools:text="Necklace" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="Pictures "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/rcv_list_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rcv_list_small" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_item"
+            android:orientation="horizontal"
+            setSmallListAdapter="@{vm}"
+            android:paddingHorizontal="16dp"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="2"
+            app:reverseLayout="true"
+            tools:listitem="@layout/item_image_nisab_small"
+            android:id="@+id/rcv_list_small"/>
+
         <LinearLayout
             android:id="@+id/ll_weight"
             setPuritySection="@{vm.type}"
@@ -107,7 +136,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_item">
+            app:layout_constraintTop_toBottomOf="@+id/rcv_list_small">
 
             <TextView
                 android:layout_width="0dp"
@@ -162,8 +191,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_lable_purchase"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
