@@ -2,6 +2,7 @@ package com.androidvoyage.zakat.screens.edit
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,11 +17,12 @@ import com.androidvoyage.zakat.databinding.EditFragmentBinding
 import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.util.*
+import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.internal.notify
+import kotlin.collections.ArrayList
 
 class EditFragment : Fragment() {
 
@@ -164,14 +166,17 @@ class EditFragment : Fragment() {
                 /*mProfileUri = fileUri
                 imgProfile.setImageURI(fileUri)*/
                 LogUtils.d("Image Picker URI", fileUri.toString())
-                val list = ArrayList<String>()
-                val nisabList = viewModel.nisabItem.value?.listImages
-                if (nisabList?.isNotEmpty()==true) {
-                    list.addAll(nisabList)
+                CoroutineScope(Dispatchers.IO).launch {
+                    val bitmap = Glide.with(requireContext()).asBitmap().load(fileUri).submit().get()//this is synchronous approach
+                    val list = ArrayList<String>()
+                    val nisabList = viewModel.nisabItem.value?.listImages
+                    if (nisabList?.isNotEmpty()==true) {
+                        list.addAll(nisabList)
+                    }
+                    list.add(bitmapToBase64(bitmap, Base64.NO_WRAP )!!)
+                    viewModel.nisabItem.value?.listImages = list
+                    viewModel.notifyModel()
                 }
-                list.add(fileUri.toString())
-                viewModel.nisabItem.value?.listImages = list
-                viewModel.notifyModel()
             } else if (resultCode == ImagePicker.RESULT_ERROR) {
                 Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
                     .show()

@@ -161,7 +161,7 @@ fun bitmapToBase64(bitmap: Bitmap?, format: Int): String? {
 
 fun base64ToBitmap(base64: String?, format: Int): Bitmap? {
     var decoded: Bitmap? = null
-    if (base64 != null && !base64.isEmpty()) {
+    if (base64 != null && base64.isNotEmpty()) {
         val byteArray = Base64.decode(base64, format)
         decoded = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
     }
