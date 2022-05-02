@@ -1,9 +1,13 @@
 package com.androidvoyage.zakat.screens.edit
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -11,13 +15,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.androidvoyage.zakat.databinding.EditFragmentBinding
 import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.screens.main.MainActivity
-import com.androidvoyage.zakat.util.OnSelectListener
-import com.androidvoyage.zakat.util.Utils
-import com.androidvoyage.zakat.util.onClickWithAnimation
-import com.androidvoyage.zakat.util.showListSelectionDialog
+import com.androidvoyage.zakat.util.*
+import com.github.dhaval2404.imagepicker.ImagePicker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.internal.notify
 
 class EditFragment : Fragment() {
 
@@ -97,6 +100,17 @@ class EditFragment : Fragment() {
                 viewModel.errorPurity.value = ""
             }
         }
+        binding.flAdd.onClickWithAnimation {
+            ImagePicker.with(this)
+                .compress(1024) //Final image size will be less than 1 MB(Optional)
+                .maxResultSize(
+                    1080,
+                    1080
+                )  //Final image resolution will be less than 1080 x 1080(Optional)
+                .createIntent { intent ->
+                    startForProfileImageResult.launch(intent)
+                }
+        }
     }
 
     @OptIn(ExperimentalFoundationApi::class)
@@ -137,5 +151,33 @@ class EditFragment : Fragment() {
             )
         }
     }
+
+    private val startForProfileImageResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            val resultCode = result.resultCode
+            val data = result.data
+
+            if (resultCode == Activity.RESULT_OK) {
+                //Image Uri will not be null for RESULT_OK
+                val fileUri = data?.data!!
+
+                /*mProfileUri = fileUri
+                imgProfile.setImageURI(fileUri)*/
+                LogUtils.d("Image Picker URI", fileUri.toString())
+                val list = ArrayList<String>()
+                val nisabList = viewModel.nisabItem.value?.listImages
+                if (nisabList?.isNotEmpty()==true) {
+                    list.addAll(nisabList)
+                }
+                list.add(fileUri.toString())
+                viewModel.nisabItem.value?.listImages = list
+                viewModel.notifyModel()
+            } else if (resultCode == ImagePicker.RESULT_ERROR) {
+                Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                Toast.makeText(requireContext(), "Task Cancelled", Toast.LENGTH_SHORT).show()
+            }
+        }
 
 }

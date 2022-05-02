@@ -65,7 +65,21 @@ fun ImageView.setImageBitmap(item: String?) {
             Glide.with(this.context)
                 .load(base64ToBitmap(item, Base64.NO_WRAP))
                 .centerCrop()
-                .circleCrop()
+                .placeholder(R.drawable.ic_nisab)
+                .into(this)
+        }
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+}
+
+@BindingAdapter("setImageUri")
+fun ImageView.setImageUri(item: String?) {
+    try {
+        item?.let {
+            Glide.with(this.context)
+                .load(item)
+                .centerCrop()
                 .placeholder(R.drawable.ic_nisab)
                 .into(this)
         }

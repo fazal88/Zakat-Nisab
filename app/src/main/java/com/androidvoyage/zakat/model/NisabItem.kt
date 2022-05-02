@@ -17,7 +17,7 @@ import kotlinx.parcelize.Parcelize
 data class NisabItem(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val listImages: List<String> = ArrayList(),
+    var listImages: List<String> = mutableListOf(),
     var datePurchase: Long = System.currentTimeMillis(),
     var name: String = "",
     var type: String = "",

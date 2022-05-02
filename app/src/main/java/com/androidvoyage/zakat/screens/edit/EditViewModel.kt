@@ -28,7 +28,7 @@ class EditViewModel : ViewModel() {
         notifyModel()
     }
 
-    private fun notifyModel() {
+    fun notifyModel() {
         nisabItem.postValue(nisabItem.value)
     }
 
