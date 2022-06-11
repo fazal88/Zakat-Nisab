@@ -1,5 +1,6 @@
 package com.androidvoyage.zakat.screens.rates
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.androidvoyage.zakat.pref.SharedPreferencesManager
 import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.util.Utils
 import com.androidvoyage.zakat.util.onClickWithAnimation
+import com.androidvoyage.zakat.util.showInfoDialog
 
 class RateFragment : Fragment() {
 
@@ -41,7 +43,17 @@ class RateFragment : Fragment() {
         (requireActivity() as MainActivity).hideNavBottom(false)
 
         binding.tvBtnSave.onClickWithAnimation {
-            save()
+            if(isValidInput()){
+                showInfoDialog(
+                    requireContext(),
+                    "Attention!",
+                    "Rates must be in rupees per 1 gram. please comfirm same for proper calculation."
+                ) { dialog, which ->
+                    if (which == DialogInterface.BUTTON_POSITIVE) {
+                        save()
+                    }
+                }
+            }
         }
         binding.ivBack.onClickWithAnimation { requireActivity().onBackPressed() }
 
@@ -90,39 +102,41 @@ class RateFragment : Fragment() {
 
     }
 
-    @OptIn(ExperimentalFoundationApi::class)
-    private fun save(){
-
+    private fun isValidInput(): Boolean {
         if(viewModel.rate24.value.isNullOrEmpty()){
             viewModel.error24.value = "Invalid"
-            return
+            return false
         }
 
         if(viewModel.rate22.value.isNullOrEmpty()){
             viewModel.error22.value = "Invalid"
-            return
+            return false
         }
 
         if(viewModel.rate18.value.isNullOrEmpty()){
             viewModel.error18.value = "Invalid"
-            return
+            return false
         }
 
         if(viewModel.rate14.value.isNullOrEmpty()){
             viewModel.error14.value = "Invalid"
-            return
+            return false
         }
 
         if(viewModel.rate23.value.isNullOrEmpty()){
             viewModel.error23.value = "Invalid"
-            return
+            return false
         }
 
         if(viewModel.rateSilver.value.isNullOrEmpty()){
             viewModel.errorSilver.value = "Invalid"
-            return
+            return false
         }
+        return true
+    }
 
+    @OptIn(ExperimentalFoundationApi::class)
+    private fun save(){
         SharedPreferencesManager.getInstance().setRate(Features.PREF_24_K,viewModel.rate24.value)
         SharedPreferencesManager.getInstance().setRate(Features.PREF_22_K,viewModel.rate22.value)
         SharedPreferencesManager.getInstance().setRate(Features.PREF_18_K,viewModel.rate18.value)

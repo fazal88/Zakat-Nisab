@@ -135,7 +135,7 @@ fun showInfoDialog(
         ViewGroup.LayoutParams.MATCH_PARENT,
         ViewGroup.LayoutParams.MATCH_PARENT
     )
-    dialog.setCanceledOnTouchOutside(false)
+    dialog.setCanceledOnTouchOutside(true)
     dialog.show()
 
     binding.tvMessage.text = message

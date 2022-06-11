@@ -1,6 +1,7 @@
 package com.androidvoyage.zakat.screens.edit
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Base64
 import android.view.LayoutInflater
@@ -22,7 +23,6 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.collections.ArrayList
 
 class EditFragment : Fragment() {
 
@@ -71,7 +71,9 @@ class EditFragment : Fragment() {
             })
         }
         binding.tvBtnSave.onClickWithAnimation {
-            save()
+            if (isValidInput()) {
+                save()
+            }
         }
         binding.ivBack.onClickWithAnimation { requireActivity().onBackPressed() }
         args.nisab.type = if (args.nisab.type == Features.PREF_OVER_ALL) "" else args.nisab.type
@@ -117,26 +119,6 @@ class EditFragment : Fragment() {
 
     @OptIn(ExperimentalFoundationApi::class)
     private fun save() {
-        if (viewModel.nisabItem.value?.type?.isEmpty() == true) {
-            viewModel.errorType.value = "Please select"
-            return
-        }
-        if (viewModel.nisabItem.value?.type == Features.PREF_GOLD_SILVER && viewModel.nisabItem.value?.purity?.isEmpty() == true) {
-            viewModel.errorPurity.value = "Please select"
-            return
-        }
-        if (viewModel.nisabItem.value?.type == Features.PREF_GOLD_SILVER && viewModel.nisabItem.value?.weight?.isEmpty() == true) {
-            viewModel.errorGram.value = "Invalid"
-            return
-        }
-        if (viewModel.nisabItem.value?.name?.isEmpty() == true) {
-            viewModel.errorName.value = "Cannot be empty"
-            return
-        }
-        if (viewModel.nisabItem.value?.type != Features.PREF_GOLD_SILVER && viewModel.nisabItem.value?.price?.isEmpty() == true) {
-            viewModel.errorCost.value = "Cannot be empty"
-            return
-        }
         val nisab = viewModel.getNisabWithEstimation()
         CoroutineScope(Dispatchers.Default).launch {
             (requireActivity() as MainActivity).type = nisab.type
@@ -154,6 +136,30 @@ class EditFragment : Fragment() {
         }
     }
 
+    private fun isValidInput(): Boolean {
+        if (viewModel.nisabItem.value?.type?.isEmpty() == true) {
+            viewModel.errorType.value = "Please select"
+            return false
+        }
+        if (viewModel.nisabItem.value?.type == Features.PREF_GOLD_SILVER && viewModel.nisabItem.value?.purity?.isEmpty() == true) {
+            viewModel.errorPurity.value = "Please select"
+            return false
+        }
+        if (viewModel.nisabItem.value?.type == Features.PREF_GOLD_SILVER && viewModel.nisabItem.value?.weight?.isEmpty() == true) {
+            viewModel.errorGram.value = "Invalid"
+            return false
+        }
+        if (viewModel.nisabItem.value?.name?.isEmpty() == true) {
+            viewModel.errorName.value = "Cannot be empty"
+            return false
+        }
+        if (viewModel.nisabItem.value?.type != Features.PREF_GOLD_SILVER && viewModel.nisabItem.value?.price?.isEmpty() == true) {
+            viewModel.errorCost.value = "Cannot be empty"
+            return false
+        }
+        return true
+    }
+
     private val startForProfileImageResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             val resultCode = result.resultCode
@@ -167,13 +173,14 @@ class EditFragment : Fragment() {
                 imgProfile.setImageURI(fileUri)*/
                 LogUtils.d("Image Picker URI", fileUri.toString())
                 CoroutineScope(Dispatchers.IO).launch {
-                    val bitmap = Glide.with(requireContext()).asBitmap().load(fileUri).submit().get()//this is synchronous approach
+                    val bitmap = Glide.with(requireContext()).asBitmap().load(fileUri).submit()
+                        .get()//this is synchronous approach
                     val list = ArrayList<String>()
                     val nisabList = viewModel.nisabItem.value?.listImages
-                    if (nisabList?.isNotEmpty()==true) {
+                    if (nisabList?.isNotEmpty() == true) {
                         list.addAll(nisabList)
                     }
-                    list.add(bitmapToBase64(bitmap, Base64.NO_WRAP )!!)
+                    list.add(bitmapToBase64(bitmap, Base64.NO_WRAP)!!)
                     viewModel.nisabItem.value?.listImages = list
                     viewModel.notifyModel()
                 }
