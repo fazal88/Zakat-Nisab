@@ -21,13 +21,13 @@
         onClickWithAnimation="@{()->click.onClickEdit(vm)}"
         android:layout_margin="8dp"
         android:background="@drawable/back_rect_round_8dp"
-        android:paddingBottom="16dp">
+        android:paddingBottom="4dp">
 
         <View
             android:id="@+id/view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="2dp"
+            android:layout_margin="1dp"
             android:background="@drawable/back_rect_round_8dp"
             android:backgroundTint="#ddffffff"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,8 +38,8 @@
         <ImageView
             android:id="@+id/iv_item"
             setIconFromKey="@{vm.type}"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_margin="16dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_nisab"
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             setDate="@{vm.datePurchase}"
             android:textColor="@color/black"
-            android:textSize="13sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/tv_item"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@+id/tv_item"
@@ -89,9 +89,8 @@
             android:layout_marginHorizontal="16dp"
             android:text="@{vm.name}"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_item"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_item"
             app:layout_constraintTop_toBottomOf="@+id/tv_purchase_date"
@@ -180,6 +179,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/str_purchase_cost"
+            setPuritySection="@{vm.type}"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_weight" />
@@ -190,6 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
+            setPuritySection="@{vm.type}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/tv_lable_purchase"
             app:layout_constraintEnd_toEndOf="parent"
@@ -208,6 +209,7 @@
             android:text="@string/str_estimated_value"
             android:textColor="@color/black"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_lable_purchase" />

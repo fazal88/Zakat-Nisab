@@ -25,8 +25,8 @@
     <string name="str_zakat_amp_nisab"><![CDATA[Zakat & Nisab]]></string>
     <string name="str_overflow_menu">overflow_menu</string>
     <string name="str_cost_label"><b>Cost</b> : ₹12,000</string>
-    <string name="str_estimated_value">Estimated Value :</string>
-    <string name="str_purchase_cost">Purchase Cost :</string>
+    <string name="str_estimated_value">Value :</string>
+    <string name="str_purchase_cost">Purchase Value :</string>
     <string name="str_rate_update">* Update rates of gold as per purity based on your region and country</string>
     <string name="str_per_gram">%s ₹/gram</string>
     <string name="str_rupee_per_gram">₹/10 gram</string>

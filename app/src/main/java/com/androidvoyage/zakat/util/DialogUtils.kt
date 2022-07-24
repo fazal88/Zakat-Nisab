@@ -29,6 +29,7 @@ fun showListSelectionDialog(context: Context, listArea : ArrayList<String>?, onS
     dialog.setCanceledOnTouchOutside(false)
     dialog.show()
 
+    binding.parent.setOnClickListener{ dialog.dismiss()}
     binding.rcvListArea.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL,false)
     binding.rcvListArea.adapter = SpinnerListAdapter(context, listArea, object : OnSelectListener{
         override fun onSelected(item: String) {

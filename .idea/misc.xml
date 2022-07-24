@@ -7,10 +7,16 @@
         <entry key="..\:/Users/mohdfazal.shaikh/Desktop/Zakat-Nisab/app/src/main/res/layout/edit_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/mohdfazal.shaikh/Desktop/Zakat-Nisab/app/src/main/res/layout/item_dashboard.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/mohdfazal.shaikh/Desktop/Zakat-Nisab/app/src/main/res/layout/item_image_nisab.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/drawable/back_rect_round_8dp.xml" value="0.196" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2688898269311946" />
         <entry key="app/src/main/res/layout/dashboard_fragment.xml" value="0.2688898269311946" />
         <entry key="app/src/main/res/layout/dialog_info.xml" value="0.2688898269311946" />
+        <entry key="app/src/main/res/layout/dialog_list_spinner.xml" value="0.2688898269311946" />
         <entry key="app/src/main/res/layout/edit_fragment.xml" value="0.2688898269311946" />
+        <entry key="app/src/main/res/layout/item_dashboard.xml" value="0.2688898269311946" />
+        <entry key="app/src/main/res/layout/item_list_nisab.xml" value="0.2688898269311946" />
         <entry key="app/src/main/res/layout/item_metal_values.xml" value="0.2688898269311946" />
+        <entry key="app/src/main/res/layout/list_fragment.xml" value="0.2688898269311946" />
         <entry key="app/src/main/res/layout/rate_fragment.xml" value="0.2688898269311946" />
       </map>
     </option>
