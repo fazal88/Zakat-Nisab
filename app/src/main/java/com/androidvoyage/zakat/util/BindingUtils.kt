@@ -471,7 +471,7 @@ fun TextView.setEstimatedZakat(vm: NisabItem?) {
         text = if (isMetail) {
             val grams = it.weight
             val rate = SharedPreferencesManager.getInstance().getRate(vm.purity)
-            val estimatedValue = grams.toFloat() * rate.toFloat() * 0.025
+            val estimatedValue = grams.toFloat() * rate.toFloat()/10 * 0.025
             val roundOffEstimatedValue = Utils.roundOff(estimatedValue, 2)
             "₹ $roundOffEstimatedValue"
         } else {

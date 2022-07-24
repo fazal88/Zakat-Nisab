@@ -36,7 +36,7 @@ class EditViewModel : ViewModel() {
         if(nisabItem.value?.type == Features.PREF_GOLD_SILVER){
             val grams = nisabItem.value?.weight!!
             val rate = SharedPreferencesManager.getInstance().getRate(nisabItem.value?.purity)
-            val estimatedValue = grams.toFloat() * rate.toFloat()
+            val estimatedValue = grams.toFloat() * rate.toFloat()/10
             val roundOffEstimatedValue = estimatedValue.roundToLong()
             nisabItem.value?.estimatedValue = roundOffEstimatedValue.toString()
         }else{
