@@ -47,7 +47,7 @@ class RateFragment : Fragment() {
                 showInfoDialog(
                     requireContext(),
                     "Attention!",
-                    "Rates must be in rupees per 1 gram. please comfirm same for proper calculation."
+                    "Rates must be in rupees per 10 gram(Tola). Please confirm to get accurate calculation."
                 ) { dialog, which ->
                     if (which == DialogInterface.BUTTON_POSITIVE) {
                         save()

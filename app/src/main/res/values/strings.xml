@@ -29,7 +29,7 @@
     <string name="str_purchase_cost">Purchase Cost :</string>
     <string name="str_rate_update">Please update rates of gold as per purity based on your region and country</string>
     <string name="str_per_gram">%s ₹/gram</string>
-    <string name="str_rupee_per_gram">₹/gram</string>
+    <string name="str_rupee_per_gram">₹/10 gram</string>
     <string name="str_concate_g">%sg</string>
     <string name="str_empty"> </string>
     <string name="you_want_to_exit">Are you sure, you want to exit?</string>

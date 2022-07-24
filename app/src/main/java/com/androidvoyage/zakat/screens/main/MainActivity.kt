@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
                 for (metalItem in it) {
                     val grams = metalItem.weight
                     val rate = SharedPreferencesManager.getInstance().getRate(metalItem.purity)
-                    val estimatedValue = grams.toFloat() * rate.toFloat()
+                    val estimatedValue = grams.toFloat() * rate.toFloat()/10
                     val roundOffEstimatedValue = estimatedValue.roundToLong()
                     metalItem.estimatedValue = roundOffEstimatedValue.toString()
                     CoroutineScope(Dispatchers.Default)
