@@ -30,7 +30,7 @@
             android:id="@+id/view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="2dp"
+            android:layout_margin="1dp"
             android:background="@drawable/back_rect_round_8dp"
             android:backgroundTint="#ddffffff"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -47,6 +47,7 @@
             android:layout_marginHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/black"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView"
             tools:text="Last updated : 23rd April 2022" />
@@ -55,14 +56,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{item.count.toString()}"
-            android:textSize="24sp"
+            android:textSize="18sp"
             tools:text="24"
             android:textStyle="bold"
             android:layout_margin="16dp"
             setTextColorFromKey="@{item.type}"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_timestamp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -72,9 +72,8 @@
             android:layout_marginTop="4dp"
             android:text="@{item.type}"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/tv_timestamp"
@@ -112,18 +111,18 @@
             android:layout_height="wrap_content"
             android:text="@string/str_estimated_zakat"
             android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_zakat"
             app:layout_constraintStart_toStartOf="@id/tv_label_value"
             app:layout_constraintTop_toTopOf="@+id/tv_zakat"
-            app:setZakatVisibile="@{item.type}"
-            tools:visibility="gone" />
+            app:setZakatVisibile="@{item.type}" />
 
         <TextView
             android:id="@+id/tv_zakat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginBottom="16dp"
             android:gravity="end"
             android:textColor="@color/black"
@@ -134,8 +133,7 @@
             app:layout_constraintStart_toEndOf="@+id/tv_label_zakat"
             app:layout_constraintTop_toBottomOf="@+id/tv_value"
             app:setZakatVisibile="@{item.type}"
-            tools:text="2000"
-            tools:visibility="gone" />
+            tools:text="2000"/>
 
         <Space
             android:layout_width="0dp"
@@ -148,8 +146,8 @@
         <ImageView
             android:id="@+id/imageView"
             setIconFromKey="@{item.type}"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_margin="16dp"
             android:contentDescription="@string/str_nisab_icon"
             android:scaleType="centerInside"

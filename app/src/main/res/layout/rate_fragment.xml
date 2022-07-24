@@ -78,10 +78,9 @@
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="Attention! Rates are in grams."
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:layout_marginHorizontal="16dp"
+                    android:text="Attention! Rates are as per 10 grams."
+                    android:textColor="@color/Beige3"
                     android:textStyle="bold" />
 
 
@@ -241,43 +240,6 @@
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="23 KDM" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        style="@style/style_input_edittext"
-                        android:layout_height="wrap_content"
-                        android:hint="123.45"
-                        android:inputType="numberDecimal"
-                        android:text="@={vm.rate23}"
-                        android:layout_width="0dp"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="52dp"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="32dp"
-                        android:gravity="center"
-                        android:text="@string/str_rupee_per_gram"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <TextView
-                    style="@style/TextErrorValidation"
-                    android:text="@{vm.error23}" />
-
-
-                <TextView
-                    style="@style/style_label_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="Silver" />
 
                 <LinearLayout
@@ -309,6 +271,45 @@
                 <TextView
                     style="@style/TextErrorValidation"
                     android:text="@{vm.errorSilver}" />
+
+
+
+
+                <TextView
+                    style="@style/style_label_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23 KDM" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        style="@style/style_input_edittext"
+                        android:layout_height="wrap_content"
+                        android:hint="123.45"
+                        android:inputType="numberDecimal"
+                        android:text="@={vm.rate23}"
+                        android:layout_width="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="52dp"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="32dp"
+                        android:gravity="center"
+                        android:text="@string/str_rupee_per_gram"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/TextErrorValidation"
+                    android:text="@{vm.error23}" />
 
 
             </LinearLayout>
