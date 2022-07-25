@@ -1,7 +1,6 @@
 package com.androidvoyage.zakat.screens.edit
 
 import android.app.Activity
-import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Base64
 import android.view.LayoutInflater
@@ -104,7 +103,12 @@ class EditFragment : Fragment() {
                 viewModel.errorPurity.value = ""
             }
         }
-        binding.flAdd.onClickWithAnimation {
+        binding.tvAddRemove.onClickWithAnimation {
+            if(viewModel.nisabItem.value?.listImages?.isNotEmpty()!!){
+                viewModel.nisabItem.value?.listImages = emptyList()
+                viewModel.notifyModel()
+                return@onClickWithAnimation
+            }
             ImagePicker.with(this)
                 .compress(1024) //Final image size will be less than 1 MB(Optional)
                 .maxResultSize(
@@ -113,6 +117,15 @@ class EditFragment : Fragment() {
                 )  //Final image resolution will be less than 1080 x 1080(Optional)
                 .createIntent { intent ->
                     startForProfileImageResult.launch(intent)
+                }
+        }
+        viewModel.nisabItem.observe(viewLifecycleOwner){ nisab ->
+                 if(nisab.listImages?.isEmpty()!!) {
+                    binding.ivPlaceholder.visibility = View.VISIBLE
+                     binding.tvAddRemove.text ="Add Image"
+                } else {
+                    binding.ivPlaceholder.visibility = View.INVISIBLE
+                     binding.tvAddRemove.text ="Remove Image"
                 }
         }
     }

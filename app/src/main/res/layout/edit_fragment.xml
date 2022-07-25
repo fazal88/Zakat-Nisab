@@ -57,46 +57,51 @@
                     style="@style/style_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nisab Gallery" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcv_list_images"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:clipToPadding="false"
-                    android:orientation="horizontal"
-                    android:paddingVertical="4dp"
-                    setListAdapter="@{vm.nisabItem}"
-                    android:paddingStart="120dp"
-                    android:paddingEnd="16dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:itemCount="3"
-                    tools:listitem="@layout/item_image_nisab" />
+                    android:text="Nisab Picture" />
 
                 <FrameLayout
                     android:id="@+id/fl_add"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:elevation="8dp"
-                    android:layout_marginTop="-120dp" >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="8dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcv_list_images"
+                        setListAdapter="@{vm.nisabItem}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dp"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/item_image_nisab" />
 
                     <ImageView
-                        android:layout_width="88dp"
-                        android:src="@drawable/ic_nisab"
-                        android:background="@drawable/back_rect_round_8dp"
-                        android:backgroundTint="@color/white"
-                        android:scaleType="centerInside"
-                        android:layout_height="88dp"
-                        android:layout_gravity="center"/>
-
-                    <ImageView
-                        android:layout_width="88dp"
+                        android:id="@+id/iv_placeholder"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_gravity="center_vertical"
                         android:background="@drawable/back_rect_round_8dp"
                         android:backgroundTint="#446200EE"
-                        android:src="@drawable/ic_add"
                         android:scaleType="centerInside"
-                        android:layout_height="88dp"
-                        android:layout_gravity="center"/>
+                        android:src="@drawable/ic_nisab" />
+
+
+                    <TextView
+                        android:id="@+id/tv_add_remove"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@drawable/back_rect_round_4dp"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:text="Add Image"
+                        android:textAllCaps="true"
+                        android:layout_gravity="center|end"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -235,7 +240,7 @@
             android:text="Save"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
