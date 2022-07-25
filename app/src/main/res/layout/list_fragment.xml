@@ -26,16 +26,30 @@
         <TextView
             android:id="@+id/tv_title_list"
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:paddingHorizontal="16dp"
             android:text="@string/str_list_all_nisab"
-            android:textColor="@color/primaryDarkColor"
-            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_back"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_subtitle_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            setTextColorFromKey="@{vm.typeNisab}"
+            text="@{vm.typeNisab}"
+            android:textSize="12sp"
+            tools:text="Gold Silver"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_back"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_list"
+            app:layout_constraintBottom_toBottomOf="@id/iv_back"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_nisab"
@@ -43,13 +57,15 @@
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:paddingHorizontal="8dp"
+            android:background="@color/white"
             android:paddingBottom="120dp"
+            android:layout_marginTop="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_list"
+            app:layout_constraintTop_toBottomOf="@+id/tv_subtitle_list"
             tools:itemCount="7"
             tools:listitem="@layout/item_list_nisab" />
 

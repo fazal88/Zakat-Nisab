@@ -4,11 +4,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidvoyage.zakat.R;
+import com.androidvoyage.zakat.model.Features;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -43,6 +47,8 @@ public class SpinnerListAdapter extends RecyclerView.Adapter<SpinnerListAdapter.
 
         try {
             holder.tvAreaName.setText(listArea.get(position));
+            holder.clParent.setBackgroundTintList(ContextCompat.getColorStateList(context, Features.INSTANCE.getColorRes(listArea.get(position))));
+            holder.ivStart.setImageResource(Features.INSTANCE.getIcon(listArea.get(position)));
             UtilsKt.setOnClickAnimateListener(holder.itemView, view -> {
                 onAreaSelectListener.onSelected(listArea.get(position));
             });
@@ -60,10 +66,14 @@ public class SpinnerListAdapter extends RecyclerView.Adapter<SpinnerListAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvAreaName;
+        ConstraintLayout clParent;
+        ImageView ivStart;
 
         public ViewHolder(View view) {
             super(view);
             tvAreaName = view.findViewById(R.id.tv_name);
+            clParent = view.findViewById(R.id.cl_parent);
+            ivStart = view.findViewById(R.id.iv_start);
         }
     }
 

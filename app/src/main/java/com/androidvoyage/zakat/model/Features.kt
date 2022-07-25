@@ -45,6 +45,9 @@ object Features {
 
     fun getIcon(key: String): Int {
         return when (key) {
+            PREF_OVER_ALL -> {
+                R.drawable.ic_nisab
+            }
             PREF_CASH_IN_HAND -> {
                 R.drawable.ic_cash
             }
@@ -67,7 +70,7 @@ object Features {
                 R.drawable.ic_asset
             }
             else -> {
-                R.drawable.ic_nisab
+                0
             }
         }
     }
@@ -103,6 +106,9 @@ object Features {
 
     fun getColorRes(key : String) : Int{
         return when (key) {
+            PREF_OVER_ALL -> {
+                R.color.primaryColor
+            }
             PREF_CASH_IN_HAND -> {
                 R.color.Beige3
             }
@@ -125,7 +131,7 @@ object Features {
                 R.color.Violet3
             }
             else -> {
-                R.color.primaryColor
+                R.color.white
             }
         }
     }

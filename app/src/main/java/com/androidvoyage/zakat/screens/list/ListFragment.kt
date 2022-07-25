@@ -47,6 +47,7 @@ class ListFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.rvNisab.adapter = viewModel.adapter
         args.nisabType.let {
+            viewModel.setNisabType(it)
             viewModel.listNisab = if (it == Features.PREF_OVER_ALL)
                 (requireActivity() as MainActivity).database.nisabDao().getNisabs()
             else
