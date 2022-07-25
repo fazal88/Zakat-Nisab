@@ -42,6 +42,7 @@
             android:contentDescription="@string/str_overflow_menu" />
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsv_scroll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
