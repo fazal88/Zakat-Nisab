@@ -35,30 +35,40 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <androidx.cardview.widget.CardView
             android:id="@+id/iv_item"
-            setIconFromKey="@{vm.type}"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="4dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_nisab"
+            android:layout_marginVertical="8dp"
+            app:cardCornerRadius="4dp"
+            app:cardBackgroundColor="@color/transparent"
+            app:cardElevation="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_purchase_date" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_purchase_date">
+
+            <ImageView
+                setIconFromKey="@{vm.type}"
+                setNisabImage="@{vm}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_nisab" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_purchase_date"
             setDate="@{vm.datePurchase}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/tv_item"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Purchased on : 11 April 2022" />
 
@@ -100,7 +110,7 @@
             tools:text="Necklace" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
+        <!--<androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_list_small"
             setSmallListAdapter="@{vm}"
             android:layout_width="0dp"
@@ -108,17 +118,18 @@
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:paddingHorizontal="8dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:paddingVertical="8dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/tv_estimated_value"
             app:reverseLayout="true"
-            tools:itemCount="1"
+            tools:itemCount="3"
             tools:listitem="@layout/item_image_nisab_small" />
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginHorizontal="16dp"
@@ -127,9 +138,9 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rcv_list_small" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rcv_list_small" />-->
 
         <LinearLayout
             android:id="@+id/ll_weight"
@@ -146,8 +157,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weight"
                 android:layout_weight="1"
+                android:text="Weight"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_weight" />
@@ -155,12 +166,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:gravity="center"
                 android:text="@{vm.purity}"
-                android:layout_marginHorizontal="16dp"
                 android:textColor="@color/Blue3"
-                android:textStyle="bold"
                 android:textSize="12sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_weight"
                 tools:text="916 / 22 karat" />
@@ -171,8 +182,8 @@
                 android:gravity="end"
                 android:text="@{@string/str_concate_g(vm.weight)}"
                 android:textColor="@color/black"
-                android:textStyle="bold"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_weight"
                 tools:text="7.86 gram" />
@@ -198,8 +209,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:textSize="16sp"
             android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_lable_purchase"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
@@ -219,9 +230,9 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lable_purchase" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_lable_purchase"
+            app:layout_constraintVertical_bias="0" />
 
         <TextView
             android:id="@+id/tv_estimated_value"

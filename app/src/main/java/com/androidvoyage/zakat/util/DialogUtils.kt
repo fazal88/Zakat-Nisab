@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.databinding.DialogInfoBinding
+import com.androidvoyage.zakat.databinding.DialogListImagesBinding
 import com.androidvoyage.zakat.databinding.DialogListSpinnerBinding
 import com.androidvoyage.zakat.databinding.DialogTwoButtonBinding
+import com.androidvoyage.zakat.model.NisabItem
 
 
 fun showListSelectionDialog(context: Context, listArea : ArrayList<String>?, onSelectListener: OnSelectListener) {
@@ -111,8 +113,29 @@ fun showInfoDialog(
 fun showImageDialog(
     context: Context,
     image:String?,
-    list:List<String>
+    item:NisabItem
 ){
+    val dialog = Dialog(context)
+    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+    val binding: DialogListImagesBinding =
+        DialogListImagesBinding.inflate(LayoutInflater.from(context))
+    dialog.setContentView(binding.root)
+    dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    dialog.window!!.setLayout(
+        ViewGroup.LayoutParams.MATCH_PARENT,
+        ViewGroup.LayoutParams.MATCH_PARENT
+    )
+    dialog.setCanceledOnTouchOutside(true)
+    binding.vm = item
+    dialog.show()
+    binding.ivCancel.setOnClickListener {
+        try {
+            dialog.dismiss()
+        } catch (e: NullPointerException) {
+            LogUtils.e(TAG, e.localizedMessage)
+        }
+    }
+
 
 }
 

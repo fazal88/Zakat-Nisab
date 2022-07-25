@@ -22,6 +22,7 @@ import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.NisabItem
 import com.androidvoyage.zakat.pref.SharedPreferencesManager
 import com.androidvoyage.zakat.screens.edit.NisabImagesAdapter
+import com.androidvoyage.zakat.screens.list.NisabImagesPreviewAdapter
 import com.androidvoyage.zakat.screens.list.NisabImagesSmallAdapter
 import com.bumptech.glide.Glide
 import java.util.*
@@ -51,7 +52,7 @@ fun View.onClickWithAnimation(clickFunction: () -> Unit) {
 fun RecyclerView.setListAdapter(item : NisabItem?){
     item?.let { nisab ->
         val adapter = NisabImagesAdapter(NisabImagesAdapter.NisabClickListener { image ->
-            showImageDialog(this.context, image, nisab.listImages)
+            showImageDialog(this.context, image, nisab)
         })
         this.adapter = adapter
         adapter.submitList(nisab.listImages)
@@ -62,8 +63,17 @@ fun RecyclerView.setListAdapter(item : NisabItem?){
 fun RecyclerView.setSmallListAdapter(item : NisabItem?){
     item?.let { nisab ->
         val adapter = NisabImagesSmallAdapter(NisabImagesSmallAdapter.NisabClickListener { image ->
-            showImageDialog(this.context, image, nisab.listImages)
+            showImageDialog(this.context, image, nisab)
         })
+        this.adapter = adapter
+        adapter.submitList(nisab.listImages)
+    }
+}
+
+@BindingAdapter("setPreviewListAdapter")
+fun RecyclerView.setPreviewListAdapter(item : NisabItem?){
+    item?.let { nisab ->
+        val adapter = NisabImagesPreviewAdapter()
         this.adapter = adapter
         adapter.submitList(nisab.listImages)
     }
@@ -394,6 +404,18 @@ fun View.setPuritySection(type: String?) {
 fun ImageView.setIconFromKey(type: String?) {
     type?.let {
         this.setImageResource(Features.getIcon(type))
+    }
+}
+
+@BindingAdapter("setNisabImage")
+fun ImageView.setNisabImage(item: NisabItem?) {
+    item?.let { nisab ->
+        this.setImageResource(Features.getIcon(item.type))
+        nisab.listImages?.let { list: List<String> ->
+            if(list.isNotEmpty()){
+                this.setImageBitmap(list[0])
+            }
+        }
     }
 }
 
