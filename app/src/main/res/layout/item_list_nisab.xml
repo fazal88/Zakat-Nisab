@@ -38,6 +38,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/iv_item"
             android:layout_width="48dp"
+            android:onClick="@{()->click.onClickImage(vm)}"
             android:layout_height="48dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="8dp"
@@ -48,11 +49,10 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_purchase_date">
 
             <ImageView
-                setIconFromKey="@{vm.type}"
                 setNisabImage="@{vm}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerInside"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_nisab" />
 
         </androidx.cardview.widget.CardView>

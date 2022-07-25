@@ -63,9 +63,11 @@ open class NisabListAdapter(
     open class NisabClickListener(
         val editNisab: (item: NisabItem) -> Unit,
         val deleteNisab: (item: NisabItem) -> Unit,
+        val viewNisab: (item: NisabItem) -> Unit
     ) {
         fun onClickEdit(item: NisabItem) = editNisab(item)
         fun onClickDelete(item: NisabItem) = deleteNisab(item)
+        fun onClickImage(item: NisabItem) = viewNisab(item)
     }
 
 }

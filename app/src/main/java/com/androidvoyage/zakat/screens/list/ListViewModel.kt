@@ -14,6 +14,7 @@ class ListViewModel : ViewModel() {
 
     val editNisab = MutableLiveData<NisabItem>(null)
     val deleteNisab = MutableLiveData<NisabItem>(null)
+    val viewNisab = MutableLiveData<NisabItem>(null)
     val typeNisab = MutableLiveData<String>(null)
 
     val adapter = NisabListAdapter(
@@ -23,6 +24,9 @@ class ListViewModel : ViewModel() {
             },
             { item ->
                 deleteNisab.postValue(item)
+            },
+            { item ->
+                viewNisab.postValue(item)
             }
         )
     )

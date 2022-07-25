@@ -14,6 +14,7 @@ import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.NisabItem
 import com.androidvoyage.zakat.screens.main.MainActivity
 import com.androidvoyage.zakat.util.onClickWithAnimation
+import com.androidvoyage.zakat.util.showImageDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -71,6 +72,12 @@ class ListFragment : Fragment() {
                 CoroutineScope(Dispatchers.Default).launch {
                     (requireActivity() as MainActivity).database.nisabDao().deleteNisab(it)
                 }
+            }
+        }
+
+        viewModel.viewNisab.observe(viewLifecycleOwner) {
+            it?.let {
+                showImageDialog(requireContext(),"",it)
             }
         }
 

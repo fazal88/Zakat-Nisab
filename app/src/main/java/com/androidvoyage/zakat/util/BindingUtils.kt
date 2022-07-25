@@ -86,7 +86,6 @@ fun ImageView.setImageBitmap(item: String?) {
         item?.let {
             Glide.with(this.context)
                 .load(base64ToBitmap(item, Base64.NO_WRAP))
-                .centerCrop()
                 .placeholder(R.drawable.ic_nisab)
                 .into(this)
         }
