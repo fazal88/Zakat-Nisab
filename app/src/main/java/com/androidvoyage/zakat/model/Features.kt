@@ -70,7 +70,7 @@ object Features {
                 R.drawable.ic_asset
             }
             else -> {
-                0
+                R.drawable.ic_nisab
             }
         }
     }
