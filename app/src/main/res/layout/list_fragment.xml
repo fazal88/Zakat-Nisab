@@ -18,10 +18,10 @@
             android:id="@+id/iv_back"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_title_list"
@@ -39,17 +39,44 @@
 
         <TextView
             android:id="@+id/tv_subtitle_list"
+            setTextColorFromKey="@{vm.typeNisab}"
+            text="@{vm.typeNisab}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            setTextColorFromKey="@{vm.typeNisab}"
-            text="@{vm.typeNisab}"
             android:textSize="12sp"
-            tools:text="Gold Silver"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/iv_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_back"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_list"
-            app:layout_constraintBottom_toBottomOf="@id/iv_back"/>
+            tools:text="Gold Silver" />
+
+        <TextView
+            android:id="@+id/tv_discailmer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="5dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:textSize="12sp"
+            android:text="@string/str_all_type_of_nisab_in_family_must_be_considered_for_evaluation_you_and_all_your_dependents"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_subtitle_list" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nothing here"
+            android:textColor="@color/text_grey"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_nisab"
@@ -59,13 +86,12 @@
             android:paddingHorizontal="8dp"
             android:background="@color/white"
             android:paddingBottom="120dp"
-            android:layout_marginTop="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_subtitle_list"
+            app:layout_constraintTop_toBottomOf="@+id/tv_discailmer"
             tools:itemCount="3"
             tools:listitem="@layout/item_list_nisab" />
 
@@ -73,13 +99,13 @@
             android:id="@+id/iv_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/back_round"
-            android:padding="16dp"
-            android:backgroundTint="@color/accentColor"
-            android:src="@drawable/ic_add"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_margin="16dp"
+            android:background="@drawable/back_round"
+            android:backgroundTint="@color/accentColor"
+            android:padding="16dp"
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:tint="@color/primaryColor" />
 
 

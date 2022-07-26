@@ -56,6 +56,7 @@ class ListFragment : Fragment() {
         }
         viewModel.listNisab.observe(viewLifecycleOwner) {
             it?.let {
+                binding.rvNisab.visibility = (if(it.isEmpty()) View.INVISIBLE else View.VISIBLE)
                 viewModel.adapter.submitList(it)
             }
         }
