@@ -79,9 +79,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:text="Attention! Rates are as per 10 grams."
-                    android:textColor="@color/Beige3"
-                    android:textStyle="bold" />
+                    android:text="@string/str_attention_rates_are_as_per_10_grams_n_b_click_here_b_to_know_latest_price_in_your_region"
+                    android:textColor="@color/Beige3" />
 
 
                 <TextView

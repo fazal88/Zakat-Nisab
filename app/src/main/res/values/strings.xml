@@ -27,7 +27,7 @@
     <string name="str_cost_label"><b>Cost</b> : ₹12,000</string>
     <string name="str_estimated_value">Value :</string>
     <string name="str_purchase_cost">Purchase Cost :</string>
-    <string name="str_rate_update">* Update rates of gold as per purity based on your region and country</string>
+    <string name="str_rate_update"><![CDATA[* 1 Tola  = 10 gram (Indian Standard).\n* Update rates as per purity based on your region.\n* Select your currency in app.]]></string>
     <string name="str_per_gram">%s ₹/gram</string>
     <string name="str_rupee_per_gram">₹/10 gram</string>
     <string name="str_concate_g">%sgm</string>
@@ -39,4 +39,5 @@
     <string name="str_attention">Attention!</string>
     <string name="str_ok">Okay</string>
     <string name="str_all_type_of_nisab_in_family_must_be_considered_for_evaluation_you_and_all_your_dependents">All type of nisab in family must be considered for evaluation. You and all your dependents.</string>
+    <string name="str_attention_rates_are_as_per_10_grams_n_b_click_here_b_to_know_latest_price_in_your_region">Attention! Rates are as per 10 grams. Know latest rates in your region &amp; update here for accurate calculations.</string>
 </resources>

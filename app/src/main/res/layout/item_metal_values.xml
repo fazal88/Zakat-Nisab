@@ -306,29 +306,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginVertical="8dp"
             android:textSize="12sp"
             android:textStyle="italic"
             app:layout_constraintTop_toBottomOf="@+id/tv_label_23"
-            android:text="* 1 Tola  = 10 gram (Indian Standard)"
-            app:layout_constraintBottom_toBottomOf="@id/tv_subtitle_rates"
+            android:text="@string/str_rate_update"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_subtitle_rates"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="4dp"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_tola"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="@string/str_rate_update"
-            android:textSize="12sp" />
 
 
         <ImageView
