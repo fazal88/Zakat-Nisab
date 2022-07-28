@@ -91,7 +91,7 @@
         android:id="@+id/faqFragment"
         android:name="com.androidvoyage.zakat.screens.faq.FaqFragment"
         android:label="about_fragment"
-        tools:layout="@layout/about_fragment" />
+        tools:layout="@layout/faq_fragment" />
     <fragment
         android:id="@+id/rateFragment"
         android:name="com.androidvoyage.zakat.screens.rates.RateFragment"

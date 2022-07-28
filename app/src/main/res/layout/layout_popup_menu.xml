@@ -23,30 +23,18 @@
             android:layout_marginRight="42dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:orientation="vertical"
                 android:paddingVertical="16dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_menu_about"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
-                    android:gravity="center"
-                    android:lineSpacingExtra="4sp"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="16dp"
-                    android:textStyle="bold"
-                    android:text="@string/str_faq"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="8dp"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
                     android:lineSpacingExtra="4sp"
                     android:textStyle="bold"
                     android:paddingHorizontal="16dp"
@@ -56,15 +44,86 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tv_menu_faq"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="4sp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    android:textStyle="bold"
+                    android:text="@string/str_faq"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_menu_tutorials"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="4sp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    android:textStyle="bold"
+                    android:text="Tutorials"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_menu_refer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
                     android:textStyle="bold"
                     android:lineSpacingExtra="4sp"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="16dp"
                     android:text="@string/str_share"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_menu_coming_soon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="4sp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="Coming Soon"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_menu_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="4sp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="Feedback"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_menu_support"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="4sp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="Support Me"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 

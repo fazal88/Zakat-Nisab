@@ -1,6 +1,5 @@
 package com.androidvoyage.zakat.screens.dashboard
 
-import android.content.Context
 import android.database.sqlite.SQLiteConstraintException
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -14,8 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.androidvoyage.zakat.R
 import com.androidvoyage.zakat.databinding.DashboardFragmentBinding
+import com.androidvoyage.zakat.databinding.LayoutPopupMenuBinding
 import com.androidvoyage.zakat.model.Features
 import com.androidvoyage.zakat.model.NisabCategoryItem
 import com.androidvoyage.zakat.model.NisabItem
@@ -116,11 +115,9 @@ class DashboardFragment : Fragment() {
     }
 
     private fun showPopupMenu(infoView: View) {
-        val inflater =
-            requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view = inflater.inflate(R.layout.layout_popup_menu, null)
+        val bindingPopup = LayoutPopupMenuBinding.inflate(LayoutInflater.from(requireActivity()))
         val filterPopup = PopupWindow(
-            view,
+            bindingPopup.root,
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
@@ -132,6 +129,18 @@ class DashboardFragment : Fragment() {
             0,
             -infoView.height
         )
+        bindingPopup.tvMenuAbout.setOnClickListener {
+            filterPopup.dismiss()
+            (requireActivity() as MainActivity).navController.navigate(
+                DashboardFragmentDirections.actionDashboardFragmentToAboutFragment()
+            )
+        }
+        bindingPopup.tvMenuFaq.setOnClickListener {
+            filterPopup.dismiss()
+            (requireActivity() as MainActivity).navController.navigate(
+                DashboardFragmentDirections.actionDashboardFragmentToFaqFragment()
+            )
+        }
     }
 }
 

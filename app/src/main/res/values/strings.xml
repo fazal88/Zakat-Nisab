@@ -4,7 +4,7 @@
     <string name="str_card_mask">XXXX</string>
     <string name="str_add">Add</string>
     <string name="str_faq">FAQs</string>
-    <string name="str_about_us">About Us</string>
+    <string name="str_about_us">About</string>
     <string name="str_share">Refer to Friends</string>
     <string name="str_weight_in_grams_1_tola_10_grams_at_present">Weight in grams <b>(1 Tola = 10 grams at present)</b></string>
     <string name="str_weight_in_grams">Weight in grams</string>
@@ -40,4 +40,7 @@
     <string name="str_ok">Okay</string>
     <string name="str_all_type_of_nisab_in_family_must_be_considered_for_evaluation_you_and_all_your_dependents">All type of nisab in family must be considered for evaluation. You and all your dependents.</string>
     <string name="str_attention_rates_are_as_per_10_grams_n_b_click_here_b_to_know_latest_price_in_your_region">Attention! Rates are as per 10 grams. Know latest rates in your region &amp; update here for accurate calculations.</string>
+    <string name="str_about_us_app"><![CDATA[Zakat & Nisab is a mobile application to help a person to maintain update the record of wealth & assets for annual calculation of wealth so that they can pay the mandatory charity (Zakat) in Islam. Basic idea is to have simple interface to ease up this responsibility. Our aim is to motivate people to do their part of charity and also educate them reagrding this topic itself.]]></string>
+    <string name="str_maker">I, Mohd Fazal, An Android Application Developer from India. I like to build good interfaces. As a devoted muslim this is also my personal need to calculate and pay zakat. I felt the absence of a good tool for this process of calculate zakat and nisab mostly during busy and holy month of ramzan. Also many people around us dont know what things are considered in nisab and who is responsible etc. So i took up this goal to build an app and provide an assistive interface for this purpose.</string>
+    <string name="str_safety">This app is like a Calculator. It does not uses any backend servers. This App stores the information in your Device itself. If you want to backup data to drive, then it uses your own Google drive to do so. The developer of this app in no way sending any data of user to server or anyone. If you uninstall the app before backup the record will be cleared.</string>
 </resources>
